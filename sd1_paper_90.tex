@@ -4,17 +4,20 @@
 \author{Morgan Synder \and Matthew Morello \and Tobiah Bower}
 
 %packages
-\usepackage[left=1in, right=1in, bottom=1in, top=1in]{geometry}
+\usepackage[left=1.5in, right=1in, bottom=1in, top=1in]{geometry}
 
 \begin{document}
 	\include{coverpage.tex}
 
 	\tableofcontents
+	\setcounter{secnumdepth}{2}
 
 	\newpage
+	% 1-2 pages
 	\section{Executive Summary}
 	\input{./Chapter1-Introduction/1_1-exec_summary.tex}
 	
+	% 10 pages
 	\section{Project Description}
 	\input{./Chapter2-Description/2_1-motivation_goals.tex}
 	\input{./Chapter2-Description/2_2-objectives.tex}
@@ -22,6 +25,7 @@
 	\input{./Chapter2-Description/2_4-house_of_quality.tex}
 	\input{./Chapter2-Description/2_5-overview_block_diagram.tex}
 	
+	% 5 pages
 	\section{Research}
 	\input{./Chapter3-Research/3_1-existing_products.tex}
 	\input{./Chapter3-Research/3_2-relevant_tech.tex}
@@ -29,6 +33,7 @@
 	\input{./Chapter3-Research/3_4-related_arch_diagrams.tex}
 	\input{./Chapter3-Research/3_5-part_selection.tex}
 	
+	% 15 pages
 	\section{Requirements, Standards, and Constraints}
 	\input{./Chapter4-Standards/4_1_0-standards.tex}
 	\input{./Chapter4-Standards/4_1_1-design_impact.tex}
@@ -38,5 +43,40 @@
 	\input{./Chapter4-Standards/4_2_3-ethic_health_safety.tex}
 	\input{./Chapter4-Standards/4_2_4-manufacture_sustain.tex}
 
+	% 5 pages
+	\section{Comparison of ChatGPT with Similar Platforms}
+	
+	% 15 pages
+	\section{Hardware Design}
+	
+	% 10 pages
+	\section{Software Design}
+	
+	% 5 pages
+	\section{Prototype Fabrication}
+	
+	% 5-10 pages
+	\section{System Testing}
+	
+	% 5-10 pages
+	\section{Administrative Content}
+	\input{./Chapter8-Admin/8_1-milestones.tex}
+	\input{./Chapter8-Admin/8_2-budget.tex}
+		
+	% 2-3 pages
+	\section{Conclusion}
+	
+	% not included in page count
+	\section*{Appendix A - References}
+	
+	% sensor fusion fall detection: https://ieeexplore.ieee.org/document/9846990
+	% seminal work PAMM: https://ieeexplore.ieee.org/document/844114
+	% seminal UCF work: https://www.mdpi.com/1424-8220/21/10/3488
+	
+	\bibliographystyle{unsrt}
+	\bibliography{./References/references}
+	
+	\section*{Appendix B - Copyright}
+		
 \end{document}
 
