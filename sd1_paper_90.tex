@@ -8,23 +8,29 @@
 \usepackage{fancyhdr}
 \usepackage{graphicx}
 \usepackage{nicematrix}
+\usepackage{setspace}
+\usepackage{fontspec}
+\setmainfont{Arial}
 
 % commands
 \renewcommand*\contentsname{Table of Contents} % rename contents
 
 \begin{document}
+	\begin{singlespace}
 	\input{coverpage.tex}
 
 	\tableofcontents
 	\listoffigures
-	\setcounter{secnumdepth}{2}
+	\setcounter{secnumdepth}{3}
 
 	\newpage
 	% 1-2 pages
+	% done
 	\section{Executive Summary}
 	\input{./Chapter1-Introduction/1_1-exec_summary.tex}
 	
-	% 10 pages
+	% 5 pages
+	% done
 	\section{Project Description}
 	\input{./Chapter2-Description/2_1-motivation_goals.tex}
 	\input{./Chapter2-Description/2_2-objectives.tex}
@@ -32,7 +38,8 @@
 	\input{./Chapter2-Description/2_4-house_of_quality.tex}
 	\input{./Chapter2-Description/2_5-overview_block_diagram.tex}
 	
-	% 5 pages
+	% 45 pages
+	% due 09/10 - order parts ASAP!
 	\section{Research}
 	\input{./Chapter3-Research/3_1-existing_products.tex}
 	\input{./Chapter3-Research/3_2-relevant_tech.tex}
@@ -40,7 +47,7 @@
 	\input{./Chapter3-Research/3_4-related_arch_diagrams.tex}
 	\input{./Chapter3-Research/3_5-part_selection.tex}
 	
-	% 15 pages
+	% 10 pages
 	\section{Requirements, Standards, and Constraints}
 	\input{./Chapter4-Standards/4_1_0-standards.tex}
 	\input{./Chapter4-Standards/4_1_1-design_impact.tex}
@@ -50,7 +57,7 @@
 	\input{./Chapter4-Standards/4_2_3-ethic_health_safety.tex}
 	\input{./Chapter4-Standards/4_2_4-manufacture_sustain.tex}
 
-	% 5 pages
+	% 3 pages
 	\section{Comparison of ChatGPT with Similar Platforms}
 	
 	% 15 pages
@@ -64,13 +71,14 @@
 	
 	% 5-10 pages
 	\section{System Testing}
+	\input{./Chapter9-Testing/9_1-systemtest.tex}
 	
-	% 5-10 pages
+	% 5 pages
 	\section{Administrative Content}
-	\input{./Chapter8-Admin/8_1-milestones.tex}
-	\input{./Chapter8-Admin/8_2-budget.tex}
+	\input{./Chapter10-Admin/10_1-milestones.tex}
+	\input{./Chapter10-Admin/10_2-budget.tex}
 		
-	% 2-3 pages
+	% 2 pages
 	\section{Conclusion}
 	
 	% not included in page count
@@ -79,6 +87,6 @@
 	\input{./AppendixA-References/appendixA-references.tex}
 	
 	\section*{Appendix B - Copyright}
-		
+	\end{singlespace}
 \end{document}
 

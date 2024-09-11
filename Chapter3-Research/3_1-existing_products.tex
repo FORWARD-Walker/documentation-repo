@@ -1,19 +1,29 @@
 \subsection{Existing Products and Projects}
-\noindent There have been numerous efforts made by researchers to develop smart walkers using the available technologies. In the following sections we seek to analyze these technologies in a way that identifies which of such will be most desired for our specific system, taking into  consideration many factors, some of which being: cost, attainability, integration complexity, and performance.\\
+\noindent There have been numerous efforts made by researchers to develop smart walkers using the available technologies. Perhaps the seminal work in this growing field of research and development is \cite{PAMM}. This group was the first to propose a smart walker project with localization, mobility control, and object avoidance. In the following sections we seek to analyze these technologies and methods in a way that identifies which of such will be most desired for our specific system, taking into consideration many factors, some of which being: cost, attainability, integration complexity, and performance.
 
-\noindent Why the need for 7 ultrasonics? in Mostofa \cite{Mostofa}\\
+\subsubsection{Current Walker Sensing Applications}
+\noindent In the smart walker prototype created in \cite{Mostofa}, nine HC-SR04 ultrasonic sensors are arrayed along the front of the walker. Seven face forward, while the remaining two point perpendicularly to the walker motion and opposite to each other. This setup provides a continuous reading of the walker's forward hemisphere with a detection range of 200cm. Our team asks the question, can obstacle detection and notification be achieved with a more discrete array of sensors stowed onto the walker frame? What is the operational FOV for ultrasonic sensors? Can the amount be reduced? How will the introduction of LiDAR and camera technology affect the ultrasonic approach?\\
 
-\noindent Autonomous robots are a popular use of LiDAR\\
+\noindent Robotics are a popular use of LiDAR, often able to achieve feats such as autonomous delivery. However, many researchers have also introduced laser sensing methods and other waves near infrared in order to provide ranging data to mobile systems, which in our case is the walker. A senior design group at Michigan State University expanded on this \cite{mstate}.\\
 
+\noindent In \cite{FallDetect}, the group implements one of FORWARD's stretch features with an unorthodox yet clever utilization of LiDAR and sensor fusion. In order to equip the walker with fall detection, both ultrasonic and laser sensors are installed near the footstep bay of the walker. They also add force sensors in the handlebars. The feedback provided by the sensing system is whether the user is walking uprightly. If the user began to fall, the laser sensors would reflect their feet moving out of view, and likely the force sensors would experience more pressure as the user reacted to a slip. \\
+
+\noindent This walker does not employ GPS. We are not looking to track the location continuously. This technology has more of a place within the application of health monitoring and emergency alerts.\\
+
+\subsubsection{Image Processing Research}
 \noindent \textbf{Image Processing Research}
 \newline
  Ultralytics YOLO is an open source AI driven image processing model. The Ultralytics YOLO platform provides an AI Image processing Architecture that is malleable to the users demands, and for our case, would process the input image to detect if one of the five hazards is present, as well as provide a confidence rating for these predictions. To implement the object detection functionality to our specifications, minimal training, as well as coding must be performed. The benefits of this solution for our image classification system include zero cost, configurability, and minimal memory footprint (a few hundred MB) - which are all important aspects for our desired solution. The negatives include the needed man hours to train and implement this model for our purposes and time to run (anywhere from 0.1 seconds to 3 seconds). The time to predict could exclude this solution from our options as we need to have classification under 1 second latency, ideally in the realm of a few hundred milliseconds. 
 %https://www.freecodecamp.org/news/how-to-detect-objects-in-images-using-yolov8/#heading-how-to-get-started-with-yolov8 
 \newline 
 
+<<<<<<< HEAD
+\subsubsection{Motor and Steering Applications}
+=======
 \newline 
 \noindent FOMO (Faster objects, More objects) is a machine learning image processing algorithm that seeks to solve the problem of running high complexity algorithms (such as neural networks) on MCU's. In the documents referenced [HERE], the Arduino Nicla board is used to classify the objects in frame at a rate of 33 microseconds (30 SPS). The objects can be classified and processed through multiple methods, but all of which would be applicable to our purposes. This system also minimizes the memory usage by needing only 256 KB of memory to run and store these algorithms. On the FOMO website, they claim that this algorithm is compatible with many of the MCU's that we are considering for this project, some of which being an ESP32, Arduino Nicla, and others.
 %https://www.hackster.io/mjrobot/tinyml-made-easy-object-detection-with-nicla-vision-407ddd
 %https://docs.edgeimpulse.com/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices
 \newline 
 
+>>>>>>> d643b973ca71bff37c0d3ec86dbadb48cd782107
