@@ -1,23 +1,55 @@
 \subsection{Part Selection}
 
 % account 1 page for ultrasonic table
-% account 1 page for lidar table
-% account 1 page for feedback table
-
 \begin{figure}[h]
 	\centering
-	\setlength{\tabcolsep}{11pt} % Default value: 6pt
-	\renewcommand{\arraystretch}{2} % Default value: 1
-	\begin{NiceTabular}{ccccc}[hvlines,colortbl-like]
+	\setlength{\tabcolsep}{5pt} % Default value: 6pt
+	\renewcommand{\arraystretch}{1.5} % Default value: 1
+	\begin{NiceTabular}{cccccccc}[hvlines,colortbl-like]
 		\CodeBefore
 		\columncolor{}{}
 		\rowcolor{gray!15}{1}
 		\cellcolor{}{4-1}
 		\Body
-		Model & Range & Angle & Accuracy & Price\\
-		2346 & 2 & 246  & 2 & \\
-		1 & 34 & 2346111 & 1 & \\
-		1222 & 0 & 34 & 463
+		Model       & HC-SR04 & RCWL1XX5 & RCWL1670   & MB1000 & H2KA  & SEN0150 \\
+		Type        & Multi   & XCVR     & Multi      & XCVR   & XCVR  & XCVR \\  
+		Range (cm)  & 450     & 550      & 400        & 600    & 250   & 1000 \\
+		Angle (deg) & +/-15   & +/-30    & +/-15      & +/-20  & 8+/-2 & +/-15 \\
+		Accuracy    & 0.3 cm  & +/-2\%   & +/-2\%     & 1 inch & 2 cm  & 1 cm \\
+		Protocol    & I2C     & I2C      & I2C        & ?      & ?     & UART \\
+		Freq. (kHZ) & 40      & 40       & 40         & 42     & 150   & 49.5 \\
+		Note        &         & deadzone & waterproof &        &       &      \\
+		Price       & \$      & \$       & \$         & \$\$   & \$\$\$& \$\$\$
 	\end{NiceTabular}
 	\caption{\label{fig:compareUltrasonic}Ultrasonic Sensor Options}
 \end{figure}
+
+% The decision
+\noindent Taking into account all the specifications and overall fit with FORWARD requirements, the team selects two HC-SR04 for side-facing, and two RCWL1005's for forward-facing.\\
+
+% account 1 page for lidar table
+\begin{figure}[h]
+	\centering
+	\setlength{\tabcolsep}{5pt} % Default value: 6pt
+	\renewcommand{\arraystretch}{1.5} % Default value: 1
+	\begin{NiceTabular}{ccccccc}[hvlines,colortbl-like]
+		\CodeBefore
+		\columncolor{}{}
+		\rowcolor{gray!15}{1}
+		\cellcolor{}{4-1}
+		\Body
+		Model       & SEN-14032               & TFmini-S & TFmini Plus & TF-Luna & XT-S1   \\
+		Type        & Single 				  & Single   & Single      & Single  & Single  \\
+		Range       & 40m-70\% $\rho_\lambda$ & 0.1-12m  & 0.1-12m     & 0.2m~8m & 0.3-30m \\
+		Angle (deg) & +/-0.5                  & +/-2     & +/-2.3      & +/-2    & +/-1.5  \\
+		Accuracy    & <5m,+/-2cm              & <6m,1cm  & 1\%-2\%     & +/-6cm  & +/-0.1m \\
+		Note        & nonlinearity <1m        &  &  &  & \\
+		Price       & \$\$\$                  & \$\$     & \$\$        & \$\$    & \$\$
+	\end{NiceTabular}
+	\caption{\label{fig:compareLiDAR}LiDAR Sensor Options}
+\end{figure}
+
+\noindent The FORWARD team selects the TF-Luna model. Its easy I2C and great range to price point make it a viable option.\\
+
+
+% account for haptic feedback selection
