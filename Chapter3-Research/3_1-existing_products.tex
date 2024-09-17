@@ -20,8 +20,10 @@
 %https://www.hackster.io/mjrobot/tinyml-made-easy-object-detection-with-nicla-vision-407ddd
 %https://docs.edgeimpulse.com/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices
 
-\noindent \underline{\textit{Spatial AI}} is the combination of both Visual AI and Depth AI, in tandem to identify objects for classification as well as identifying depth of objects for better guidance and classification. [Research the models that make this possible]\\
-%https://learnopencv.com/object-detection-with-depth-measurement-with-oak-d/
+\noindent \underline{\textit{Edge Impulse}} is a website that is free to use and will allow for you to train models and then generate code for specific target devices. The way it works is, you upload your images for object detection, label and frame the objects, and then train the model. After this, you can choose your target device (Edge Impulse supports RaspberyrPi, ESP32, Arduino, and more), and generate a zip file for a library of object detection code. This is a simple to use, low complexity option that supports all of our considered MCUs.\\
+%https://edgeimpulse.com/
+%https://www.youtube.com/watch?v=bZIKVaD3dRk\
+ 
 
 \subsubsection{Existing Camera Technologies}
 \noindent \underline{\textit{ESP 32 CAM Board}} is a ESP32 processor based camera module that can transmit video data at high resolutions, which can be processed by our CV/Image processing solution. The module also has WIFI connectivity that can connect to an MCU to wirelessly transmit the video stream. The module has a 32-bit CPU with a max clock frequency of 240 MHz and 520 KB of built-in SRAM with an external 4MB PSRAM. The board module also runs on FreeRTOS. The included camera, OV2640 camera, has a 2 MP resolution, up to 1600 x 1200 and interfaces the controller board over a 24 pin interface bus. A more advanced sister product to the OV2640 is the OV5640 camera. This camera has 5 MP resolution, up to 2592 x 1944. In order to achieve our stretch requirement of depth perception analysis for guidance and navigation, this camera could be advantageous.\\
