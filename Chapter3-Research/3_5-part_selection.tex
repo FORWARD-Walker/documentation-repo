@@ -12,13 +12,13 @@
 		\cellcolor{}{4-1}
 		\Body
 		Model       & HC-SR04 & RCWL1XX5 & RCWL1670   & MB1000 & H2KA  & SEN0150 \\
-		Type        & Multi   & XCVR     & Multi      & XCVR   & XCVR  & XCVR \\  
-		Range (cm)  & 450     & 550      & 400        & 600    & 250   & 1000 \\
-		Angle (deg) & +/-15   & +/-30    & +/-15      & +/-20  & 8+/-2 & +/-15 \\
-		Accuracy    & 0.3 cm  & +/-2\%   & +/-2\%     & 1 inch & 2 cm  & 1 cm \\
-		Protocol    & I2C     & I2C      & I2C        & ?      & ?     & UART \\
-		Freq. (kHZ) & 40      & 40       & 40         & 42     & 150   & 49.5 \\
-		Note        &         & deadzone & waterproof &        &       &      \\
+		Type        & Multi   & XCVR     & Multi      & XCVR   & XCVR  & XCVR    \\  
+		Range (cm)  & 450     & 550      & 400        & 600    & 250   & 1000    \\
+		Angle (deg) & +/-15   & +/-30    & +/-15      & +/-20  & 8+/-2 & +/-15   \\
+		Accuracy    & 0.3 cm  & +/-2\%   & +/-2\%     & 1 inch & 2 cm  & 1 cm    \\
+		Protocol    & I2C     & I2C      & I2C        & ?      & ?     & UART    \\
+		Freq. (kHZ) & 40      & 40       & 40         & 42     & 150   & 49.5    \\
+		Note        &         & deadzone & waterproof &        &       &         \\
 		Price       & \$      & \$       & \$         & \$\$   & \$\$\$& \$\$\$
 	\end{NiceTabular}
 	\caption{\label{fig:compareUltrasonic}Ultrasonic Sensor Options}
@@ -51,5 +51,27 @@
 
 \noindent The FORWARD team selects the TF-Luna model. Its easy I2C and great range to price point make it a viable option.\\
 
+% IMU comparison
+\begin{figure}[h]
+	\centering
+	\setlength{\tabcolsep}{5pt} % Default value: 6pt
+	\renewcommand{\arraystretch}{1.5} % Default value: 1
+	\begin{NiceTabular}{cccc}[hvlines,colortbl-like]
+		\CodeBefore
+		\columncolor{}{}
+		\rowcolor{gray!15}{1}
+		\cellcolor{}{4-1}
+		\Body
+		Model         & BN-0055 & MPU-6050 \\
+		Axis          & 9-DOF   & 6-DOF    \\
+		Sensitivity SF Tolerance & 1\% & 3\%  \\
+		Nonlinearity  & 0.2\%   & 0.5\%    \\
+		Sensor Fusion & Yes     & Yes      \\
+		Price         & \$      & \$       \\
+	\end{NiceTabular}
+	\caption{\label{fig:compareIMU}LiDAR Sensor Options}
+\end{figure}
+
+\noindent The FORWARD team select BN-0055 IMU because of its slight advantages. This device is affordable and will enhance FORWARD stability.\\
 
 % account for haptic feedback selection

@@ -15,10 +15,13 @@
 
 \noindent Robotics are a popular use of LiDAR, often able to achieve feats such as autonomous delivery. However, many researchers have also introduced laser sensing methods and other waves near infrared in order to provide ranging data to mobile systems, which in our case is the walker. A senior design group at Michigan State University expanded on this \cite{mstate}.\\
 
-\noindent In \cite{FallDetect}, the group implements one of FORWARD's stretch features with an unorthodox yet clever utilization of LiDAR and sensor fusion. In order to equip the walker with fall detection, both ultrasonic and laser sensors are installed near the footstep bay of the walker. They also add force sensors in the handlebars. The feedback provided by the sensing system is whether the user is walking uprightly. If the user began to fall, the laser sensors would reflect their feet moving out of view, and likely the force sensors would experience more pressure as the user reacted to a slip. \\
+\noindent In \cite{FallDetect}, the group implements one of FORWARD's stretch features with an unorthodox yet clever utilization of LiDAR and sensor fusion. In order to equip the walker with fall detection, both ultrasonic and laser sensors are installed near the footstep bay of the walker. They also add force sensors in the handlebars. The feedback provided by the sensing system is whether the user is walking uprightly. If the user began to fall, the laser sensors would reflect their feet moving out of view, and likely the force sensors would experience more pressure as the user reacted to a slip.\\
 
 \noindent This walker does not employ GPS. We are not looking to track the location continuously. This technology has more of a place within the application of health monitoring and emergency alerts.\\
 
+%% Morgan and Toby
+\subsubsection{Current Walker Stability Applications}
+\noindent The byACRE Ultralight Rollator \cite{byACRE} is among a few walkers to feature stability assistance. Initial analysis reveals that this is nothing more than smoothed turning via pneumatic control. The U-STEP Neuro \cite{ustep} is another that features curb lifting, and it features speed control via mechanical configuration of the rolling resistance. The FORWARD group is considering the impact introducing an additional sensor to capture the atittude of the walker and provide data of its speed and turning movements. This technology is explored further in section \ref{sssec:3_2stability}.\\
 
 %% Matthew Research Here
 \subsubsection{Existing Computer Vision/AI Image Processing Models}
