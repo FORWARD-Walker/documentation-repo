@@ -1,4 +1,28 @@
 \subsection{Strategic Components}
-% this is pretty much all reserach about the components themselves, which is summed up with the spec comparison table in 3_5-partselect
+% this is pretty much all research about the components themselves, which is summed up with the spec comparison table in 3_5-partselect
 
-\noindent \underline{\textit{Sonar vs. LiDAR for Detection}} As gleaned from \cite{sonarvslidar}, ultrasonic sensors are advantageous for their low cost, simple digital input and output, and wider FOV. However, they lack in their exposure to environment, slower response time, and larger physical size. LiDAR sensors on the other hand, are small and lightweight, and have a fast response time. However, they generally cost more and have a more narrow FOV because of their environmental seal.\\
+\subsubsection{Ultrasonic Sensors}
+\noindent The range solution is modeled by the simple equation, where $d$ is distance, $t$ is time to send and return an ultrasonic pulse, and $v$ which is the speed of sound (340m/s):
+$$d = 1/2 \times t \times v$$
+
+\noindent \underline{\textit{HC-SR04}} ECHO pin outputs the time, $t$, taken by the emitted sound pulse (TX) to return (RX). In practice, to continuously sense and report range, the microcontroller will repeatedly send 40kHz pulses to the sensor's TRIG pin, which are redirected by the transmitter as a beam. Using I2C, the microcontroller can read $t$ and perform the range calculation.\\
+
+\noindent \underline{\textit{HRLV-MaxSonar MB1000}} This sensor features auto calibration, range filtering and many more output options: pulse width, analog voltage, ranging start/stop (real time), and serial output. The designers also claim that this higher quality sensor does not skew the range reading based on the target size as others do. To solve for range, either connect Pin 3 to an analog-to-digital converter and calculate:
+$$d (mm) = bits_{\{0..1023\}} \times 5$$
+Alternatively, Pin 4 gives options for real time range data based on its pull-up voltage. It can return a range on command by MCU or default to 2Hz filtered range data "based on recent ranges." Finally, Pin 5 is serial output in RS232 format, which sends in ASCII, the range in millimeters.\\
+
+\noindent \underline{\textit{RCWL-1X0X}} sensors allow for the same solutions method as the HC-SR04 and MB1000. These models feature both UART and I2C serial outputs, in which the distance is read directly from the device using:\\
+UART: $Distance = ((BYTE_H << 16) + (BYTE_M << 8) + BYTE_L) /1000$\\
+I2C: $Distance = ((BYTE_H\&It; \&It; 16) + (BYTE_M\&It: \&It; 8)+BYTE_L) /1000$\\
+
+\noindent \underline{\textit{H2KA150KA1CD00}} operates at the high frequency of 150kHz. Unfortunately, the datasheet does not reveal much more about solving the range than the need to use a rectangular wavwdrive signal and a burst of 10 pulses. This returns an analog voltage output of the range. At a directivity angle of 8+/-2 degrees and a short range viability, this is not an ideal option for FORWARD.\\
+
+\subsubsection{LiDAR Sensors}
+\noindent \underline{\textit{LiDAR Lite V3}}
+1 Write 0x04 to register 0x00.
+2 Read register 0x01. Repeat until bit 0 (LSB) goes low.
+3 Read two bytes from 0x8f (High byte 0x0f then low byte 0x10) to obtain the 16-bit measured distance in centimeters \\
+
+\noindent \underline{\textit{XT-S1}} allows for active continuous measurement of range by reading start address $0x00$. Its output is hexadecimal, which is easily converted to a decimal reading in millimeters.\\
+
+\noindent \underline{\textit{TF Family}} LiDAR sensors allow continuous ranging and also read by command. Note these have a 20cm dead zone. The designers note the possibility of light shedding on two parts of a surface, at which the range reading could be any value inbetween. They advise avoiding this for reliability. In the greater FORWARD context, we can consider the lesser of the readings for safety, so this is not necessarily an issue.\\

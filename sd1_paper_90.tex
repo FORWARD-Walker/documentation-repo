@@ -12,10 +12,11 @@
 \usepackage{fontspec}
 \usepackage{helvet}
 \usepackage[T1]{fontenc}
-\setmainfont{Arial}
+\usepackage[font={small,it}]{caption}
 
 % commands
 \renewcommand*\contentsname{Table of Contents} % rename contents
+\setmainfont{Arial}
 
 \begin{document}
 	\begin{singlespace}
@@ -61,12 +62,14 @@
 
 	% 3 pages
 	\section{Comparison of ChatGPT with Similar Platforms}
+	\input{./Chapter5-ChatGPT/5_1-chatgpt.tex}
 	
 	% 15 pages
 	\section{Hardware Design}
 	
 	% 10 pages
 	\section{Software Design}
+	\input{./Chapter7-SWDesign/7_1-detection_subsystem.tex}
 	
 	% 5 pages
 	\section{Prototype Fabrication}
@@ -86,9 +89,11 @@
 	% not included in page count
 	\newpage
 	\section{Appendix A - References}
-	\input{./AppendixA-References/appendixA-references.tex}
+	\input{./Appendices/appendixA-references.tex}
 	
-	\section*{Appendix B - Copyright}
+	\section*{Appendix B - Chat GPT Outputs}
+	\input{./Appendices/appendixB-chatGPToutputs.tex}
+	
 	\end{singlespace}
 \end{document}
 
