@@ -8,12 +8,18 @@
 \usepackage{fancyhdr}
 \usepackage{graphicx}
 \usepackage{nicematrix}
+\usepackage{amsmath}
 \usepackage{setspace}
 \usepackage{fontspec}
 \usepackage{helvet}
 \usepackage{float}
 \usepackage[T1]{fontenc}
 \usepackage[font={small,it}]{caption}
+\usepackage{nameref}
+% folowing  must be in this order
+\usepackage{varioref}
+\usepackage{hyperref}
+\usepackage{cleveref}
 
 % commands
 \renewcommand*\contentsname{Table of Contents} % rename contents
@@ -68,6 +74,7 @@
 	
 	% 15 pages
 	\section{Hardware Design}
+	\input{./Chapter6-HWDesign/6_1-mounting.tex}
 	
 	% 10 pages
 	\section{Software Design}

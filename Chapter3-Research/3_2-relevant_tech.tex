@@ -3,7 +3,7 @@
 
 \subsubsection{Sensor Ranging}
 % Toby - sensors, haptics basic goal
-\noindent Ranging sensors are used to provide distance-to-obstacle information for a plethora of products today. They are popularly found in robotics, where they are able to provide awareness of the surroundings, vehicles, where they enable autonomous navigation, or for smart facility and home solutions, where they detect movement and are used to trigger various actions. FORWARD requires sensors to enable safe navigation and it is thus appropriate to examine the technologies available to determine which to install on the walker. The intent also is two-fold in that it is desired to gain knowledge of what is attainable, namely what information about the surroundings can we provide our processor and how accurate and insightful can that information be.\\
+\noindent Ranging sensors are used to provide distance-to-obstacle information for a plethora of products today. They are popularly found in robotics, where they are able to provide awareness of the surroundings, vehicles, where they enable autonomous navigation, or for smart facility and home solutions, where they detect movement and are used to trigger various actions. FORWARD requires sensors to enable safe navigation and it is thus appropriate to examine the technologies available to determine which to install on the walker. The intent also is two-fold in that it is desired to gain knowledge of what is attainable, namely what information about the surroundings can we provide our processor and how accurate and insightful can that information be. Note that, FORWARD does not implement features of user health status or tracking and so we do not examine GPS as a relevant technology. FORWARD navigates autonomously, and it will do this by use of \textbf{\textit{time-of-flight sensing}}.\\
 
 \noindent \underline{\textit{Ultrasonic}} There are differing variations of ultrasonic sensing technology, mainly varying by their 1) transmitting and receiving hardware, which can be realized as mono or multistatic, 2) emission and detection capability, which stipulates their active or passive status, and 3) their operating frequency \cite{sonar-type}. As far as whether the hardware comes in the form of a multistatic setup or a single transceiver (emits and receives ultrasound), FORWARD's requirements do not necessarily rule out one or the other. Monostatic could be slightly more conducive to mounting on the walker legs and help retain a lower profile because of their smaller (2x) dimensions.\\
 
@@ -22,11 +22,8 @@
 \end{figure}
 
 % advanced goal
-\noindent \underline{\textit{Inertial Measurement}} Units are comprised of a magnetometer and accelerometer, which obtain the acceleration and body rate readings of the walker.\\
-
-\noindent \underline{\textit{Time-of-Flight}} sensors are not suitable for FORWARD because of their narrow field of vision.\\
-
-\noindent \underline{\textit{Global Positioning System}} One of the constraints in FORWARD is to navigate without GPS.\\
+\subsubsection{Walker Stability} \label{sssec:3_2stability}
+\noindent \underline{\textit{Inertial Measurement}} Units are comprised of a magnetometer and accelerometer, which obtain the acceleration and body rate readings of the walker. This is traditionally done by a reading a gyroscope rotation or looking at the magnetic field. It could be greatly beneficial to gain this data, not only for analytical use, but for functionality. Some of the stretch requirements include curb lifting, fall prevention, and incline decline adaptation. With an IMU on-board, the walker can respond appropriately to each scenario. For instance, when lifting over a curve, there can be a certain pitch angle limit imposed to prevent tipover. This is expanded in a similar fashion for fall prevention, where if the user leans too much on the handlebars and causes a tipover, the IMU data can inform the motors of a decision. Finally, the IMU angles are also useful when traversing over inclines or declines. The body rates may be useful for stability while turning, smoothing the roll.\\
 
 % stretch goal
 \noindent \underline{\textit{CV Depth Perception}} Computer vision will prove to be outstanding for articially intelligent object identification and hazard classification, but it also help aid in ranging given the trade-off of a higher price point and more heavy computation.\\

@@ -2,7 +2,7 @@
 % this is pretty much all research about the components themselves, which is summed up with the spec comparison table in 3_5-partselect
 
 \subsubsection{Ultrasonic Sensors}
-\noindent The range solution is modeled by the simple equation, where $d$ is distance, $t$ is time to send and return an ultrasonic pulse, and $v$ which is the speed of sound (340m/s):
+\noindent The range solution according to \textbf{\textit{time-of-flight sensing}} is modeled by the simple equation, where $d$ is distance, $t$ is time to send and return an ultrasonic pulse, and $v$ which is the speed of sound (340m/s):
 $$d = 1/2 \times t \times v$$
 
 \noindent \underline{\textit{HC-SR04}} ECHO pin outputs the time, $t$, taken by the emitted sound pulse (TX) to return (RX). In practice, to continuously sense and report range, the microcontroller will repeatedly send 40kHz pulses to the sensor's TRIG pin, which are redirected by the transmitter as a beam. Using I2C, the microcontroller can read $t$ and perform the range calculation.\\
@@ -26,6 +26,13 @@ I2C: $Distance = ((BYTE_H\&It; \&It; 16) + (BYTE_M\&It: \&It; 8)+BYTE_L) /1000$\
 \noindent \underline{\textit{XT-S1}} allows for active continuous measurement of range by reading start address $0x00$. Its output is hexadecimal, which is easily converted to a decimal reading in millimeters.\\
 
 \noindent \underline{\textit{TF Family}} LiDAR sensors allow continuous ranging and also read by command. Note these have a 20cm dead zone. The designers note the possibility of light shedding on two parts of a surface, at which the range reading could be any value inbetween. They advise avoiding this for reliability. In the greater FORWARD context, we can consider the lesser of the readings for safety, so this is not necessarily an issue.\\
+
+\subsubsection{Inertial Measurement Units}
+\noindent Because of the simplistic nature of the application of this technology in FORWARD, extensive research is not as necessary as with the range sensors. We consider two main options.\\
+
+\noindent \underline{\textit{BN-0055}} is a 9-DOF (axis) IMU, meaning it contains a 3-axis accelerator, 3-axis gyroscope, and a 3-axis geomagnetic sensor. This device is said to run sensor fusion on-board to provide accurate attitude information. It runs on $2.4-3.6V$ and draws $0.4mA$ of current when on its low power mode. It can be used in 3-axis only modes, meaning you can isolate the accelerator, gyroscope or magnetometer.\\
+
+\noindent \underline{\textit{MPU-6050}} is one of the most popular IMU devices. It is 6-DOF (no magnetometer), and runs a DMP (digital motion processor) for motion fusion algorithms. Essentially, it calibrates itself, and is said to reduce gyro drift by eliminating cross-axis alignment errors between the gyroscope and accelerator. It operates at $3.6mA$ with a supply of $2.4-3.5V$.\\
 
 \subsubsection{Computer Vision/AI Image Processing Models}
 \underline{\textit{Ultralytics YOLO}} (You only look once) is an open source AI driven image processing model. The Ultralytics YOLO platform provides an AI Image processing Architecture that is malleable to the users demands, and for our case, would process the input image to detect if one of the five hazards is present, as well as provide a confidence rating for these predictions. To implement the object detection functionality to our specifications, minimal training, as well as coding must be performed. The benefits of this solution for our image classification system include zero cost and easy configurability which are both important aspects for our desired solution. The negatives include the needed man hours to train and implement this model for our purposes and time to run (anywhere from 0.1 seconds to 3 seconds). It also has a relatively high memory footprint (a few hundred MB). The time to predict along with the memory footprint could potentially exclude this from our options as we need to have classification under 1 second latency, ideally in the realm of a few hundred milliseconds and enough storage space for the model. \\
