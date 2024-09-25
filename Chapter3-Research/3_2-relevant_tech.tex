@@ -7,7 +7,7 @@
 
 \noindent \underline{\textit{Ultrasonic}} There are differing variations of ultrasonic sensing technology, mainly varying by their 1) transmitting and receiving hardware, which can be realized as mono or multistatic, 2) emission and detection capability, which stipulates their active or passive status, and 3) their operating frequency \cite{sonar-type}. As far as whether the hardware comes in the form of a multistatic setup or a single transceiver (emits and receives ultrasound), FORWARD's requirements do not necessarily rule out one or the other. Monostatic could be slightly more conducive to mounting on the walker legs and help retain a lower profile because of their smaller (2x) dimensions.\\
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{./Images/cool-ultrasonic-directivity.png}
 	\caption{\label{fig:cool-directivity}Ultrasonic Directivity \cite{coolUltraDirect}}
@@ -15,7 +15,7 @@
 
 \noindent \underline{\textit{LiDAR}} We deploy LiDAR in the context of this project as 1) oriented laterally, 2) topographic, and 3) scanning method: rotating, fixed (solid-state), flash \cite{lidar-type}. As designers, we must also consider that LiDAR reliability may be affected by the reflectivity of the target objects and ambient lighting of the surroundings. This is one of the primary reasons both sound and light sensing applications are under consideration. Note, figure \ref{fig:lidarazimuth} shows a scanning LiDAR. In this project, the azimuth and elevation difference are both negligible, as the light beam is single-point. Scanning would require another subsystem with servomotors, which is not in specification or budget.\\
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{./Images/FOV-scanning-LIDAR.png}
 	\caption{\label{fig:lidarazimuth}Scanning LiDAR FOV \cite{coolLiDARfov}}
