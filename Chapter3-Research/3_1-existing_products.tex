@@ -7,7 +7,7 @@
 \subsubsection{Current Walker Sensing Applications}
 \noindent In the smart walker prototype created in \cite{Mostofa}, nine HC-SR04 ultrasonic sensors are arrayed along the front of the walker. Seven face forward, while the remaining two point perpendicularly to the walker motion and opposite to each other. This setup provides a continuous reading of the walker's forward hemisphere with a detection range of 200cm. Our team asks the question, can obstacle detection and notification be achieved with a more discrete array of sensors stowed onto the walker frame? What is the operational FOV for ultrasonic sensors? Can the amount be reduced? How will the introduction of LiDAR and camera technology affect the ultrasonic approach?\\
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{./Images/mostafa9.png}
 	\caption{\label{fig:mostafa9}"Rollator" with nine HC-SR04 sensors \cite{Mostofa}}
@@ -24,29 +24,32 @@
 \noindent The byACRE Ultralight Rollator \cite{byACRE} is among a few walkers to feature stability assistance. Initial analysis reveals that this is nothing more than smoothed turning via pneumatic control. The U-STEP Neuro \cite{ustep} is another that features curb lifting, and it features speed control via mechanical configuration of the rolling resistance. The FORWARD group is considering the impact introducing an additional sensor to capture the atittude of the walker and provide data of its speed and turning movements. This technology is explored further in section \ref{sssec:3_2stability}.\\
 
 %% Matthew Research Here
-\subsubsection{Existing Computer Vision/AI Image Processing Models}
- \underline{\textit{Ultralytics YOLO}} (You only look once) is an open source AI driven image processing model. The Ultralytics YOLO platform provides an AI Image processing Architecture that is malleable to the users demands, and for our case, would process the input image to detect if one of the five hazards is present, as well as provide a confidence rating for these predictions. To implement the object detection functionality to our specifications, minimal training, as well as coding must be performed. The benefits of this solution for our image classification system include zero cost and easy configurability which are both important aspects for our desired solution. The negatives include the needed man hours to train and implement this model for our purposes and time to run (anywhere from 0.1 seconds to 3 seconds). It also has a relatively high memory footprint (a few hundred MB). The time to predict along with the memory footprint could potentially exclude this from our options as we need to have classification under 1 second latency, ideally in the realm of a few hundred milliseconds and enough storage space for the model. \\
-%https://www.freecodecamp.org/news/how-to-detect-objects-in-images-using-yolov8/#heading-how-to-get-started-with-yolov8 
+\subsubsection{Current Computer Vision Object Detection Applications}
 
-\noindent \underline{\textit{FOMO}} (Faster objects, More objects) is a machine learning image processing algorithm that seeks to solve the problem of running high complexity algorithms (such as neural networks) on MCU's. In the documents referenced [HERE], the Arduino Nicla board is used to classify the objects in frame at a rate of 33 microseconds (30 SPS). The objects can be classified and processed through multiple methods, but all of which would be applicable to our purposes. This system also minimizes the memory usage by needing only 256 KB of memory to run and store these algorithms. On the FOMO website, they claim that this algorithm is compatible with many of the MCU's that we are considering for this project, some of which being an ESP32, Arduino Nicla, Raspberry Pi, and others. \\
-%https://www.hackster.io/mjrobot/tinyml-made-easy-object-detection-with-nicla-vision-407ddd
-%https://docs.edgeimpulse.com/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices
+% General Synopsis of the current state of research
+\noindent There have been multiple attempts to exploit the current state of machine learning and AI to bring guidance to the visually impaired. Many of the existing projects implement the YOLOv5 model to develop their object detection algorithms.\\
 
-\noindent \underline{\textit{Spatial AI}} is the combination of both Visual AI and Depth AI, in tandem to identify objects for classification as well as identifying depth of objects for better guidance and classification. [Research the models that make this possible]\\
-%https://learnopencv.com/object-detection-with-depth-measurement-with-oak-d/
+% Projection Ref #1: https://www.mdpi.com/2227-7080/11/6/168
+\noindent The project outlined in this paper [1] seeks to provide guidance and navigation to the visually impaired through the use of a user worn chassis. The notable hardware used is a high quality MCU, \textit{The Jetson Nano}, which has 4 GB of on-board RAM, a 128-core GPU, and other efficient features. This board is designed for running AI/ML applications and for the purposes documented, performed well and as desired. \\
 
-\subsubsection{Existing Camera Technologies}
-\noindent \underline{\textit{ESP 32 CAM Board}} is a ESP32 processor based camera module that can transmit video data at high resolutions, which can be processed by our CV/Image processing solution. The module also has WIFI connectivity that can connect to an MCU to wirelessly transmit the video stream. The module has a 32-bit CPU with a max clock frequency of 240 MHz and 520 KB of built-in SRAM with an external 4MB PSRAM. The board module also runs on FreeRTOS. The included camera, OV2640 camera, has a 2 MP resolution, up to 1600 x 1200 and interfaces the controller board over a 24 pin interface bus. A more advanced sister product to the OV2640 is the OV5640 camera. This camera has 5 MP resolution, up to 2592 x 1944. In order to achieve our stretch requirement of depth perception analysis for guidance and navigation, this camera could be advantageous.\\
-%https://how2electronics.com/esp32-cam-based-object-detection-identification-with-opencv/
-%https://how2electronics.com/getting-started-with-esp32-cam-board-video-streaming-over-wifi/
+\noindent The software aspect of this project is mainly comprised through a object classification system, that uses the YOLO5 output to classify threat level of certain systems. By creating an "area of interest" represented by a 2D and 3D grid, they were able to perform calculations to achieve this. The figure demonstrating this concept is show below:
+				
+% Figure 1 in the paper
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{./Images/Figure1_Grid_Detection.png}
+	\caption{\label{fig:Grid-Generatio}2D Grid with Safe Region Generation}
+\end{figure}
 
-\noindent \underline{\textit{The Oak-D Lite}} camera is an AI robotics specific camera, capable of running AI models such as open CV. The camera is able to run on-board AI architectures to achieve object classification, edge detection, and feature tracking. This technology allow for high accuracy with object detection, and introduce the ability to implement edge detection as a means to depth perception, which can be used for routing in our GNC subsystem. The Oak-D Lite has a 13 MP RGB camera with auto-focus, as well a 60axis sensor using an accelerometer and gyroscope. It also uses USB2 and USB3 for power and communication, which is simple to interface to a RaspberryPI. The camera can run 4K at 30 FPS or 1080P at 60 FPS.\\
+\noindent Based on the figure above, once the effective safe region is generated, the MCU can begin performing calculations on the YOLO5 output to provide proper guidance to the system. And thus, this groups strategy in providing effective guidance through the implementation of YOLO5 and intentionally selected hardware to support AI/ML, with  applied math provides precision and accuracy to the user. \\
+
+\noindent This project also implemented an audio feedback system. \\
+
+% Projection Ref #2: https://www.sciencedirect.com/science/article/pii/S2090447923002769
+\noindent Another project that used this technology to achieve a similar result is outline in this paper [2]. \\
 
 
-\subsubsection{Existing MCU Technologies}
-
-\noindent 
-
+% Projection Ref #3
 
 %% Morgan Research Here
 \subsubsection{Motor and Steering Applications} 
