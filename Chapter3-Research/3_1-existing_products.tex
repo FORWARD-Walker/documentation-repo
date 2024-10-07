@@ -27,12 +27,25 @@
 \subsubsection{Current Computer Vision Object Detection Applications}
 
 % General Synopsis of the current state of research
-\noindent There have been multiple attempts to exploit the current state of machine learning and AI to bring guidance to the visually impaired. Many of the existing projects implement the YOLOv5 model to develop their object detection algorithms.\\
+\noindent Similar to our motivation, their are many attempts to develop an image processing/object detection system that seeks to assist the millions of visually impaired people across the globe. There have been multiple attempts to exploit the current state of machine learning and AI to to solve this problem. Many of the existing projects implement the YOLOv5 model to develop their object detection algorithms. Many of these projects also implement an audio feedback system to alert the user of any upcoming hazards and important details of such. The following sections detail such research. \\                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 
 % Projection Ref #1
-\noindent The project outlined in this paper \cite{CVRef1} seeks to provide guidance and navigation to the visually impaired through the use of a user worn chassis. The notable hardware used is a high quality MCU, \textit{The Jetson Nano}, which has 4 GB of on-board RAM, a 128-core GPU, and other efficient features. This board is designed for running AI/ML applications and for the purposes documented, performed well and as desired. \\
+\noindent The project outlined in this paper \cite{CVRef1} seeks to provide guidance and navigation to the visually impaired through the use of a user-worn chassis. The notable hardware used is a high-quality MCU, \textit{The Jetson Nano}. The Jetson Nano Features: 
+\begin{tabbing}
+	\hspace{8cm} \= \kill % Set the width for alignment
+	- 128-core NVIDIA Maxwell™ GPU  \> - Quad-core Arm® A57 CPU \\
+	- 4 GB 64-bit LPDDR4            \> 	- MicroSD storage \\
+	- Supports 5 V, 4 A DC power     \> - Supports 5 V, 2 A Micro-USB \\
+	- USB 3.0 Type A                \> - USB 2.0 Micro-B \\
+	- HDMI/DisplayPort              \> - Gigabit Ethernet \\
+	- GPIOs, I2C, I2S, SPI, and UART \> - MIPI-CSI camera connector \\
+\end{tabbing}
 
-\noindent The software aspect of this project is mainly comprised through a object classification system, that uses the YOLO5 output to classify threat level of certain systems. By creating an "area of interest" represented by a 2D and 3D grid, they were able to perform calculations to achieve this. The figure demonstrating this concept is show below:
+\noindent This board is designed for running AI/ML applications and for the purposes documented, it performed well and as desired. \\
+
+\noindent The software aspect of this project is mainly comprised through an object classification system that uses the output of the YOLO5 model to classify the threat level of certain objects. By creating an "area of interest" represented by a 2D and 3D grid, they were able to perform calculations to achieve this. \\
+
+\noindent The figure demonstrating this concept is show below:
 				
 % Figure 1 in the paper
 \begin{figure}[H]
@@ -41,12 +54,12 @@
 	\caption{\label{fig:Grid-Generatio}2D Grid with Safe Region Generation}
 \end{figure}
 
-\noindent Based on the figure above, once the effective safe region is generated, the MCU can begin performing calculations on the YOLO5 output to provide proper guidance to the system. And thus, this groups strategy in providing effective guidance through the implementation of YOLO5 and intentionally selected hardware to support AI/ML, with  applied math provides precision and accuracy to the user. \\
+\noindent Referring to the figure above, once the effective safe region is established, the MCU initiates calculations on the YOLO5 output to deliver accurate guidance to the system. Consequently, this group's approach, which integrates YOLO5 with carefully selected AI/ML-supporting hardware and applied mathematics, ensures precision and reliability for the user. \\
 
-\noindent This project also implemented an audio feedback system. \\
+\noindent This project also implemented an audio feedback system. In order to interface to the user regarding the surroundings, there are typically two approaches: auditory and tactile feedback. This group decided to implement auditory feedback with a strategic design to target the use of dorsal and ventral processing, looking to engage the part of the brain created for processing visual cues for spatial awareness.\\
 
 % Projection Ref #2
-\noindent Another project that used this technology to achieve a similar result is outline in this paper \cite{CVRef2}. \\
+\noindent Another project that used this technology to achieve a similar result is outline in this paper \cite{CVRef2}. This project took an approach similar to our scope in choosing a set of objects to train the model on, and look for based on user needs. This project also used a YOLO5 architecture to perform the object identification. This YOLO5 model is suitable for embedded and FPGA devices, allowing for a lightweight AI model that is feasible for these applications. \\
 
 
 % Projection Ref #3
