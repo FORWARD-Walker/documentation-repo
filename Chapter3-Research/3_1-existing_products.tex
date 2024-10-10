@@ -27,7 +27,7 @@
 % General Synopsis of the current state of research
 \noindent Similar to our motivation, their are many attempts to develop an image processing/object detection system that seeks to assist the millions of visually impaired people across the globe. There have been multiple attempts to exploit the current state of machine learning and AI to to solve this problem. Many of the existing projects implement the YOLOv5 model to develop their object detection algorithms. Many of these projects also implement an audio feedback system to alert the user of any upcoming hazards and important details of such. The following sections detail such research. \\                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 
-% Projection Ref #1
+% Project Ref #1
 \noindent The project outlined in this paper \cite{CVRef1} seeks to provide guidance and navigation to the visually impaired through the use of a user-worn chassis. The notable hardware used is a high-quality MCU, \textit{The Jetson Nano}. The Jetson Nano Features: 
 \begin{tabbing}
 	\hspace{8cm} \= \kill % Set the width for alignment
@@ -56,11 +56,16 @@
 
 \noindent This project also implemented an audio feedback system. In order to interface to the user regarding the surroundings, there are typically two approaches: auditory and tactile feedback. This group decided to implement auditory feedback with a strategic design to target the use of dorsal and ventral processing, looking to engage the part of the brain created for processing visual cues for spatial awareness.\\
 
-% Projection Ref #2
-\noindent Another project that used this technology to achieve a similar result is outline in this paper \cite{CVRef2}. This project took an approach similar to our scope in choosing a set of objects to train the model on, and look for based on user needs. This project also used a YOLO5 architecture to perform the object identification. This YOLO5 model is suitable for embedded and FPGA devices, allowing for a lightweight AI model that is feasible for these applications. \\
+% Project Ref #2
+\noindent The project outlined in this paper \cite{CVRef2} sought to design and implement a lightweight FPGA compatible obstacle detection AI model. This project took an approach similar to our scope in choosing a set of objects to train the model on, and look for based on user needs. This project also used a YOLO5 architecture to perform the object identification. This YOLO5 model is suitable for embedded and FPGA devices, allowing for a lightweight AI model that is feasible for these applications. \\
 
 
-% Projection Ref #3
+% Project Ref #3
+\noindent This project seen in \cite{ESP32CamRef1} seeks to implement a light weight and low cost object detection system using the ESP32 Cam Module. They trained the YOLO3 model on the COCO image data set. They then programmed the board using the ESP32 Cam library. Given this Cam module being connected to an ESP32 chip, they used the WiFi capability to transmit the photos to the laptop. The problem unsolved by this project is that the AI processing is done on a laptop, which has significantly more processing power than our MCU, but proves that this camera is suitable for our purposes of image capturing and transmission. \\
+
+% Project Ref #4
+\noindent While the article above primarily addresses the camera solution, it references another article \cite{RealTekCamRef1} that implements a camera solution that can perform the object classification processes as well. The Camera board is the \underline{\textit{Realtek AMB82-Mini IoT AI}} Camera Board, which contains many desired features for our purposes, all of which our outlined in section~\ref{sec:cam_tech} (\textit{Camera Technologies}). In the project referenced, they were able to successfully identify and detect 80 distinct objects of many different categories. They used the Arduino IDE to program the board and then demonstrated functionality. The board transmits the data fully over WiFi as well, which would minimize the overall footprint for our project but minimizing the need for wiring.\\
+
 
 %% Morgan Research Here
 \subsubsection{Motor and Steering Applications} 
