@@ -25,21 +25,10 @@
 \subsubsection{Current Computer Vision Object Detection Applications}
 
 % General Synopsis of the current state of research
-\noindent Similar to our motivation, their are many attempts to develop an image processing/object detection system that seeks to assist the millions of visually impaired people across the globe. There have been multiple attempts to exploit the current state of machine learning and AI to to solve this problem. Many of the existing projects implement the YOLOv5 model to develop their object detection algorithms. Many of these projects also implement an audio feedback system to alert the user of any upcoming hazards and important details of such. The following sections detail such research. \\                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+\noindent Similar to our motivation, their are many attempts to develop an image processing/object detection system that seeks to assist the millions of visually impaired people across the globe. There have been multiple attempts to exploit the current state of machine learning and AI to to solve this problem. Many of the existing projects implement the YOLO model to develop their object detection algorithms. Many of these projects also implement an audio feedback system to alert the user of any upcoming hazards and important details of such. The following sections detail such research. \\                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 
 % Project Ref #1
-\noindent The project outlined in this paper \cite{CVRef1} seeks to provide guidance and navigation to the visually impaired through the use of a user-worn chassis. The notable hardware used is a high-quality MCU, \textit{The Jetson Nano}. The Jetson Nano Features: 
-\begin{tabbing}
-	\hspace{8cm} \= \kill % Set the width for alignment
-	- 128-core NVIDIA Maxwell™ GPU  \> - Quad-core Arm® A57 CPU \\
-	- 4 GB 64-bit LPDDR4            \> 	- MicroSD storage \\
-	- Supports 5 V, 4 A DC power     \> - Supports 5 V, 2 A Micro-USB \\
-	- USB 3.0 Type A                \> - USB 2.0 Micro-B \\
-	- HDMI/DisplayPort              \> - Gigabit Ethernet \\
-	- GPIOs, I2C, I2S, SPI, and UART \> - MIPI-CSI camera connector \\
-\end{tabbing}
-
-\noindent This board is designed for running AI/ML applications and for the purposes documented, it performed well and as desired. \\
+\noindent The project outlined in this paper \cite{CVRef1} aims to provide guidance and navigation to the visually impaired using a user-worn chassis. A notable piece of hardware employed in the project is the high-performance Jetson Nano microcontroller unit (MCU). The Jetson Nano features are further outlined in section \ref{sec:mcu_tech}. \\
 
 \noindent The software aspect of this project is mainly comprised through an object classification system that uses the output of the YOLO5 model to classify the threat level of certain objects. By creating an "area of interest" represented by a 2D and 3D grid, they were able to perform calculations to achieve this. \\
 
@@ -65,6 +54,12 @@
 
 % Project Ref #4
 \noindent While the article above primarily addresses the camera solution, it references another article \cite{RealTekCamRef1} that implements a camera solution that can perform the object classification processes as well. The Camera board is the \underline{\textit{Realtek AMB82-Mini IoT AI}} Camera Board, which contains many desired features for our purposes, all of which our outlined in section~\ref{sec:cam_tech} (\textit{Camera Technologies}). In the project referenced, they were able to successfully identify and detect 80 distinct objects of many different categories. They used the Arduino IDE to program the board and then demonstrated functionality. The board transmits the data fully over WiFi as well, which would minimize the overall footprint for our project but minimizing the need for wiring.\\
+
+
+\subsubsection{Current MCU Compatible Audio Feedback Applications}
+\noindent The Audio Feedback portion of our project needs careful consideration given it's importance in providing the user with audio cues for their environment all the while still being implemented on an embedded MCU, which is likely to contain limited resources. The MCU's considered for this project all contain Bluetooth capabilities and so we will be diving into research for successful projects and products for similar applications. \\
+
+
 
 
 %% Morgan Research Here
