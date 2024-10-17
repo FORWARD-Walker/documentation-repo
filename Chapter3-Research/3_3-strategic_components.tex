@@ -5,7 +5,7 @@
 \noindent The range solution according to \textbf{\textit{time-of-flight sensing}} is modeled by the simple equation, where $d$ is distance, $t$ is time to send and return an ultrasonic pulse, and $v$ which is the speed of sound (340m/s):
 $$d = 1/2 \times t \times v$$
 
-\noindent \underline{\textit{HC-SR04}} ECHO pin outputs the time, $t$, taken by the emitted sound pulse (TX) to return (RX). In practice, to continuously sense and report range, the microcontroller will repeatedly send 40kHz pulses to the sensor's TRIG pin, which are redirected by the transmitter as a beam. Using I2C, the microcontroller can read $t$ and perform the range calculation.\\
+\noindent \underline{\textit{HC-SR04}} is probably the most popular ultrasonic sensor used by developers worldwide. Its ECHO pin outputs the time, $t$, taken by an emitted sound pulse (sent by a powered microcontroller) (TX) to return (RX). In practice, to continuously sense and report range, the microcontroller will repeatedly send 40kHz pulses to the sensor's TRIG pin, which are redirected by the transmitter as a beam. Using I2C, the microcontroller can read $t$ and perform the range calculation.\\
 
 \noindent \underline{\textit{HRLV-MaxSonar MB1000}} This sensor features auto calibration, range filtering and many more output options: pulse width, analog voltage, ranging start/stop (real time), and serial output. The designers also claim that this higher quality sensor does not skew the range reading based on the target size as others do. To solve for range, either connect Pin 3 to an analog-to-digital converter and calculate:
 $$d (mm) = bits_{\{0..1023\}} \times 5$$
@@ -14,16 +14,19 @@ Alternatively, Pin 4 gives options for real time range data based on its pull-up
 \noindent \underline{\textit{RCWL-1X0X}} sensors allow for the same solutions method as the HC-SR04 and MB1000. These models feature both UART and I2C serial outputs, in which the distance is read directly from the device using:\\
 UART: $Distance = ((BYTE_H << 16) + (BYTE_M << 8) + BYTE_L) /1000$\\
 I2C: $Distance = ((BYTE_H\&It; \&It; 16) + (BYTE_M\&It: \&It; 8)+BYTE_L) /1000$\\
+\noindent During development, using libraries will likely circumvent the need to interact with the sensors at a low-level as shown above (bits and bytes). Later chapters will discuss methods used to test and begin to develop with the components once they are chosen.\\
 
 \noindent \underline{\textit{H2KA150KA1CD00}} operates at the high frequency of 150kHz. Unfortunately, the datasheet does not reveal much more about solving the range than the need to use a rectangular wavwdrive signal and a burst of 10 pulses. This returns an analog voltage output of the range. At a directivity angle of 8+/-2 degrees and a short range viability, this is not an ideal option for FORWARD.\\
 
 \subsubsection{LiDAR Sensors}
-\noindent \underline{\textit{LiDAR Lite V3}}
-1 Write 0x04 to register 0x00.
-2 Read register 0x01. Repeat until bit 0 (LSB) goes low.
-3 Read two bytes from 0x8f (High byte 0x0f then low byte 0x10) to obtain the 16-bit measured distance in centimeters \\
+\noindent \underline{\textit{LiDAR Lite V3}} is an optical distance sensor manufactured by Garmin (known for the GPS solutions). The listing specifies this sensor is great for applications in robotics and drones. They call it "single-stripe" with its aperture of only 12.5mm. The procedure for obtaining the reading is as follows:
+\begin{enumerate}
+	\item Write 0x04 to register 0x00.
+	\item Read register 0x01. Repeat until bit 0 (LSB) goes low.
+	\item Read two bytes from 0x8f (High byte 0x0f then low byte 0x10) to obtain the 16-bit measured distance in centimeters
+\end{enumerate}
 
-\noindent \underline{\textit{XT-S1}} allows for active continuous measurement of range by reading start address $0x00$. Its output is hexadecimal, which is easily converted to a decimal reading in millimeters.\\
+\noindent \underline{\textit{XT-S1}} is like the Garmin in that it is a more premium option at a higher price, but it does give a very long range of 30 meters. It allows for active continuous measurement of range by reading start address $0x00$. Its output is hexadecimal, which is easily converted to a decimal reading in millimeters. XT-S1 is specified for autnomous navigation of automobiles and UAV avoidance.\\
 
 \noindent \underline{\textit{TF Family}} LiDAR sensors allow continuous ranging and also read by command. Note these have a 20cm dead zone. The designers note the possibility of light shedding on two parts of a surface, at which the range reading could be any value inbetween. They advise avoiding this for reliability. In the greater FORWARD context, we can consider the lesser of the readings for safety, so this is not necessarily an issue.\\
 
