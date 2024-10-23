@@ -20,12 +20,16 @@
 \usepackage{varioref}
 \usepackage{hyperref}
 \usepackage{cleveref}
+\usepackage{environ}
 
 % commands
 \renewcommand*\contentsname{Table of Contents} % rename contents
 \setmainfont{Arial}
 
 \begin{document}
+	\sloppy % increases interword spaces to prevent hyphenated words as end of lines
+	\pagenumbering{roman}
+	
 	\begin{singlespace}
 	\input{coverpage.tex}
 
@@ -36,6 +40,7 @@
 	\newpage
 	% 1 page
 	% done
+	\pagenumbering{arabic}
 	\section{Executive Summary}
 	\input{./Chapter1-Introduction/1_1-exec_summary.tex}
 	
@@ -56,7 +61,7 @@
 	\input{./Chapter3-Research/3_2-relevant_tech.tex}
 	\input{./Chapter3-Research/3_3-strategic_components.tex}
 	\input{./Chapter3-Research/3_4-related_arch_diagrams.tex}
-	\input{./Chapter3-Research/3_5-part_selection.tex}
+	%\input{./Chapter3-Research/3_5-part_selection.tex}
 	
 	% 9 pages
 	\section{Requirements, Standards, and Constraints}
@@ -105,6 +110,7 @@
 	
 	% not included in page count
 	\newpage
+	\pagenumbering{roman}
 	\section{Appendix A - References}
 	\input{./Appendices/appendixA-references.tex}
 	
