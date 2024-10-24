@@ -124,7 +124,9 @@
 	\caption{\label{fig:compareCameras}Comparison of Camera Modules for ESP32-based Applications}
 \end{figure}
 
-\noindent The FORWARD team selects the Realtek AMB82-Mini IoT AI Camera because of it's ability to perform all necessary AI processes while still maintaining a cost effective price. It also is a noticeable image quality improvement over the ESP32 Cam.
+\noindent The FORWARD team selects the Realtek AMB82-Mini IoT AI Camera because of it's ability to perform all necessary AI processes while still maintaining a cost effective price. It also is a noticeable image quality improvement over the ESP32 Cam. \\
+
+\noindent A stretch requirement of our project is to implement a depth perception capability with our system. Due to the sensor fusion solution that we are taking (using the grid-like field of view described in figure \ref{fig:Grid-Generatio}) we have decided that we no longer need a high quality of camera to obtain the depth data. \\
 
 \begin{figure}[H]
 	\centering
@@ -151,3 +153,28 @@
 
 
 \noindent The FORWARD team selects to use the YOLO model family because of it's memory size flexibility from model to model as well as it's user friendly libraries to make integration simple.
+
+% Headphones comparison
+\begin{figure}[H]
+	\centering
+	\setlength{\tabcolsep}{5pt} % Restore default column padding
+	\renewcommand{\arraystretch}{1.75} % Restore default row height
+	\scalebox{0.9}{ % Scale down the entire table by 85%
+		\begin{NiceTabular}{cccccc}[hvlines,colortbl-like]
+			\CodeBefore
+			\rowcolor{gray!15}{1}
+			\Body
+			Model            & Suunto Wing & Shokz OpenRun Pro & YouthWhisper \\
+			\hline
+			Battery Life     & 6 hours (playtime)     & 10 hours          & 8 hours \\
+			Charging Time    & 1.5 hours & 1 hour 	 	& 2 hours \\
+			Water Resistance & IPX8                  & IP55              & IPX6 \\
+			Connectivity     & Bluetooth 5.0          & Bluetooth 5.1     & Bluetooth 5.0 \\
+			Weight           & 45 grams               & 29 grams          & 30 grams \\
+			Price            & \$169                 & \$159             & \$35 \\
+		\end{NiceTabular}
+	}
+	\caption{\label{fig:headphonesComparison}Comparison of Headphone Options}
+\end{figure}
+
+\noindent The FORWARD team selects to use the YouthWhisper Bone Conduction headphones due to their high affordability, solid battery life, and lighter weight. 
