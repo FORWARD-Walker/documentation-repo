@@ -20,12 +20,16 @@
 \usepackage{varioref}
 \usepackage{hyperref}
 \usepackage{cleveref}
+\usepackage{environ}
 
 % commands
 \renewcommand*\contentsname{Table of Contents} % rename contents
 \setmainfont{Arial}
 
 \begin{document}
+	\sloppy % increases interword spaces to prevent hyphenated words as end of lines
+	\pagenumbering{roman}
+	
 	\begin{singlespace}
 	\input{coverpage.tex}
 
@@ -36,6 +40,7 @@
 	\newpage
 	% 1 page
 	% done
+	\pagenumbering{arabic}
 	\section{Executive Summary}
 	\input{./Chapter1-Introduction/1_1-exec_summary.tex}
 	
@@ -105,6 +110,7 @@
 	
 	% not included in page count
 	\newpage
+	\pagenumbering{roman}
 	\section{Appendix A - References}
 	\input{./Appendices/appendixA-references.tex}
 	

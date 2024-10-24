@@ -62,7 +62,7 @@
 		\rowcolor{gray!15}{1}
 		\cellcolor{}{4-1}
 		\Body
-		Model         & BN-0055 & MPU-6050 \\
+		Model         & BNO055 & MPU-6050 \\
 		Axis          & 9-DOF   & 6-DOF    \\
 		Sensitivity SF Tolerance & 1\% & 3\%  \\
 		Nonlinearity  & 0.2\%   & 0.5\%    \\
@@ -72,7 +72,7 @@
 	\caption{\label{fig:compareIMU}IMU Sensor Options}
 \end{figure}
 
-\noindent The FORWARD team select BN-0055 IMU because of its slight advantages. This device is affordable and will enhance FORWARD stability.\\
+\noindent The FORWARD team select BNO055 IMU because of its slight advantages. This device is affordable and will enhance FORWARD stability.\\
 
 % account for haptic feedback selection
 
@@ -124,7 +124,9 @@
 	\caption{\label{fig:compareCameras}Comparison of Camera Modules for ESP32-based Applications}
 \end{figure}
 
-\noindent The FORWARD team selects the Realtek AMB82-Mini IoT AI Camera because of it's ability to perform all necessary AI processes while still maintaining a cost effective price. It also is a noticeable image quality improvement over the ESP32 Cam.
+\noindent The FORWARD team selects the Realtek AMB82-Mini IoT AI Camera because of it's ability to perform all necessary AI processes while still maintaining a cost effective price. It also is a noticeable image quality improvement over the ESP32 Cam. \\
+
+\noindent A stretch requirement of our project is to implement a depth perception capability with our system. Due to the sensor fusion solution that we are taking (using the grid-like field of view described in figure \ref{fig:Grid-Generatio}) we have decided that we no longer need a high quality of camera to obtain the depth data. \\
 
 \begin{figure}[H]
 	\centering

@@ -33,7 +33,7 @@ I2C: $Distance = ((BYTE_H\&It; \&It; 16) + (BYTE_M\&It: \&It; 8)+BYTE_L) /1000$\
 \subsubsection{Inertial Measurement Units}
 \noindent Because of the simplistic nature of the application of this technology in FORWARD, extensive research is not as necessary as with the range sensors. We consider two main options.\\
 
-\noindent \underline{\textit{BN-0055}} is a 9-DOF (axis) IMU, meaning it contains a 3-axis accelerator, 3-axis gyroscope, and a 3-axis geomagnetic sensor. This device is said to run sensor fusion on-board to provide accurate attitude information. It runs on $2.4-3.6V$ and draws $0.4mA$ of current when on its low power mode. It can be used in 3-axis only modes, meaning you can isolate the accelerator, gyroscope or magnetometer.\\
+\noindent \underline{\textit{BNO055}} is a 9-DOF (axis) IMU, meaning it contains a 3-axis accelerator, 3-axis gyroscope, and a 3-axis geomagnetic sensor. This device is said to run sensor fusion on-board to provide accurate attitude information. It runs on $2.4-3.6V$ and draws $0.4mA$ of current when on its low power mode. It can be used in 3-axis only modes, meaning you can isolate the accelerator, gyroscope or magnetometer.\\
 
 \noindent \underline{\textit{MPU-6050}} is one of the most popular IMU devices. It is 6-DOF (no magnetometer), and runs a DMP (digital motion processor) for motion fusion algorithms. Essentially, it calibrates itself, and is said to reduce gyro drift by eliminating cross-axis alignment errors between the gyroscope and accelerator. It operates at $3.6mA$ with a supply of $2.4-3.5V$.\\
 
