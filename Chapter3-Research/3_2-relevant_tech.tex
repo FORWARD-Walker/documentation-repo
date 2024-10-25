@@ -60,3 +60,19 @@
 
 % Morgan - Power supply, motors, motor shield, steering, braking
 \subsubsection{Motor Shield/Driver}
+\noindent FORWARD is a system that implements motors to accomplish complex movements, therefore it is required to have a motor driver to interface between the motors and the MCU. Motor drivers are electronic devices that provide the ability to control motors. For example, a DC motor if functional if simply connected to power and ground, however, reversing the direction would take a manual change in polarity and the speed would be constant. Using a motor driver will allow us to control the speed, direction, timing, and torque of the motors \cite{thingbits}. However, these controls do not all occur in one motor driver, but in several varieties of drivers (although can be combined in a motor controller as discussed below). To regulate the power, a motor driver could either use a linear regulator or a switching regulator \cite{etechsparks}. To regulate the speed, there are motor drivers that implement pulse-width modulation (PWM), To control the direction and provide for braking, an H-bridge is used for a motor driver, which uses transistors as switches to change the polarity of the motors. When a positive voltage is applied across the motor, it will operate in the “forward” direction, if a negative voltage is applied to the motor, it will operate in the “reverse” direction, and if the voltage is shorted, the motor will “brake” by coming to a stop \cite{etechsparks}. However, this short-circuiting may cause damage to components in the circuit \cite{coreelectronics}. Another reason why motor drivers are important in general is that the MCU cannot directly control the motors as they are a large load drawing much power \cite{coreelectronics}.\\ 
+
+\noindent Motor drivers are fairly simple devices, while there are also motor controllers, which are devices combining motor drivers that directly connect to an MCU and provide support for a hardware and software interface. Motor controllers typically provide more control than a motor driver because they receive feedback, correct for errors \cite{coreelectronics}, power management and can use several motor drivers all at once, including H-bridge and PWM \cite{powerelectronics}. The motor controller also communicates easily with the MCU using serial communication (SPI, uART, etc.) and often includes libraries that simplify the process of programming the motors. However, motor controllers tend to be more expensive than motor drivers \cite{coreelectronics}. \\
+
+\subsubsection{Speed Control}
+\noindent In order to control the speed of the motors, the technology behind this ability is what is known as Pulse Width Modulation (PWM). PWM is a method of allowing the motors to spin for a certain percentage of time within a given a time period. This means that voltage will be applied periodically for a certain duration and will alternate between “on” and “off” For a motor driver set to a duty cycle of 25\%, power is applied to the motor for the first quarter of the period and remains off for the remainder of the period. Because the motor is only operating for a percentage of the time, the motor runs slower than a full duty cycle of 100\%. Meanwhile, a duty cycle of 75\% is a more average velocity between 25\% and 100\%. The figure below illustrates the difference between duty cycles. PWM is the technology used to control the speed of the motors, and is directly set and altered under the software controlling the motors. \cite{etechsparks}. \\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.85\textwidth]{./Images/pwm.png}
+	\caption{\label{fig:pwm}Pulse Width Modulation Duty Cycle Graph}
+\end{figure}
+
+
+\subsubsection{Steering and Braking Method }
+\noindent 
