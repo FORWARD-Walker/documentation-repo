@@ -19,3 +19,9 @@
 \noindent \underline{\textit{Depth Perception}} - By using a higher quality camera, an additional range reading can be supplied. Taking into account this different angle and the camera’s unique perspective, it can be combined with the other range data from the sonar and LiDAR sensors in order to resolve an enhanced measurement. Artificial intelligence modeling and filters may be key in this instrumentation. \\
 
 \noindent \underline{\textit{Tip-over Prevention}} - As a stretch requirement, we would like to implement tip-over prevention, which is a stabilization protocol. If the IMU detects the tilt limit is exceeded, thus indicating instability of the user, a motor command is sent that will turn the wheels to restabilize the walker, or an emergency brake activates to stop the wheels so that friction can allow the walker to support the falling user. So, whenever the user falls forward, there will be an attempt made by the walker to prevent them from scraping their knees. \\
+
+\noindent \underline{\textit{Polite Obstacle Avoidance}}
+Another stretch requirement describes the manner of response FORWARD takes to moving obstacles in its path. If, by the sensor and camera data, it intelligently knows that there is say, a person walking across the field of view, and it knows that person's direction of travel, the control software can veer to the opposite direction in order to greatly reduce the risk of collision.\\
+
+\noindent \underline{\textit{Incline and Decline Stabilization}}
+Another use of the inertial measurement data would be to change the speed of the motors or activate braking if necessary while on an uphill or downhill slope. Take the case of the user letting go of the walker, and it rolling away down the hill and getting out of their reach. If a sharp increase in acceleration was detected, knowing the fact that the pitch was already not level, an emergency brake could be activated.\\
