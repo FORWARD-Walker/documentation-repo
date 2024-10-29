@@ -209,7 +209,7 @@
 	\caption{\label{fig:motorSpecifications}Motor Specifications}
 \end{figure}
 
-
+\noindent When deciding on what DC motors that we wanted to use, our main concerns were power, current rating, motor type, and price. It was calculated that in order to meet the speed requirements, we neeeded a total of 300W or 150W per motor. All of the motors investigated thus are at least 150W. It was also preferable to use brushless DC motors, as they are higher in quality (longevity, efficiency, low noise) than brushed DC motors and are more widely compatible with motor drivers. To decide between the brushless DC motors, we mostly looked at price and found the most cost-effective motors, while also keeping in mind the current rating so that we can purchase motor drivers with a large enough current rating to supply the motors. Thus, we decided to use the S55B-150 DC motors. 
 
 
 \noindent The FORWARD team selects to use \\
@@ -239,7 +239,7 @@
 	\caption{\label{fig:vibrationMotorSpecifications}Vibration Motor Specifications}
 \end{figure}
 
-\noindent The FORWARD team selects to use \\
+\noindent Haptic motors are small DC motors that are used for vibration feedback in the handlebars of the walker. Because they are only uswed for the purpose of vibration, these motors are very small and do not draw much current. Our main concern with deciding which haptic motors to use is the voltage rating and price. In order to be compatible with most motor drivers, the motors should be able to be operated at both 5V and 3V. Although not the most cost-effective, we chose the "Vibration Motor" as it has the largest compatibility with motor drivers.\\
 
 \begin{figure}[H]
 	\centering
@@ -272,7 +272,7 @@
 	\caption{\label{fig:motorControllerSpecifications}Motor Controller Specifications}
 \end{figure}
 
-\noindent The FORWARD team selects to use \\
+\noindent After comparing multiple factors, we ultimately chose the 768861A\_Y1181 motor controller. This is because our main concern was supplying current to the motors and operating all 4 motors from the same controller. The motors that we chose to drive the wheels draw up to 11A of current, which the 768861A\_Y1181 would be able to handle, although it is rated for 10A, upon examining the data sheet. This motor controller also provides a wide voltage range of 5-30V, which is able to provide the correct voltage for both the wheel-driving motors and the haptic motors. The 768861A\_Y1181 also happens to be the most cost-effective of the motor controllers.\\
 
 \begin{figure}[H]
 	\centering
