@@ -209,7 +209,8 @@
 	\caption{\label{fig:motorSpecifications}Motor Specifications}
 \end{figure}
 
-\noindent When deciding on what DC motors that we wanted to use, our main concerns were power, current rating, motor type, and price. It was calculated that in order to meet the speed requirements, we neeeded a total of 300W or 150W per motor. All of the motors investigated thus are at least 150W. It was also preferable to use brushless DC motors, as they are higher in quality (longevity, efficiency, low noise) than brushed DC motors and are more widely compatible with motor drivers. To decide between the brushless DC motors, we mostly looked at price and found the most cost-effective motors, while also keeping in mind the current rating so that we can purchase motor drivers with a large enough current rating to supply the motors. Thus, we decided to use the S55B-150 DC motors. 
+
+\noindent When deciding on what DC motors that we wanted to use, our main concerns were power, current rating, motor type, and price. It was calculated that in order to meet the speed requirements, we needed a total of 300W or 150W per motor. All of the motors investigated thus are at least 150W. It was also preferable to use brushless DC motors, as they are higher in quality (longevity, efficiency, low noise) than brushed DC motors and are more widely compatible with motor drivers. To decide between the brushless DC motors, we mostly looked at price and found the most cost-effective motors, while also keeping in mind the current rating so that we can purchase motor drivers with a large enough current rating to supply the motors. Thus, we decided to use the S55B-150 DC motors. 
 
 
 \noindent The FORWARD team selects to use \\
@@ -239,72 +240,29 @@
 	\caption{\label{fig:vibrationMotorSpecifications}Vibration Motor Specifications}
 \end{figure}
 
-\noindent Haptic motors are small DC motors that are used for vibration feedback in the handlebars of the walker. Because they are only uswed for the purpose of vibration, these motors are very small and do not draw much current. Our main concern with deciding which haptic motors to use is the voltage rating and price. In order to be compatible with most motor drivers, the motors should be able to be operated at both 5V and 3V. Although not the most cost-effective, we chose the "Vibration Motor" as it has the largest compatibility with motor drivers.\\
+\noindent Haptic motors are small DC motors that are used for vibration feedback in the handlebars of the walker. Because they are only used for the purpose of vibration, these motors are very small and do not draw much current. Our main concern with deciding which haptic motors to use is the voltage rating and price. In order to be compatible with most motor drivers, the motors should be able to be operated at both 5V and 3V. Although not the most cost-effective, we chose the "Vibration Motor" as it has the largest compatibility with motor drivers.\\
 
 \begin{figure}[H]
 	\centering
-	\setlength{\tabcolsep}{5pt} % Restore default column padding
-	\renewcommand{\arraystretch}{2.5} % Restore default row height
-	\scalebox{0.50}{ % Scale down the entire table by 75%
-		\begin{NiceTabular}{|l|c|c|c|c|c|}[hvlines,colortbl-like]
-			\CodeBefore
-			\rowcolor{gray!15}{1}
-			\Body
-			\textbf{Specification} & \textbf{UMLIFE \cite{UMLIFE}} & \textbf{MKSESP32FOC \cite{AliExpress5} \cite{Makerbase}} & \textbf{768861A\_Y1181 \cite{AliExpress7} \cite{CircuitBasics} \cite{Espressif1}} & \textbf{ESP32FOC \cite{AliExpress4} \cite{Espressif1}} & \textbf{TBB6612 \cite{Burgess}} \\ 
-			\hline 
-			Voltage & 6-60V & 12-24V & 5-30V & 12-28V & 5-12V \\ 
-			\hline 
-			Maximum Current & 20A & 12A (6A/channel) & 10A/channel & 20A & 3A/channel \\ 
-			\hline 
-			\# of DC Motors & 1 & 2 & 4 & 1 & 4 \\ 
-			\hline 
-			Protocol & Unlisted & I2C, SPI & UART & UART, SPI, I2C & I2C \\ 
-			\hline 
-			Speed Control & PWM & PWM & PWM & PWM & PWM \\ 
-			\hline 
-			Library & General PWM Library \cite{RandomNerd} \cite{Espressif2} & Simple FOC Library \cite{SimpleFOC} & Generic library; can use Simple FOC \cite{SimpleFOC2} & Simple FOC library \cite{SimpleFOC} & B6612FNG\_ESP32 Library \cite{Peza} \\ 
-			\hline 
-			Arrival Time & 4 days & 1-3 weeks & 1-2 weeks & 1-2 weeks & Shipped within 2 weeks \\ 
-			\hline 
-			Price & \$16.99 & \$15.29 & \$13.79 & \$14.76 & \$18.50 \\ 
-		\end{NiceTabular}
-	}
-	\caption{\label{fig:motorControllerSpecifications}Motor Controller Specifications}
+	\includegraphics[width=1\textwidth]{./Images/motor_controller_table.png}
+	\caption{\label{fig:motor_controller}Motor Controller Specifications}
 \end{figure}
 
-\noindent After comparing multiple factors, we ultimately chose the 768861A\_Y1181 motor controller. This is because our main concern was supplying current to the motors and operating all 4 motors from the same controller. The motors that we chose to drive the wheels draw up to 11A of current, which the 768861A\_Y1181 would be able to handle, although it is rated for 10A, upon examining the data sheet. This motor controller also provides a wide voltage range of 5-30V, which is able to provide the correct voltage for both the wheel-driving motors and the haptic motors. The 768861A\_Y1181 also happens to be the most cost-effective of the motor controllers.\\
+\noindent After comparing multiple factors, we ultimately chose the 768861A\_Y1181 motor controller. This is because our main concern was supplying current to the motors and operating all 4 motors from the same controller. The motors that we chose to drive the wheels draw up to 11A of current, which the 768861A\_Y1181 would be able to handle, although it is rated for 10A, upon examining the data sheet. This motor controller also provides a wide voltage range of 5-30V, which is able to provide the correct voltage for both the wheel-driving motors and the haptic motors. The 768861A\_Y1181 also happens to be the most cost-effective of the motor controllers. \cite{UMLIFE} \cite{AliExpress5} \cite{Makerbase} \cite{AliExpress7} \cite{CircuitBasics} \cite{Espressif1} \cite{AliExpress4} \cite{Burgess} \cite{RandomNerd} \cite{Espressif2} \cite{SimpleFOC} \cite{SimpleFOC2} \cite{Peza}\\
+
 
 \begin{figure}[H]
 	\centering
-	\setlength{\tabcolsep}{5pt} % Adjust column padding
-	\renewcommand{\arraystretch}{2.5} % Adjust row height
-	\scalebox{0.65}{ % Scale down the entire table by 85%
-		\begin{NiceTabular}{ccccccc}[hvlines,colortbl-like]
-			\CodeBefore
-			\rowcolor{gray!15}{1}
-			\Body
-			\textbf{Specification} & \textbf{B09P6D5TMV \cite{BOJACK}} & \textbf{RRPDMSCSGSPC \cite{RioRand}} & \textbf{BTS7960 \cite{Gikfun}} & \textbf{L298N \cite{BEEYDC}} & \textbf{DRV8871 \cite{HiLetgo}} & \textbf{RR-6-90V-15A-PSC \cite{Hobbywing}} \\
-			\hline
-			Driving         & Haptic          & Wheels        & Wheels       & Haptic          & Haptic          & Wheels        \\
-			\hline
-			Motor Type      & DC              & DC            & DC           & DC              & Brushed DC      & DC           \\
-			\hline
-			Voltage         & 1.8-15V        & 12V-40V      & 27V         & 5-35V          & 6.5-45V        & 6-90V       \\
-			\hline
-			Maximum Current & 2A             & 10A          & 43A         & 2A             & 3.6A           & 15A         \\
-			\hline
-			\# of DC Motors & 1               & 1            & 1           & 2               & 1               & 1           \\
-			\hline
-			MCU Pins        & GPIO/PWM       & GPIO/PWM     & GPIO/PWM    & GPIO/PWM       & GPIO/PWM       & GPIO        \\
-			\hline
-			Arrival Time    & 3 days         & 4 days       & 3 days      & 3 days         & 3 days         & 3 days      \\
-			\hline
-			Price (Qty)     & \$6.99 (2)     & \$9.99 (1)   & \$12.57 (2) & \$5.99 (2)     & \$15.49 (2)    & \$9.99 (1)  \\
-		\end{NiceTabular}
-	}
-	\caption{Motor Driver Specifications}
-	\label{tab:motor_driver_specifications}
+	\includegraphics[width=1\textwidth]{./Images/haptic_driver_table_2.png}
+	\caption{\label{fig:haptic_driver}Haptic Motor Driver Specifications}
 \end{figure}
 
-\noindent The FORWARD team selects to use \\
+\noindent This table compares the different motor drivers available for use with haptic motors.  decided to use the L298N motor driver as this solution is simply the most cost-effective. All of the haptic motor driver options available have similar ratings in voltage and current. We were also able to find more documentation for the L298N \cite{BOJACK} \cite{BEEYDC} \cite{HiLetgo}.\\
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{./Images/wheel_driver_table.png}
+	\caption{\label{fig:wheel_driver}Wheel Motor Driver Specifications}
+\end{figure}
+
+\noindent Comparing options, we decided upon using the BTS7960 motor driver. The BTS7960 is able to supply more than enough current to the DC motors driving the wheels. This option is also the most cost-effective as the price includes two motor drivers to be able to drive both motors \cite{RioRand} \cite{Gikfun} \cite{Hobbywing}.\\ 
