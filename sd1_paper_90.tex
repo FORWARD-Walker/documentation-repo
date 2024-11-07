@@ -21,6 +21,11 @@
 \usepackage{hyperref}
 \usepackage{cleveref}
 \usepackage{environ}
+\usepackage{caption}
+
+\usepackage[table]{xcolor}
+\definecolor{maroon}{cmyk}{0,0.87,0.68,0.32}
+\definecolor{blizzardblue}{rgb}{0.67, 0.9, 0.93}
 
 % commands
 \renewcommand*\contentsname{Table of Contents} % rename contents
@@ -34,7 +39,10 @@
 	\input{coverpage.tex}
 
 	\tableofcontents
+	\newpage
 	\listoffigures
+	\newpage
+	\listoftables
 	\setcounter{secnumdepth}{3}
 
 	\newpage

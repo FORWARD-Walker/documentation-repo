@@ -19,4 +19,11 @@
 \end{figure}
 
 \subsubsection{Sensor Fusion}
-\noindent How do we make sense of the range detection made at all five points of the front-face of the walker? How do we combine that with pixel data of the corners of an object detection made by the camera? We can generally perceive depth by averaging the 4 coordinates, where closer is a higher average. We also know whether an obstacle is on the left or right side ahead based on which ranges are lower the maximum. We have to take into account the dead zones. With all of this information available on the network, we can build algorithms to guide the way forward, as discussed in the following chapter.
+\noindent How do we make sense of the range detection made at all five points of the front-face of the walker? How do we combine that with pixel data of the corners of an object detection made by the camera? We can generally perceive depth by averaging the 4 coordinates, where closer is a higher average. We also know whether an obstacle is on the left or right side ahead based on which ranges are lower the maximum. We have to take into account the dead zones. With all of this information available on the network, we can build algorithms to guide the way forward, as discussed in the following chapter.\\
+
+\noindent As noted, the ESP32 development board supports all the sensors and the camera simultaneously without the need of multiplexing. The setup pictured below in figure \ref{fig:bb-test} has the IMU and LiDAR on an I2C bus, and the ultrasonic sensors routed to GPIO pins. A table of the varying assignments, labels, and voltage requirements would be provided for the topology in figure \ref{fig:bb-test}, but it is forbidden by the UCF ECE guidelines. Suffice it to say, the IMU requires 3.3V, the TFLuna LiDAR requires 5V, and both variants of the ultrasonic can support either voltage.\\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./Images/breadboard-test.jpg}
+	\caption{\label{fig:bb-test}Breadboard w/ Ultrasonics, and IMU \& LiDAR I2C Bus}
+\end{figure}
