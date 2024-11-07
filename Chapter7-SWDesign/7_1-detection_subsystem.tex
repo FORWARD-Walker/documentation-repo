@@ -6,3 +6,6 @@
 
 \subsubsection{Range Reading Harmonization}
 \noindent This is where an estimator is useful.\\
+
+\subsubsection{I2C Bus for Sensors}
+\noindent The utilization of 4 ultrasonic sensors and 1 LiDAR to supply a feed of information to FORWARD's central processor can be integrated and realized through a wiring bus with the I2C digital communication protocol. This I2C scheme will use a synchronous clock signal provided to the sensors by the MCU. It will operate always in half-duplex, meaning data will be transmitted in only one direction at a time - from the MCU to the sensors and from the sensors back to the MCU in successive time steps. Additionally, the sensors will be accessed by their unique addresses and send packets of information as a sequence, taking turns.\\
