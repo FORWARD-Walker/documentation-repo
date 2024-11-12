@@ -1,23 +1,22 @@
-\newline \noindent The following is by far, not necessarily a finished list of design impacts that the technologies have on FORWARD development. As the design process continues, this may be revised for the final documentation.\\
+\subsubsection{Design Impact}
+\noindent The following is by far, not necessarily a finished list of design impacts that the technologies with standards attached have on FORWARD development. As the design process continues, this may be revised for the final documentation. The sensors, camera, and motor drivers all have a diverse method of connection, as far as hardware design goes. It will be necessary in the PCB design. This is discussed further in section \ref{sec:pcb-design}.\\\\
 
 % the impact the standards and constraints (technologies actually) have on FORWARD development and design
+
+\noindent \underline{\textit{Design Impact of Digital Communication}}
+Serial communication is what allows for the sending of bits over mediums, whether they be wires or through the air as electromagnetic waves. Microcontrollers have built-in support for GPIO pins and and serial communication.\\
+
 \noindent \underline{\textit{Design Impact of I2C}}
-I2C is great for buses of sensors, especially as the number involved grows. FORWARD utilizes four ultrasonics, one LiDAR, and one camera, and so this technology can greatly increase the ease of design implementation.\\
+Inter-integrated circuit (I2C) is a digital serial communication protocol commonly implemented between microcontrollers and sensor devices. It allows for fast and accurate transmission of data that can then be processed and operated upon. I2C is great for buses of sensors, especially as the number involved grows. FORWARD utilizes four ultrasonic sensors, one LiDAR, and one camera, and so this technology can greatly increase the ease of design implementation, were an I2C bus to be chosen.\\
 
 \noindent \underline{\textit{Design Impact of UART}}
-UART\\
-	
+The Universal Asynchronous Receiver-Transmiter (UART) is a lower-speed digital communication protocol. It sends 8-bit data packets, essentially forming a bitstream that follows a clock signal. UART is advantageous for its ease of implementation and accuracy for accessing data from single devices. UART can also be used in simplex, half-duplex, or full-duplex mode. In the context of FORWARD, the sensors selected for the most part will support UART, so that it will be an option available.\\
+
 \noindent \underline{\textit{Design Impact of Bluetooth}}
-Bluetooth\\
+Bluetooth is a short-range wireless digital communication protocol that is commonly utilized in audio systems. It makes use of frequency hopping (see Figure \ref{fig:bluetooth-freq-hop}) in order to avoid interference and jamming. Bluetooth will help the FORWARD designers easily relay audio feedback to the user in a way that is not invasive to mobility and accessibility, which is possible because of the wireless capability. Wired headphones would inevitably become a safety hazard and a nuisance. To maintain the pledge of autonomous navigation and responsive direction, Bluetooth must make an essential design impact.\\
 
 \noindent \underline{\textit{Design Impact of Wifi}}
-Wifi wireless network\\
-
-\noindent \underline{\textit{Design Impact of GPIO}}
-GPIO and Serial\\
-
-\noindent \underline{\textit{Design Impact of Connections}}
-The sensors can also be\\
+FORWARD's potential inclusion of its own wireless network could open new possibilities for unified response to obstacles. Essentially, the network will allow the range data as well as image recognition classification data to be collected and centralized.\\
 
 \noindent \underline{\textit{Design Impact of Embedded Software}}
 Embedded programming in the C language gives great low-level control over registers containing the FORWARD sensor readings as well as allowing the computer vision to interact with the feedback and velocity control by the motors. As noted in later sections however, Arduino is the preferred development tool.\\
