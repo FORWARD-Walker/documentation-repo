@@ -11,6 +11,10 @@
 \end{figure}
 
 \subsubsection{Range Reading Harmonization}
+\noindent In order to properly utilize all of the data our peripherals supply, we must design an effective and efficient sensor fusion system that can harmonize all of the incoming sensor data with the object detection data. In our research, we referenced an article \cite{CVRef2} that discussed using a 2D grid to determine where objects were in space. We are going to bring these ideas into our design, but allowing the object data, which comes with a position on a 2D-grid, to set this grid, which then our sensors can be associated to certain sections of this grid to provide ranging. For our purposes, x = 1920 and y = 1080 because our camera has a 1920x1080 frame size. We also know that the origin (0,0) is at the bottom left from the perspective of the camera. In figure \ref{fig:proposedsensorFOV}, we see that we will have four sonar sensors surrounding FORWARD. To illustrate my point, if we had an object return the position (1200, 1800, 0, 800), this being the form (Xmin, Xmax, Ymin, Ymax), then we would trigger the front right sonar sensor and receive the ranging measurement of said object. \\
+
+\noindent We will also utilize the LiDAR readings to provide more precise ranging... \\
+
 \noindent There are more outputs the inertial measurement unit can provide besides the angles. One of most interesting ones is the accelerations. This would be the rate that the velocity of the rollator body is changing with respect to time. 
 
 \noindent This is also where an estimator is useful.\\
