@@ -1,42 +1,103 @@
 \subsection{Ranging Algorithms}
 \noindent Instructing FORWARD where to guide the user is a solution that the detection and identification systems generate. Various scenarios are described in the system testing chapter. It will be a matter of solving an adaptive geometrical situation and relaying the results to the processor.\\
 
-\subsubsection{Range Reading Harmonization}
-\noindent There are more outputs the inertial measurement unit can provide besides the angles. One of most interesting ones is the accelerations. This would be the rate that the velocity of the rollator body is changing with respect to time. From a control standpoint, we can think of a state-space representation. FORWARD is a multi-input, multi-output system (MIMO). Let's define the states $X = [x_1,x_2,x_3,x_4,x_5,x_6,x_7]^T$:\\
-$x_1=\psi ,x_2=\theta, x_3=\phi$\\
-$x_4=a_x, x_5=a_y, x_6=a_z$\\
-$x_7=\phi_c$
+\subsubsection{State Space Representation}
+\noindent There are more outputs the inertial measurement unit can provide besides the angles. One of most interesting ones is the accelerations. This would be the rate that the velocity of the rollator body is changing with respect to time. From a control standpoint, we can think of a state-space representation. FORWARD is a multi-input, multi-output system (MIMO). Let's define the states:
+X and Y position (2D plane on the ground), yaw angled orientation, x and y velocity, and the angular velocity:
+$$X = [x, y, \theta, v_x, v_y, \omega]^T$$
+The inputs are the yaw angle steering command and the left and right motor spin speeds:
+$$U = [\phi, u_l, u_r]^T$$
+The outputs are the range sensor readings, the IMU acceleration, and Euler angles:
+$$Y = [s_1, s_2, s_3, s_4, l_1, a_x, a_y, a_z, \alpha, \beta, \gamma ]^T$$
 
-\noindent The inputs $U = [u_1, u_2, u_3, u_4, u_5, u_6, u_7]^T$ are as follows. Notice roll is not dealt with because $\psi$ is static.\\
-$u_1:incline\ angle$\\
-$u_2:user\ steering\ force$\\
-$u_3:motor\ commands$\\
-$u_4:S1,u_5:S2,u_6:S3,u_7:S4,u_8:L1$
+\noindent The state equation:
+\[\dot{x} =
+\begin{bmatrix}
+	\dot{x}\\ \dot{y}\\ \dot{\theta}\\ \dot{v_x}\\ \dot{v_y}\\ \dot{\omega}\\
+\end{bmatrix} = 
+\begin{bmatrix}
+	0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 \\
+\end{bmatrix}
+\begin{bmatrix}
+	x\\ y\\ \theta\\ v_x\\ v_y\\ \omega
+\end{bmatrix} + 
+\begin{bmatrix}
+	0 & 0 & 0\\
+	0 & 0 & 0\\
+	0 & 0 & 0\\
+	0 & 0 & 0\\
+	0 & 0 & 0\\
+	0 & 0 & 0\\
+\end{bmatrix}
+\begin{bmatrix}
+	\phi\\ u_l\\ u_r
+\end{bmatrix}
+\]
 
-\noindent The state equations:\\
-$$\ddot{X} = AX + BU$$
-$$Y = CX + DU$$,\\
-where D=0 because there is no direct transmission. We then can define the 11x11 state transition matrix:\\
-\[A = \begin{bmatrix}
-\alpha_1 & 0 & 0 & \beta_1 & 0 & 0 & 0 \\
-0 & \alpha_2 & 0 & 0 & \beta_2 & 0 & 0 \\
-0 & 0 & \alpha_3 & 0 & 0 & \beta_3 & 0 \\
-0 & 0 & 0 & \zeta_1 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & \zeta_2 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 & \zeta_3 & 0 \\
-0 & 0 & \gamma_1 & \gamma_2 & \gamma_3 & 0 & 0
-\end{bmatrix}\]
+\noindent The output equation:
+\[y =
+\begin{bmatrix}
+	s_1, s_2, s_3, s_4, l_1, a_x, a_y, a_z, \alpha, \beta, \gamma
+\end{bmatrix}^T = 
+\begin{bmatrix}
+	6\times 11
+\end{bmatrix}
+\begin{bmatrix}
+	x\\ y\\ \theta\\ v_x\\ v_y\\ \omega
+\end{bmatrix} + 
+\begin{bmatrix}
+	3\times 11
+\end{bmatrix}
+\begin{bmatrix}
+	\phi\\ u_l\\ u_r
+\end{bmatrix}
+\]
 
-The control influence matrix is a 3x11 which describes the relationship of the inputs to the states:\\
-\[B = \begin{bmatrix}
-	\omega_1 & 0 & 0 & 0 & 0 & 0 & 0 \\
-	0 & \omega_2 & 0 & 0 & 0 & 0 & 0 \\
-	0 & \omega_3 & 0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & \lambda_1 & \lambda_2 & \lambda_3 & \lambda_4 & \lambda_5
-\end{bmatrix}\]
+
+%$$X = [x_1,x_2,x_3,x_4,x_5,x_6,x_7]^T$$
+%The rollator orientation (attitude, Euler angles):
+%$$x_1=\psi ,x_2=\theta, x_3=\phi$$
+%The rollator acceleration signals:
+%$$x_4=a_x, x_5=a_y, x_6=a_z$$
+%We do not consider braking or the haptic PWM signals. The main actuator signal is the yaw steering angle command:
+%$$x_7=\phi_c$$
+%
+%\noindent The inputs $U = [u_1, u_2, u_3, u_4, u_5, u_6, u_7]^T$ are as follows. Notice roll is not dealt with because $\psi$ is static.\\
+%$u_1:incline\ angle$\\
+%$u_2:user\ steering\ force$\\
+%$u_3:motor\ commands$\\
+%Ultrasonic sensors 1-4 and the TFLuna LiDAR:\\
+%$u_4:S1,u_5:S2,u_6:S3,u_7:S4,u_8:L1$
+%
+%\noindent The state equations:\\
+%$$\dot{X} = AX + BU$$
+%$$Y = CX + DU$$\\
+%where D=0 because there is no direct transmission. We then can define the 7x7 state transition matrix:\\
+%\[A = \begin{bmatrix}
+%\alpha_1 & 0 & 0 & \beta_1 & 0 & 0 & 0 \\
+%0 & \alpha_2 & 0 & 0 & \beta_2 & 0 & 0 \\
+%0 & 0 & \alpha_3 & 0 & 0 & \beta_3 & 0 \\
+%0 & 0 & 0 & \zeta_1 & 0 & 0 & 0 \\
+%0 & 0 & 0 & 0 & \zeta_2 & 0 & 0 \\
+%0 & 0 & 0 & 0 & 0 & \zeta_3 & 0 \\
+%0 & 0 & \gamma_1 & \gamma_2 & \gamma_3 & 0 & 0
+%\end{bmatrix}\]
+%
+%\noindent The control influence matrix is a 3x7 which describes the relationship of the inputs to the states:\\
+%\[B = \begin{bmatrix}
+%	\omega_1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+%	0 & \omega_2 & 0 & 0 & 0 & 0 & 0 \\
+%	0 & \omega_3 & 0 & 0 & 0 & 0 & 0 \\
+%	0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+%	0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+%	0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+%	0 & 0 & \lambda_1 & \lambda_2 & \lambda_3 & \lambda_4 & \lambda_5
+%\end{bmatrix}\]
 
 \noindent By this, we see that the state of the euler angles and accelerations are interdependent in some axes and that the yaw steering command is dependent on the yaw angle and x and y accelerations. To ensure stability, we must either minimize acceleration or maximize the range readings.\\
 
