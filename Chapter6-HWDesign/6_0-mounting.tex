@@ -1,5 +1,5 @@
 \subsection{Rollator}
-\noindent The most clear option for the choice of walker frame, to be outfitted with motors and the electronics system, is a standard medical rollator, available on common online commercial marketplaces. The steel frame remains at a weight under 20 pounds, and its dimensions are given as 25.5"D x 31"W x 23.5"H. It comes with a seat, storage compartment, and pneumatically actuated brakes. The FORWARD team plans to remove the seat and storage compartment to replace with the electronics housing, change the braking system to velocity control, and to dismount the wheels to install the DC motors. The wheels are also 7.5 inch diameter, which we anticipate will provide enough torque for the adaptive velocity control and steering enacted by the motor shield.\\
+\noindent The most clear option for the choice of walker frame, to be outfitted with motors and the electronics system, is a standard medical rollator, available on common online commercial marketplaces. The steel frame remains at a weight under 20 pounds, and its dimensions are given as 25.5"D x 31"W x 23.5"H. It comes with a seat, storage compartment, and pneumatically actuated brakes. The FORWARD team plans to remove the seat and storage compartment to replace with the electronics housing, change the braking system to velocity control, and to dismount the wheels to install the DC motors. The wheels are also 7.5-8 inch diameter, which we anticipate will provide enough torque for the adaptive velocity control and steering enacted by the motor shield.\\
 
 \begin{figure}[H]
 	\centering
@@ -11,34 +11,32 @@
 
 <<<<<<< HEAD
 % morgan - do we fix the wheels in place? most of them swivel like castors
-\subsubsection{Wheel Rotational Motion}
-\noindent The rollator wheels will dictate the way by which turning can be achieved. There are four wheels. We call the distance in between the front wheels $axel_f$ and the distance in between the rear wheels $axel_r$. Upon initial inspection of the rollator once acquired, we see that $axel_f > axel_r$. The measurements are as follows:\\
 
-[TABLE HERE OF MEASUREMENTS]\\
-
-\noindent From a top view, the rear two wheels can be viewed as simple points. They do not swivel, and thus can rotate in place but cannot do horizontal translation, stipulated by friction and attachment to the rollator frame. Of course, they can also roll and move forward.\\
-
-\noindent In addition, the front wheels are on a $360^{\circ}$ swivel. They can also be modeled as points in a sense; however, their orientation changes.\\
-
-\noindent \underline{\textit{Case 1}} (extreme): both wheels rotate. The front wheels translate.\\
-
-\noindent \underline{\textit{Case 2}} (extreme): one wheel rotates, the other stationary. The front wheels revolve.\\
-
-\noindent \underline{\textit{Case 3}} Veering: motor speeds may not have to change. User can veer based on feedback, and gentle guidance provided by FORWARD.\\
-
-\subsubsection{Turning Mechanics}
-\noindent talking more about one wheel motor faster than the other. fusing user steering with FORWARD guidance.\\
-
-\noindent issue about user trying to steer when they shouldn't\\
-
-=======
->>>>>>> 1a36f73153117fa75fff93d933c5a89d9162b50f
 % matthew
 \subsection{Electronics Chassis}
-\noindent Discuss psychical location of all elements and components on the walker frame and explain the reason. explain plans for wiring and attachment (tape, glue, screws etc).\\
+% Discuss psychical location of all elements and components on the walker frame and explain the reason. explain plans for wiring and attachment (tape, glue, screws etc).
+\subsubsection{Location of Components}
+\noindent The diagram below depicts the physical location of the components as attached to the walker. Several components, including the power supply, PCB, IMU, and LiDAR will be housed within a hard casing, most likely made of metal or wood. They will be encased so that they are stable and not exposed to the elements. The LiDAR and IMU, both of which are mounted to the PCB, should not be allowed to change position. In particular, the IMU measures the angle of the walker and needs to be level. If the IMU is not level, it will give incorrect readings. It is also undesirable for the PCB to be unstable or mounted loose beneath the seat because it would be easy for connections to loosen or for vibration to damage sensitive parts. We will use screws to mount the internal components to this casing so that all of the units are fixed in place. All of the other components will need to have wires running to this casing. These wires will be organized and mounted against the walker using wire clips so that there are no dangling wires, which could be a tripping hazard to the user and would appear unprofessional.\\
+
+\noindent For the components installed apart from the electronics case, we will use different methods of mounting depending on the nature of the component. For the haptic motors, we will need to use a mounting bracket to attach the motors underneath the handlebars. This bracket will need to use tension or compression in order to secure the motors in place as the motors do not come with holes to mount to the back of the seat with screws. The headlight comes with a mounting bracket that will need to be attached to the walker using screws. The photoresistor may be attached to the headlight, out of the way of shadows, using a clip. The ultrasonic sensors contain small holes at each corner, however, it would be difficult to drill into the metal structure of the walker. We could use fishing rod clips to attach to the walker and mount the sensors to the clips. The IMU and LiDAR would employ similar approaches of installation. The most difficult components to mount will likely be the DC motors driving the wheels. We must attach the motors in such a way that the wheel rotates as the rotor attached to the gearbox rotates. We also must ensure that the manual braking system is not eradicated, which limits our options to not mount the motor directly above the wheels. For example, we could detach the wheels from the hub and attach them directly to the motors whereas the motors are mounted to the walker. However, this would remove the braking mechanism from the wheels. Thus, we will mount the motor (using a connector piece screwed into the gearbox and the rim of the wheel) to the outside of the wheel and simply use a custom metal bracket to attach the motor to the leg of the walker. We will mount the two motors to the two rear wheels of the walker, as they are fixed, while the front two wheels swivel.\\ 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{./Images/component_location_camera.png}
+	\caption{\label{fig:Component-Locations}Location of components on the walker}
+\end{figure}
+
+\subsubsection{Measurements of the Walker}
+\noindent Upon purchasing the rollator chassis, we took measurements in order to design the placement of components on the walker. This is especially essential for obtaining the correct length of wires. We would like to have organized wires flush against the walker running from the PCB to different components, which requires precise measurements of the length of wires to appear professional. For example, we measured the distance from the wheel to the seat of the walker and will need to later add the measurement from the seat to the PCB housing underneath the seat. For Senior Design II, we will need the measurements for the PCB before we can start ordering the correct length of wires.\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{./Images/measurements.png}
+	\caption{\label{fig:Measurements_of_walker}Measurements of the walker}
+\end{figure}
 
 \noindent discuss positioning of sensors on the walker, wiring; need for IMU to be level. installation of haptics. implementation of earpiece being available to user. braking, motor speed control. physical object avoidance margins. obstacle classifications.\\
 
 \noindent sensor housing, surface mount IMU (on PCB), surface mount LiDAR? (on PCB), PCB centrally mounted, bluetooth module centrally mounted?\\
 
-\noindent headlights? steering? braking? curb assist? tipover prevention with motors explained\\
+\noindent headlights? curb assist? tipover prevention with motors explained\\
