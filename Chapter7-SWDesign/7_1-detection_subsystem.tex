@@ -10,36 +10,36 @@ $$U = [\phi, u_l, u_r]^T$$
 The outputs are the range sensor readings, the IMU acceleration, and Euler angles:
 $$Y = [s_1, s_2, s_3, s_4, l_1, a_x, a_y, a_z, \alpha, \beta, \gamma ]^T$$
 
-\noindent The state equation:
+\noindent The state equation, where differential operators, and various constants determine the relationships. $\epsilon_n$ is a very small value, meaning the difference between the two variables should be minimized. $k_n$ is a motor coefficient, in which the steering is determined by the differential wheel spin between left and right motors:
 \[\dot{x} =
 \begin{bmatrix}
 	\dot{x}\\ \dot{y}\\ \dot{\theta}\\ \dot{v_x}\\ \dot{v_y}\\ \dot{\omega}\\
 \end{bmatrix} = 
 \begin{bmatrix}
-	0 & 0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 & 0 \\
+	1 & 0 & 0 & \frac{d}{dt} & 0 & 0 \\
+	0 & 1 & 0 & 0 & \frac{d}{dt} & 0 \\
+	0 & 0 & 1 & 0 & 0 & \frac{d}{dt} \\
+	0 & 0 & 0 & \frac{d}{dt} & 0 & 0 \\
+	0 & 0 & 0 & 0 & \frac{d}{dt} & 0 \\
+	0 & 0 & \frac{d}{dx}\frac{d}{dy} & 0 & 0 & \frac{d}{dt} \\
 \end{bmatrix}
 \begin{bmatrix}
 	x\\ y\\ \theta\\ v_x\\ v_y\\ \omega
 \end{bmatrix} + 
 \begin{bmatrix}
-	0 & 0 & 0\\
-	0 & 0 & 0\\
-	0 & 0 & 0\\
-	0 & 0 & 0\\
-	0 & 0 & 0\\
-	0 & 0 & 0\\
+	\frac{d}{dt} & \frac{d}{dt} & \frac{d}{dt} \\
+	\frac{d}{dt} & \frac{d}{dt} & \frac{d}{dt} \\
+	\epsilon_1 & k_l & k_r \\
+	0 & \epsilon_2 & \epsilon_3 \\
+	0 & \epsilon_4 & \epsilon_5 \\
+	\frac{d}{dt} & 0 & 0\\
 \end{bmatrix}
 \begin{bmatrix}
 	\phi\\ u_l\\ u_r
 \end{bmatrix}
 \]
 
-\noindent The output equation:
+\noindent The relation of outputs to states and inputs is harder to determine, so the output matrix is left ambiguous (6x11):
 \[y =
 \begin{bmatrix}
 	s_1, s_2, s_3, s_4, l_1, a_x, a_y, a_z, \alpha, \beta, \gamma
@@ -48,14 +48,14 @@ $$Y = [s_1, s_2, s_3, s_4, l_1, a_x, a_y, a_z, \alpha, \beta, \gamma ]^T$$
 	6\times 11
 \end{bmatrix}
 \begin{bmatrix}
-	x\\ y\\ \theta\\ v_x\\ v_y\\ \omega
-\end{bmatrix} + 
-\begin{bmatrix}
-	3\times 11
-\end{bmatrix}
-\begin{bmatrix}
-	\phi\\ u_l\\ u_r
-\end{bmatrix}
+	x, y, \theta, v_x, v_y, \omega
+\end{bmatrix}^T
+%\begin{bmatrix}
+%	3\times 11
+%\end{bmatrix}
+%\begin{bmatrix}
+%	\phi\\ u_l\\ u_r
+%\end{bmatrix}
 \]
 
 

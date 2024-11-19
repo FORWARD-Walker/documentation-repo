@@ -60,13 +60,16 @@ A successful control feedback test is defined by:
 \noindent \underline{\textit{PCB Assembly and Testing}}
 \noindent As mentioned, the printed circuit board should be tested with varying levels of battery life remaining. \\
 
+\noindent \underline{\textit{Determining and tuning motor coefficients}} During integration, it will be necessary to assign values governing the yaw steering command to the speed of the motors and haptic feedback signals. There should exist some constants that taking into account the rollator dynamics, can be calculated to scale the motors in order to achieve the desired turning angle. Additionally, once integration has been achieved, these scalars can be fine-tuned to optimize the rollator performance response.\\
+
 \noindent \underline{\textit{Autonomous Navigation with Cooperative User}}
 \noindent With motors installed on the rollator, which is also equipped with GNC software, there should be decision-making in the main code to distinguish how FORWARD adapts based on the environment. Some scenarios that come to mind are:
 \begin{enumerate}
 	\item Evasive mode. FORWARD takes full control (i.e. emergency stop)
 	\item Cooperative navigation mode. FORWARD guides the user in a way does not infringe on their free movement.
-	\item Dormant mode. User has full control of direction.
+	\item Dormant mode. User has full control of direction. \footnote{This is distinct from system powered off because the electronics are still in operation, they are just not being stimulated from the environment in a way that demands response from FORWARD}
 \end{enumerate}
+This step is probably the most difficult to implement at the same time as PCB development, motor coefficient tuning, and critical design review are taking place. Oftentimes, system moding is not as straightforward as it is cut out to be; in the boundary conditions when FORWARD will transition from one mode to the next, the team will have to carefully design the GNC software to remain stable. In other words, it remains subjective exactly when to apply emergency braking or how to define edge cases of multi-obstacle scenarios. Curb lifting, headlights in lowlight environments, and the other advanced requirements also remain undefined at this time.\\
 
 \noindent \underline{\textit{Free Roam Evaluation}}
 \noindent The final phase of testing is done when FORWARD integration is complete, and this is called the free roam evaluation. Essentially, the walker will be driven out in public for a pre-determined period of time, and the team will note mishaps and incidents that the guidance, navigation, and control protocols fail to prevent. These would be noted for future improvements for future endeavors and projects or products. This evaluation method will truly test and determine the successful or unsuccessful implementation of FORWARD from the beginning specifications and requirements listed. Multi-obstacle scenarios, mixtures of incline and decline territories, and mild levels of danger will be encountered. If requirements are met, design is up to specification, and all previous tests have been passed, we are confident FORWARD evaluation will be a success.\\
