@@ -1,80 +1,12 @@
 \subsection{Part Selection}
 
-% account 1 page for ultrasonic table
-\begin{table}[H]
-	\centering
-	\setlength{\tabcolsep}{5pt} % Default value: 6pt
-	\renewcommand{\arraystretch}{1.5} % Default value: 1
-	\begin{NiceTabular}{ccccccc}[hvlines,colortbl-like]
-		\CodeBefore
-		%\columncolor{}{}
-		\rowcolor{maroon!50}{1}
-		\cellcolor{}{4-1}
-		\Body
-		Model       & HC-SR04 & RCWL1XX5 & RCWL1670   & MB1000 & H2KA  & SEN0150 \\
-		Type        & Multi   & XCVR     & Multi      & XCVR   & XCVR  & XCVR    \\
-		Range (cm)  & 450     & 550      & 400        & 600    & 250   & 1000    \\
-		Angle (deg) & +/-15   & +/-30    & +/-15      & +/-20  & 8+/-2 & +/-15   \\
-		Accuracy    & 0.3 cm  & +/-2\%   & +/-2\%     & 1 inch & 2 cm  & 1 cm    \\
-		Protocol    & I2C     & I2C      & I2C        & ?      & ?     & UART    \\
-		Freq. (kHZ) & 40      & 40       & 40         & 42     & 150   & 49.5    \\
-		Note        &         & deadzone & waterproof &        &       &         \\
-		Price       & \$      & \$       & \$         & \$\$   & \$\$\$& \$\$\$
-	\end{NiceTabular}
-	\caption{\label{fig:compareUltrasonic}Ultrasonic Sensor Options}
-\end{table}
-
-% The decision
-\noindent Taking into account all the specifications and overall fit with FORWARD requirements, the team selects two HC-SR04 for side-facing, and two RCWL1005's for forward-facing.\\
-
-% account 1 page for lidar table
-\begin{table}[H]
-	\centering
-	\setlength{\tabcolsep}{5pt} % Default value: 6pt
-	\renewcommand{\arraystretch}{1.5} % Default value: 1
-	\begin{NiceTabular}{cccccc}[hvlines,colortbl-like]
-		\CodeBefore
-		%\columncolor{}{}
-		\rowcolor{maroon!50}{1}
-		\cellcolor{}{4-1}
-		\Body
-		Model       & SEN-14032               & TFmini-S & TFmini Plus & TF-Luna & XT-S1   \\
-		Type        & Single 				  & Single   & Single      & Single  & Single  \\
-		Range       & 40m-70\% $\rho_\lambda$ & 0.1-12m  & 0.1-12m     & 0.2m~8m & 0.3-30m \\
-		Angle (deg) & +/-0.5                  & +/-2     & +/-2.3      & +/-2    & +/-1.5  \\
-		Accuracy    & <5m,+/-2cm              & <6m,1cm  & 1\%-2\%     & +/-6cm  & +/-0.1m \\
-		Note        & nonlinearity <1m        &  &  &  & \\
-		Price       & \$\$\$                  & \$\$     & \$\$        & \$\$    & \$\$
-	\end{NiceTabular}
-	\caption{\label{fig:compareLiDAR}LiDAR Sensor Options}
-\end{table}
-
-\noindent The FORWARD team selects the TF-Luna model. Its easy I2C and great range to price point make it a viable option.\\
-
-% IMU comparison
-\begin{table}[H]
-	\centering
-	\setlength{\tabcolsep}{5pt} % Default value: 6pt
-	\renewcommand{\arraystretch}{1.5} % Default value: 1
-	\begin{NiceTabular}{ccc}[hvlines,colortbl-like]
-		\CodeBefore
-		%\columncolor{}{}
-		\rowcolor{maroon!50}{1}
-		\cellcolor{}{4-1}
-		\Body
-		Model         & BNO055 & MPU-6050 \\
-		Axis          & 9-DOF   & 6-DOF    \\
-		Sensitivity SF Tolerance & 1\% & 3\%  \\
-		Nonlinearity  & 0.2\%   & 0.5\%    \\
-		Sensor Fusion & Yes     & Yes      \\
-		Price         & \$      & \$       \\
-	\end{NiceTabular}
-	\caption{\label{fig:compareIMU}IMU Sensor Options}
-\end{table}
-
-\noindent The FORWARD team select BNO055 IMU because of its slight advantages. This device is affordable and will enhance FORWARD stability.\\
-
-% account for haptic feedback selection
+\noindent For \textbf{obstacle detection}, the final selections are:
+\begin{enumerate}
+	\item 2x HC-SR04 Multistatic Ultrasonic Sensors for lateral-facing detection.
+	\item 2x RCWL-1005 Monostatic Ultrasonic Sensors for front-facing detection.
+	\item The TFLuna LiDAR sensor, for its precision and accuracy. Front-facing. It has easy I2C configuration and a great price point, making it a viable option.
+	\item The BNO-055 Inertial Measurement Unit because of its advantages like quaternion output and affordability, which greatly enhance FORWARD stability.
+\end{enumerate}
 
 % MCU comparison
 \begin{table}[H]
@@ -161,7 +93,7 @@
 	\scalebox{0.9}{ % Scale down the entire table by 85%
 		\begin{NiceTabular}{cccccc}[hvlines,colortbl-like]
 			\CodeBefore
-			\rowcolor{gray!15}{1}
+			\rowcolor{blizzardblue}{1} % Row background color for header
 			\Body
 			Model            & Suunto Wing & Shokz OpenRun Pro & YouthWhisper \\
 			\hline
