@@ -4,7 +4,11 @@
 \noindent [UML CLASS DIAGRAM HERE]\\
 
 \subsection{Computer Vision}
+\noindent \textit{Classify grass by green color!}
 
-\subsection{Serial Interface}
+\subsection{Serial Interfaces}
+\noindent As discussed in section \ref{ardumatlab}, we can port the serial plotter data for the ranges and IMU to MATLAB in order to visualize the field of view. See equation \ref{Polar}. We can visualize obstacles present because of dips in the range outputs. We also can visualize attitude and orientation based on IMU outputs. Putting these into MATLAB plots will provide valuable insight into the dynamics of the entire system as it traverses a test environment. It also interfaces between non-visual and visually based sensing methods by creating a map of the environment.\\
+
+\noindent Mathematically, we know that the \underline{\textit{navigational plane}} is two-dimensional, with the reference frame origin located at the rollator center of mass. The positive x-axis is forward looking aft, the positive y-axis is left facing aft, and the positive z-axis is vertically upward. Because of the 2D nature, we can negate the z-axis because we do not sense altitude, nor is FORWARD an airborne system. It always stays grounded. Therefore, the guidance commands are given to the yaw angle (x-axis orientation) and the motor speed, which is actuated when on an incline or decline as shown in \ref{fig:slope-stability}. In essence, based on obstacles detected and classified, FORWARD will prompt the user to steer left or right. It should never prompt the user to go backwards or to travel vertically upward. The one exception is for curb lifting, which admittedly is a difficult maneuver to achieve: a stretch goal.\\
 
 \subsection{Motor Control Software}
