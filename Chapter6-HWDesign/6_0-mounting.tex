@@ -1,19 +1,18 @@
 \subsection{Rollator}
-\noindent The most clear option for the choice of walker frame, to be outfitted with motors and the electronics system, is a standard medical rollator, available on common online commercial marketplaces. The steel frame remains at a weight under 20 pounds, and its dimensions are given as 25.5"D x 31"W x 23.5"H. It comes with a seat, storage compartment, and pneumatically actuated brakes. The FORWARD team plans to remove the seat and storage compartment to replace with the electronics housing, change the braking system to velocity control, and to dismount the wheels to install the DC motors. The wheels are also 7.5-8 inch diameter, which we anticipate will provide enough torque for the adaptive velocity control and steering enacted by the motor shield.\\
+\noindent The most clear option for the choice of walker frame, to be outfitted with motors and the electronics system, is a standard medical rollator, available on common online commercial marketplaces. The model of choice is the Medline Premium Empower Rollator. The steel frame remains at a weight under 20 pounds, and its dimensions are given as 23.8"D x 11"W x 22"H. It comes with a seat, storage compartment, and pneumatically actuated brakes. The FORWARD team plans to remove the seat and storage compartment to replace with the electronics housing, change the braking system to velocity control, and to dismount the wheels to install the DC motors. The wheels are also 8 inch diameter, which we anticipate will provide enough torque for the adaptive velocity control and steering enacted by the motor shield.\\
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.3\textwidth]{./Images/rollator-amaz.jpg}
-	\caption{\label{fig:rollator-amaz}Medical Rollator}
+	\caption{\label{fig:rollator-amaz}Medline Premium Empower Medical Rollator}
 \end{figure}
 
 \noindent There are many other variants of rollators available - some with enlarged front wheels and some with only three wheels altogether. There seem to be two main shapes of frame: A and what we can call $\lambda$. We estimate that, the A frame is more appropriate for our purposes. FORWARD velocity control and electric braking also requires four wheels.\\
 
-<<<<<<< HEAD
 % morgan - do we fix the wheels in place? most of them swivel like castors
 
 % matthew
-\subsection{Electronics Chassis}
+\subsection{Electronics Chassis} \label{chassis}
 % Discuss psychical location of all elements and components on the walker frame and explain the reason. explain plans for wiring and attachment (tape, glue, screws etc).
 \subsubsection{Location of Components}
 \noindent The diagram below depicts the physical location of the components as attached to the walker. Several components, including the power supply, PCB, IMU, and LiDAR will be housed within a hard casing, most likely made of metal or wood. They will be encased so that they are stable and not exposed to the elements. The LiDAR and IMU, both of which are mounted to the PCB, should not be allowed to change position. In particular, the IMU measures the angle of the walker and needs to be level. If the IMU is not level, it will give incorrect readings. It is also undesirable for the PCB to be unstable or mounted loose beneath the seat because it would be easy for connections to loosen or for vibration to damage sensitive parts. We will use screws to mount the internal components to this casing so that all of the units are fixed in place. All of the other components will need to have wires running to this casing. These wires will be organized and mounted against the walker using wire clips so that there are no dangling wires, which could be a tripping hazard to the user and would appear unprofessional.\\
@@ -34,6 +33,8 @@
 	\includegraphics[width=1\textwidth]{./Images/measurements.png}
 	\caption{\label{fig:Measurements_of_walker}Measurements of the walker}
 \end{figure}
+
+\noindent Discuss psychical location of all elements and components on the walker frame and explain the reason. explain plans for wiring and attachment (tape, glue, screws etc).\\
 
 \noindent discuss positioning of sensors on the walker, wiring; need for IMU to be level. installation of haptics. implementation of earpiece being available to user. braking, motor speed control. physical object avoidance margins. obstacle classifications.\\
 
