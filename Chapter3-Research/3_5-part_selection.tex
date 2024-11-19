@@ -1,14 +1,14 @@
 \subsection{Part Selection}
 
 % account 1 page for ultrasonic table
-\begin{table}[H]
+\begin{figure}[H]
 	\centering
 	\setlength{\tabcolsep}{5pt} % Default value: 6pt
 	\renewcommand{\arraystretch}{1.5} % Default value: 1
 	\begin{NiceTabular}{ccccccc}[hvlines,colortbl-like]
 		\CodeBefore
 		%\columncolor{}{}
-		\rowcolor{maroon!50}{1}
+		\rowcolor{gray!15}{1}
 		\cellcolor{}{4-1}
 		\Body
 		Model       & HC-SR04 & RCWL1XX5 & RCWL1670   & MB1000 & H2KA  & SEN0150 \\
@@ -22,20 +22,20 @@
 		Price       & \$      & \$       & \$         & \$\$   & \$\$\$& \$\$\$
 	\end{NiceTabular}
 	\caption{\label{fig:compareUltrasonic}Ultrasonic Sensor Options}
-\end{table}
+\end{figure}
 
 % The decision
 \noindent Taking into account all the specifications and overall fit with FORWARD requirements, the team selects two HC-SR04 for side-facing, and two RCWL1005's for forward-facing.\\
 
 % account 1 page for lidar table
-\begin{table}[H]
+\begin{figure}[H]
 	\centering
 	\setlength{\tabcolsep}{5pt} % Default value: 6pt
 	\renewcommand{\arraystretch}{1.5} % Default value: 1
 	\begin{NiceTabular}{cccccc}[hvlines,colortbl-like]
 		\CodeBefore
 		%\columncolor{}{}
-		\rowcolor{maroon!50}{1}
+		\rowcolor{gray!15}{1}
 		\cellcolor{}{4-1}
 		\Body
 		Model       & SEN-14032               & TFmini-S & TFmini Plus & TF-Luna & XT-S1   \\
@@ -47,19 +47,19 @@
 		Price       & \$\$\$                  & \$\$     & \$\$        & \$\$    & \$\$
 	\end{NiceTabular}
 	\caption{\label{fig:compareLiDAR}LiDAR Sensor Options}
-\end{table}
+\end{figure}
 
 \noindent The FORWARD team selects the TF-Luna model. Its easy I2C and great range to price point make it a viable option.\\
 
 % IMU comparison
-\begin{table}[H]
+\begin{figure}[H]
 	\centering
 	\setlength{\tabcolsep}{5pt} % Default value: 6pt
 	\renewcommand{\arraystretch}{1.5} % Default value: 1
 	\begin{NiceTabular}{ccc}[hvlines,colortbl-like]
 		\CodeBefore
 		%\columncolor{}{}
-		\rowcolor{maroon!50}{1}
+		\rowcolor{gray!15}{1}
 		\cellcolor{}{4-1}
 		\Body
 		Model         & BNO055 & MPU-6050 \\
@@ -70,21 +70,21 @@
 		Price         & \$      & \$       \\
 	\end{NiceTabular}
 	\caption{\label{fig:compareIMU}IMU Sensor Options}
-\end{table}
+\end{figure}
 
 \noindent The FORWARD team select BNO055 IMU because of its slight advantages. This device is affordable and will enhance FORWARD stability.\\
 
 % account for haptic feedback selection
 
 % MCU comparison
-\begin{table}[H]
+\begin{figure}[H]
 	\centering
 	\setlength{\tabcolsep}{5pt} % Restore default column padding
 	\renewcommand{\arraystretch}{1.75} % Restore default row height
 	\scalebox{0.85}{ % Scale down the entire table by 85%
 		\begin{NiceTabular}{cccccc}[hvlines,colortbl-like]
 			\CodeBefore
-			\rowcolor{blizzardblue}{1}
+			\rowcolor{gray!15}{1}
 			\Body
 			Model            & ESP32D & Raspberry Pi 4 B & Jetson Nano \\
 			\hline
@@ -97,19 +97,19 @@
 		\end{NiceTabular}
 	}
 	\caption{\label{fig:mcuComparison}Comparison of MCU Options}
-\end{table}
+\end{figure}
 
 \noindent The FORWARD team selects the ESP32 MCU because of it's affordability and I/O ports. This MCU achieves all of our needed functionality at a fraction of the cost of the other products. \\
 
 % Camera comparison
-\begin{table}[H]
+\begin{figure}[H]
 	\centering
 	\setlength{\tabcolsep}{5pt} % Adjust column spacing
 	\renewcommand{\arraystretch}{1.75} % Adjust row spacing
 	\scalebox{0.8}{ % Scale down the entire table by 85%
 		\begin{NiceTabular}{lccc}[hvlines,colortbl-like]
 			\CodeBefore
-			\rowcolor{blizzardblue}{1} % Row background color for header
+			\rowcolor{gray!15}{1} % Row background color for header
 			\Body
 			Specification             & ESP32 CAM                  & Oak-D Lite                       &  AMB82-Mini\\
 			\hline
@@ -122,20 +122,20 @@
 		\end{NiceTabular}
 	}
 	\caption{\label{fig:compareCameras}Comparison of Camera Modules for ESP32-based Applications}
-\end{table}
+\end{figure}
 
 \noindent The FORWARD team selects the Realtek AMB82-Mini IoT AI Camera because of it's ability to perform all necessary AI processes while still maintaining a cost effective price. It also is a noticeable image quality improvement over the ESP32 Cam. \\
 
 \noindent A stretch requirement of our project is to implement a depth perception capability with our system. Due to the sensor fusion solution that we are taking (using the grid-like field of view described in figure \ref{fig:Grid-Generatio}) we have decided that we no longer need a high quality of camera to obtain the depth data. \\
 
-\begin{table}[H]
+\begin{figure}[H]
 	\centering
 	\setlength{\tabcolsep}{5pt} % Adjust column spacing
 	\renewcommand{\arraystretch}{1.75} % Adjust row spacing
 	\scalebox{0.8}{ % Scale down the entire table by 85%
 		\begin{NiceTabular}{lccc}[hvlines,colortbl-like]
 			\CodeBefore
-			\rowcolor{blizzardblue}{1} % Row background color for header
+			\rowcolor{gray!15}{1} % Row background color for header
 			\Body
 			Specification             & Ultralytics YOLO           	& FOMO                    		& Edge Impulse \\
 			\hline
@@ -149,12 +149,12 @@
 		\end{NiceTabular}
 	}
 	\caption{\label{fig:aiComparison}Comparison of AI Image Processing Solutions}
-\end{table}
+\end{figure}
 
 \noindent The FORWARD team selects to use the YOLO model family because of it's memory size flexibility from model to model as well as it's user friendly libraries to make integration simple. \\
 
 % Headphones comparison
-\begin{table}[H]
+\begin{figure}[H]
 	\centering
 	\setlength{\tabcolsep}{5pt} % Restore default column padding
 	\renewcommand{\arraystretch}{1.75} % Restore default row height
@@ -174,11 +174,11 @@
 		\end{NiceTabular}
 	}
 	\caption{\label{fig:headphonesComparison}Comparison of Headphone Options}
-\end{table}
+\end{figure}
 
 \noindent The FORWARD team selects to use the YouthWhisper Bone Conduction headphones due to their high affordability, solid battery life, and lighter weight. \\
 
-\begin{table}[H]
+\begin{figure}[H]
 	\centering
 	\setlength{\tabcolsep}{5pt} % Restore default column padding
 	\renewcommand{\arraystretch}{2.5} % Restore default row height
@@ -207,7 +207,7 @@
 		\end{NiceTabular}
 	}
 	\caption{\label{fig:motorSpecifications}Motor Specifications}
-\end{table}
+\end{figure}
 
 
 \noindent When deciding on what DC motors that we wanted to use, our main concerns were power, current rating, motor type, and price. It was calculated that in order to meet the speed requirements, we needed a total of 300W or 150W per motor. All of the motors investigated thus are at least 150W. It was also preferable to use brushless DC motors, as they are higher in quality (longevity, efficiency, low noise) than brushed DC motors and are more widely compatible with motor drivers. To decide between the brushless DC motors, we mostly looked at price and found the most cost-effective motors, while also keeping in mind the current rating so that we can purchase motor drivers with a large enough current rating to supply the motors. Thus, we decided to use the S55B-150 DC motors. 
@@ -215,7 +215,7 @@
 
 \noindent The FORWARD team selects to use \\
 
-\begin{table}[H]
+\begin{figure}[H]
 	\centering
 	\setlength{\tabcolsep}{5pt} % Restore default column padding
 	\renewcommand{\arraystretch}{1.75} % Restore default row height
@@ -238,31 +238,47 @@
 		\end{NiceTabular}
 	}
 	\caption{\label{fig:vibrationMotorSpecifications}Vibration Motor Specifications}
-\end{table}
+\end{figure}
 
 \noindent Haptic motors are small DC motors that are used for vibration feedback in the handlebars of the walker. Because they are only used for the purpose of vibration, these motors are very small and do not draw much current. Our main concern with deciding which haptic motors to use is the voltage rating and price. In order to be compatible with most motor drivers, the motors should be able to be operated at both 5V and 3V. Although not the most cost-effective, we chose the "Vibration Motor" as it has the largest compatibility with motor drivers.\\
 
-\begin{table}[H]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{./Images/motor_controller_table.png}
 	\caption{\label{fig:motor_controller}Motor Controller Specifications}
-\end{table}
+\end{figure}
 
 \noindent After comparing multiple factors, we ultimately chose the 768861A\_Y1181 motor controller. This is because our main concern was supplying current to the motors and operating all 4 motors from the same controller. The motors that we chose to drive the wheels draw up to 11A of current, which the 768861A\_Y1181 would be able to handle, although it is rated for 10A, upon examining the data sheet. This motor controller also provides a wide voltage range of 5-30V, which is able to provide the correct voltage for both the wheel-driving motors and the haptic motors. The 768861A\_Y1181 also happens to be the most cost-effective of the motor controllers. \cite{UMLIFE} \cite{AliExpress5} \cite{Makerbase} \cite{AliExpress7} \cite{CircuitBasics} \cite{Espressif1} \cite{AliExpress4} \cite{Burgess} \cite{RandomNerd} \cite{Espressif2} \cite{SimpleFOC} \cite{SimpleFOC2} \cite{Peza}\\
 
 
-\begin{table}[H]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{./Images/haptic_driver_table_2.png}
 	\caption{\label{fig:haptic_driver}Haptic Motor Driver Specifications}
-\end{table}
+\end{figure}
 
 \noindent This table compares the different motor drivers available for use with haptic motors.  decided to use the L298N motor driver as this solution is simply the most cost-effective. All of the haptic motor driver options available have similar ratings in voltage and current. We were also able to find more documentation for the L298N \cite{BOJACK} \cite{BEEYDC} \cite{HiLetgo}.\\
 
-\begin{table}[H]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{./Images/wheel_driver_table.png}
 	\caption{\label{fig:wheel_driver}Wheel Motor Driver Specifications}
-\end{table}
+\end{figure}
 
-\noindent Comparing options, we decided upon using the BTS7960 motor driver. The BTS7960 is able to supply more than enough current to the DC motors driving the wheels. This option is also the most cost-effective as the price includes two motor drivers to be able to drive both motors \cite{RioRand} \cite{Gikfun} \cite{Hobbywing}.\\ 
+\noindent Comparing options, we decided upon using the BTS7960 motor driver. The BTS7960 is able to supply more than enough current to the DC motors driving the wheels. This option is also the most cost-effective as the price includes two motor drivers to be able to drive both motors \cite{RioRand} \cite{Gikfun} \cite{Hobbywing}.\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{./Images/headlight_table.png}
+	\caption{\label{fig:headlights}Comparison of Headlight Options}
+\end{figure}
+
+\noindent Comparing these different headlights that were originally intended for bicycles and motorcycles, we decided to use the Vogely ‎500400240. This is because these are the only headlights of these options that are able to be controlled digitally. Headlights are only necessary in dark environments, so we must connect the headlights to a light sensor. \cite{vogely2024} \cite{frdhee2024} \cite{stellarlights2024}\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{./Images/battery_table.png}
+	\caption{\label{fig:batteries}Comparison of Battery Options}
+\end{figure}
+
+\noindent Comparing these different options for batteries, we decided upon using the SigmasTek battery. We evaluated 12V batteries since we ultimately decided on implementing 12V motors and these are our highest-voltage components. Comparing prices and capacity, we found that the SigmasTek battery was preferred because it provides the lowest cost for the needed battery capacity. \cite{liftmaster2024} \cite{lifepo42024}\\
