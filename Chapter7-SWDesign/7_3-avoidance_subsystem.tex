@@ -1,6 +1,18 @@
 \subsection{Avoidance Protocols}
 \noindent With the presence of telemetry and range detection data from the sensors, and the obstacles classified and their movement tracked by the camera and the neural networks, FORWARD can proceed to generate guidance feedback and motor commands to steer the rollator and to keep the user safe from collisions. Avoidance protocols may take the form of: emergency stop, right or left hand turn, or veering. The form these protocols will take is primarily cooperative feedback through haptic handlebar vibration and spatial audio over Bluetooth bone conduction headphones. There is also the emergency stop maneuver and polite obstacle avoidance. Stability is also taken into consideration because after veering away from an obstacle, FORWARD should re-orient itself to travel straight once again.\\
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{./Images/motorsw.drawio.png}
+	\caption{\label{fig:motorsw}Motor Control Software Diagram}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./Images/hapticsw.png}
+	\caption{\label{fig:hapticsw}Haptic Control Software Diagram}
+\end{figure}
+
 % morgan, how would we go about this? if we send a pwm to lock the motors, or simply have an actuator lock the brakes.
 \subsubsection{Emergency Stop}
 \noindent An emergency stop would take place if a road is detected (> 2 cars detected) or if there is a drop off (cliff). It would also occur when the rollator acceleration increases rapidly, indicating it is fleeing the user down a decline.\\

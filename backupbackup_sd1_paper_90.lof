@@ -1,0 +1,40 @@
+\contentsline {figure}{\numberline {1}{\ignorespaces Engineering Requirements}}{6}{figure.caption.5}%
+\contentsline {figure}{\numberline {2}{\ignorespaces House of Quality}}{7}{figure.caption.6}%
+\contentsline {figure}{\numberline {3}{\ignorespaces System Block Diagram}}{9}{figure.caption.7}%
+\contentsline {figure}{\numberline {4}{\ignorespaces "Rollator" with nine HC-SR04 sensors \cite {Mostofa}}}{11}{figure.caption.8}%
+\contentsline {figure}{\numberline {5}{\ignorespaces 2D Grid with Safe Region Generation}}{13}{figure.caption.9}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Ultrasonic Directivity \cite {coolUltraDirect}}}{16}{figure.caption.10}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Scanning LiDAR FOV \cite {coolLiDARfov}}}{16}{figure.caption.11}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Bluetooth Spread-spectrum Frequency Hopping}}{19}{figure.caption.12}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Pulse Width Modulation Duty Cycle Graph}}{21}{figure.caption.13}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Proposed Sensor FOV (Range NOT to scale)}}{36}{figure.caption.14}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Ultrasonic Sensor Options}}{38}{figure.caption.15}%
+\contentsline {figure}{\numberline {12}{\ignorespaces LiDAR Sensor Options}}{39}{figure.caption.16}%
+\contentsline {figure}{\numberline {13}{\ignorespaces IMU Sensor Options}}{39}{figure.caption.17}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Comparison of MCU Options}}{39}{figure.caption.18}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Comparison of Camera Modules for ESP32-based Applications}}{40}{figure.caption.19}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Comparison of AI Image Processing Solutions}}{40}{figure.caption.20}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Comparison of Headphone Options}}{41}{figure.caption.21}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Motor Specifications}}{41}{figure.caption.22}%
+\contentsline {figure}{\numberline {19}{\ignorespaces Vibration Motor Specifications}}{42}{figure.caption.23}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Motor Controller Specifications}}{42}{figure.caption.24}%
+\contentsline {figure}{\numberline {21}{\ignorespaces Haptic Motor Driver Specifications}}{43}{figure.caption.25}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Wheel Motor Driver Specifications}}{43}{figure.caption.26}%
+\contentsline {figure}{\numberline {23}{\ignorespaces Comparison of Headlight Options}}{43}{figure.caption.27}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Comparison of Battery Options}}{44}{figure.caption.28}%
+\contentsline {figure}{\numberline {25}{\ignorespaces ChatGPT compares sensing technologies}}{51}{figure.caption.29}%
+\contentsline {figure}{\numberline {26}{\ignorespaces Medline Premium Empower Medical Rollator}}{53}{figure.caption.30}%
+\contentsline {figure}{\numberline {27}{\ignorespaces Location of components on the walker}}{55}{figure.caption.31}%
+\contentsline {figure}{\numberline {28}{\ignorespaces Measurements of the walker}}{55}{figure.caption.32}%
+\contentsline {figure}{\numberline {29}{\ignorespaces Stability on Slopes}}{57}{figure.caption.33}%
+\contentsline {figure}{\numberline {30}{\ignorespaces Breadboard w/ Ultrasonics, and IMU \& LiDAR I2C Bus}}{58}{figure.caption.34}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Motor Control System Diagram}}{59}{figure.caption.35}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Polite Obstacle Avoidance}}{68}{figure.caption.36}%
+\contentsline {figure}{\numberline {33}{\ignorespaces PCB Block Diagram}}{69}{figure.caption.37}%
+\contentsline {figure}{\numberline {34}{\ignorespaces PCB KiCAD Schematic}}{70}{figure.caption.38}%
+\contentsline {figure}{\numberline {35}{\ignorespaces Euler Angles Test}}{72}{figure.caption.39}%
+\contentsline {figure}{\numberline {36}{\ignorespaces Senior Design I Milestones}}{74}{figure.caption.40}%
+\contentsline {figure}{\numberline {37}{\ignorespaces Senior Design I Gantt Chart}}{75}{figure.caption.41}%
+\contentsline {figure}{\numberline {38}{\ignorespaces Senior Design II Milestones}}{75}{figure.caption.42}%
+\contentsline {figure}{\numberline {39}{\ignorespaces Senior Design II Gantt Chart}}{76}{figure.caption.43}%
+\contentsline {figure}{\numberline {40}{\ignorespaces Project Budget}}{77}{figure.caption.44}%
