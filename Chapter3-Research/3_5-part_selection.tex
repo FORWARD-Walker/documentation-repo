@@ -180,40 +180,12 @@
 
 \begin{figure}[H]
 	\centering
-	\setlength{\tabcolsep}{5pt} % Restore default column padding
-	\renewcommand{\arraystretch}{2.5} % Restore default row height
-	\scalebox{0.55}{ % Scale down the entire table
-		\begin{NiceTabular}{|l|c|c|c|c|c|c|c|}[hvlines,colortbl-like]
-			\CodeBefore
-			\rowcolor{gray!15}{1}
-			\Body
-			\textbf{Motor} & \textbf{Oumefar8r2gund350 \cite{yzl1}} & \textbf{775 DC Motor \cite{Citphto}} & \textbf{No. 14 \cite{AliExpress1}} & \textbf{SHABEAM A MOTOR \cite{AliExpress2}} & \textbf{P300 \cite{AliExpress3}} & \textbf{MBD65WI \cite{PrecisionMicrodrives}} & \textbf{S55B-150 \cite{AliExpress8}} \\ 
-			\hline 
-			\textbf{Voltage} & 12V & 24V & 18V & 10.5V-21V & 12V-24V & 21.6V & 21.6V \\ 
-			\hline 
-			\textbf{Current} & 0.32A & 12A & 8A starting & 3.3A & 7-13A & 10A & 11A (max tested) \\ 
-			\hline 
-			\textbf{Power} & 150W & 200W & 300W & 300W & 300W & 150W & 150W \\ 
-			\hline 
-			\textbf{Type} & Brushed & Brushed & Brushless & Brushless & Brushless & Brushless & Brushless \\ 
-			\hline 
-			\textbf{RPM} & 15000 & 12000 & Unlisted & 31570 & 130000 & Unlisted & Unlisted \\ 
-			\hline 
-			\textbf{Weight} & 0.77lbs & 0.77lbs & 1.23lbs & Unlisted & 0.52lbs & 0.62lbs & 0.331lbs \\ 
-			\hline 
-			\textbf{Arrival Time} & 3 days & 2 days & 1-2 weeks & 1-2 weeks & 1-2 weeks & 1-2 weeks & 1-2 weeks \\ 
-			\hline 
-			\textbf{Price} & \$19.49 & \$12.99 & \$28.03 & \$20.01 & \$42.46 & \$13.83 & \$10.57 \\ 
-		\end{NiceTabular}
-	}
-	\caption{\label{fig:motorSpecifications}Motor Specifications}
+	\includegraphics[width=1\textwidth]{./Images/drive_motors.png}
+	\caption{\label{fig:drive_motors}Drive Motor Specifications}
 \end{figure}
 
 
-\noindent When deciding on what DC motors that we wanted to use, our main concerns were power, current rating, motor type, and price. It was calculated that in order to meet the speed requirements, we needed a total of 300W or 150W per motor. All of the motors investigated thus are at least 150W. It was also preferable to use brushless DC motors, as they are higher in quality (longevity, efficiency, low noise) than brushed DC motors and are more widely compatible with motor drivers. To decide between the brushless DC motors, we mostly looked at price and found the most cost-effective motors, while also keeping in mind the current rating so that we can purchase motor drivers with a large enough current rating to supply the motors. Thus, we decided to use the S55B-150 DC motors. 
-
-
-\noindent The FORWARD team selects to use \\
+\noindent When deciding on what DC motors that we wanted to use, our main concerns were power, current rating, motor type, and price. It was calculated that in order to meet the speed requirements, we needed a total of 300W or 150W per motor. All of the motors investigated thus are at least 150W. It was also preferable to use brushless DC motors, as they are higher in quality (longevity, efficiency, low noise) than brushed DC motors and are more widely compatible with motor drivers. To decide between the brushless DC motors, we mostly looked at price and found the most cost-effective motors, while also keeping in mind the current rating so that we can purchase motor drivers with a large enough current rating to supply the motors. Thus, we decided to use the S55B-150 DC motors. \cite{yzl1} \cite{Citphto} \cite{AliExpress1} \cite{AliExpress2} \cite{AliExpress3} \cite{PrecisionMicrodrives} \cite {AliExpress8}\\
 
 \begin{figure}[H]
 	\centering
@@ -244,7 +216,7 @@
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{./Images/motor_controller_table.png}
+	\includegraphics[width=1\textwidth]{./Images/motor_controller_table2.png}
 	\caption{\label{fig:motor_controller}Motor Controller Specifications}
 \end{figure}
 
