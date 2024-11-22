@@ -1,6 +1,13 @@
 \subsection{Identification Subsystem}
 % intro paragraph
+\noindent The hardware needed for the identification subsystem is the ESP32 MCU along with the AMB82-MINI Camera board. These two components are responsible for effective object identification and communication between subsystems. In this section we will dive deeper into some of the needed components such as the camera, the WiFi hardware (Antennas), and the AI SoC.
 
 % how is the ESP32 able to host its own wireless network. confirm we don't require FORWARD to be connected to a WIFI network or personal hotspot.
 \subsubsection{ESP32 Wireless Network}
-\noindent Antenna?
+\noindent In order to have effective wireless transmission between the AMB82-MINI board and the ESP32, we needed to host a WiFi network on the ESP32 that be accessed by the AMB82-MINI. The main hardware needed to make this happen is the antennas, RF filters, switches, and amplifiers. The antennas used are dualband WiFi (2.4GHz/5GHz) IPEX antennas. These antennas are common for use with IoT devices and embedded systems due to their compact nature and high data speeds. 
+
+\subsubsection{Camera}
+\noindent The camera onboard the AMB82-MINI board is a JXF37 camera. This camera has 1920 x 1080 resolution, delivering full HD clarity for sharp and detailed visuals. It also has a 130 degree field of view, allowing for us to capture more than enough of the world around the system. The AMB82-MINI board has video encoding capabilities of 1080p at 30 FPS, again providing more then enough capability for our system. 
+
+\subsubsection{AI Capable MCU}
+\noindent The MCU onboard the AMB82-MINI is what drives this entire subsystem by being able to perform the AI object detection algorithms with high efficiency. The board has an ARMv8M MCU which runs at 500 MHz, and is also rated for 0.4 TOPS for AI algorithms. It is also equipped with 128 MB of DDR2 RAM to store the YOLO models we are running. 

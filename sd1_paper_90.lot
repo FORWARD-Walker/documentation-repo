@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-\contentsline {table}{\numberline {1}{\ignorespaces Ultrasonic Sensor Options}}{39}{table.caption.16}%
-\contentsline {table}{\numberline {2}{\ignorespaces LiDAR Sensor Options}}{40}{table.caption.17}%
-\contentsline {table}{\numberline {3}{\ignorespaces IMU Sensor Options}}{40}{table.caption.18}%
-\contentsline {table}{\numberline {4}{\ignorespaces Comparison of MCU Options}}{40}{table.caption.19}%
-\contentsline {table}{\numberline {5}{\ignorespaces Comparison of Camera Modules for ESP32-based Applications}}{41}{table.caption.20}%
-\contentsline {table}{\numberline {6}{\ignorespaces Comparison of AI Image Processing Solutions}}{41}{table.caption.21}%
-\contentsline {table}{\numberline {7}{\ignorespaces Comparison of Headphone Options}}{42}{table.caption.22}%
-\contentsline {table}{\numberline {8}{\ignorespaces Motor Specifications}}{42}{table.caption.23}%
-\contentsline {table}{\numberline {9}{\ignorespaces Vibration Motor Specifications}}{43}{table.caption.24}%
-\contentsline {table}{\numberline {10}{\ignorespaces Motor Controller Specifications}}{43}{table.caption.25}%
-\contentsline {table}{\numberline {11}{\ignorespaces Haptic Motor Driver Specifications}}{44}{table.caption.26}%
-\contentsline {table}{\numberline {12}{\ignorespaces Wheel Motor Driver Specifications}}{44}{table.caption.27}%
-=======
 \contentsline {table}{\numberline {1}{\ignorespaces Ultrasonic Sensor Options}}{28}{table.caption.14}%
 \contentsline {table}{\numberline {2}{\ignorespaces LiDAR Sensor Options}}{29}{table.caption.15}%
 \contentsline {table}{\numberline {3}{\ignorespaces IMU Sensor Options}}{30}{table.caption.16}%
->>>>>>> de67bcf570776e8e83ba569253c817a2855cd788
