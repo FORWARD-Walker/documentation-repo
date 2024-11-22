@@ -1,0 +1,107 @@
+\contentsline {section}{\numberline {1}Executive Summary}{1}{section.1}%
+\contentsline {section}{\numberline {2}Project Description}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Project Motivations}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Project Objectives and Goals}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Project Requirement Specifications}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}House of Quality}{6}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Project Block Diagram}{8}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Research}{10}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Existing Products and Projects}{10}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Current Walker Sensing Applications}{11}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Current Walker Stability Applications}{12}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Current Computer Vision Object Detection Applications}{12}{subsubsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.4}Current Audio Feedback Applications/Technologies}{14}{subsubsection.3.1.4}%
+\contentsline {subsubsection}{\numberline {3.1.5}Motor and Steering Applications}{14}{subsubsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.2}Relevant Technologies}{15}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Sensor Ranging}{15}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Walker Stability}{17}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Computer Vision Object Detection}{18}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Current Audio Feedback Technologies}{18}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}Motor Shield/Driver}{20}{subsubsection.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.6}Speed Control}{21}{subsubsection.3.2.6}%
+\contentsline {subsubsection}{\numberline {3.2.7}Steering and Braking Method }{21}{subsubsection.3.2.7}%
+\contentsline {subsubsection}{\numberline {3.2.8}Power Supply}{22}{subsubsection.3.2.8}%
+\contentsline {subsubsection}{\numberline {3.2.9}DC Motor Technology}{24}{subsubsection.3.2.9}%
+\contentsline {subsubsection}{\numberline {3.2.10}Haptic Motors}{25}{subsubsection.3.2.10}%
+\contentsline {subsubsection}{\numberline {3.2.11}Voltage Regulation}{26}{subsubsection.3.2.11}%
+\contentsline {subsubsection}{\numberline {3.2.12}Light Sensors}{27}{subsubsection.3.2.12}%
+\contentsline {subsection}{\numberline {3.3}Strategic Components}{27}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Ultrasonic Sensors}{27}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}LiDAR Sensors}{28}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Inertial Measurement Units}{29}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}Computer Vision/AI Image Processing Models}{29}{subsubsection.3.3.4}%
+\contentsline {subsubsection}{\numberline {3.3.5}Camera Technologies}{30}{subsubsection.3.3.5}%
+\contentsline {subsubsection}{\numberline {3.3.6}MCU Technologies}{31}{subsubsection.3.3.6}%
+\contentsline {subsubsection}{\numberline {3.3.7}Motor Controllers}{32}{subsubsection.3.3.7}%
+\contentsline {subsubsection}{\numberline {3.3.8}Motor Drivers}{34}{subsubsection.3.3.8}%
+\contentsline {subsection}{\numberline {3.4}Possible Architectures and Related Diagrams}{35}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Proposed Sensor FOV Topology}{35}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Euler Angles}{36}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Velocity and Position Solution}{37}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}Kalman Filter}{37}{subsubsection.3.4.4}%
+\contentsline {subsubsection}{\numberline {3.4.5}Quaternions}{38}{subsubsection.3.4.5}%
+\contentsline {subsubsection}{\numberline {3.4.6}Typical CV camera setup}{38}{subsubsection.3.4.6}%
+\contentsline {subsubsection}{\numberline {3.4.7}Typical steering motor control wiring}{38}{subsubsection.3.4.7}%
+\contentsline {subsection}{\numberline {3.5}Part Selection}{38}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Requirements, Standards, and Constraints}{45}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Related Standards}{45}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Connection Standards}{45}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Design Impact}{45}{subsubsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.2}Economic Contraints}{46}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Environmental Constraints}{47}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Social and Political Constraints}{48}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Ethical, Health, and Safety Constraints}{48}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Comparison of ChatGPT with Similar Platforms}{50}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Example 1: Sonar vs. LiDAR}{50}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Example 2: Power Supply to the MCU}{51}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Example 3: }{52}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Hardware Design}{53}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Rollator}{53}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Electronics Chassis}{53}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Location of Components}{53}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}Measurements of the Walker}{55}{subsubsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.3}Arduino}{56}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Detection Subsystem}{56}{subsection.6.4}%
+\contentsline {subsubsection}{\numberline {6.4.1}Sensor Orientation}{56}{subsubsection.6.4.1}%
+\contentsline {subsubsection}{\numberline {6.4.2}Incline and Decline Stability}{57}{subsubsection.6.4.2}%
+\contentsline {subsubsection}{\numberline {6.4.3}Sensor Fusion}{57}{subsubsection.6.4.3}%
+\contentsline {subsection}{\numberline {6.5}Identification Subsystem}{58}{subsection.6.5}%
+\contentsline {subsubsection}{\numberline {6.5.1}ESP32 Wireless Network}{58}{subsubsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.6}Power Supply and Voltage Regulation}{58}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Avoidance Subsystem}{59}{subsection.6.7}%
+\contentsline {subsubsection}{\numberline {6.7.1}Motor Control System}{59}{subsubsection.6.7.1}%
+\contentsline {subsubsection}{\numberline {6.7.2}Wheel Rotational Motion}{60}{subsubsection.6.7.2}%
+\contentsline {subsubsection}{\numberline {6.7.3}Turning Mechanics}{60}{subsubsection.6.7.3}%
+\contentsline {subsubsection}{\numberline {6.7.4}Motor Installation}{61}{subsubsection.6.7.4}%
+\contentsline {subsubsection}{\numberline {6.7.5}Emergency Braking}{62}{subsubsection.6.7.5}%
+\contentsline {subsubsection}{\numberline {6.7.6}Reconciling User Control and Automatic Guidance}{63}{subsubsection.6.7.6}%
+\contentsline {section}{\numberline {7}Software Design}{64}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Guidance, Navigation, and Control Software}{64}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Computer Vision}{64}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Serial Interface}{64}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Motor Control Software}{64}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Ranging Algorithms}{64}{subsection.7.5}%
+\contentsline {subsubsection}{\numberline {7.5.1}Range Reading Harmonization}{64}{subsubsection.7.5.1}%
+\contentsline {subsubsection}{\numberline {7.5.2}I2C Bus for Sensors}{66}{subsubsection.7.5.2}%
+\contentsline {subsection}{\numberline {7.6}Identification and Image Processing}{66}{subsection.7.6}%
+\contentsline {subsubsection}{\numberline {7.6.1}Training Object Recognition Models}{66}{subsubsection.7.6.1}%
+\contentsline {subsubsection}{\numberline {7.6.2}Predetermined Obstacles}{66}{subsubsection.7.6.2}%
+\contentsline {subsection}{\numberline {7.7}Avoidance Protocols}{66}{subsection.7.7}%
+\contentsline {subsubsection}{\numberline {7.7.1}Emergency Stop}{67}{subsubsection.7.7.1}%
+\contentsline {subsubsection}{\numberline {7.7.2}Stationary Obstacle}{67}{subsubsection.7.7.2}%
+\contentsline {subsubsection}{\numberline {7.7.3}Polite Response to Obstacle in Motion}{67}{subsubsection.7.7.3}%
+\contentsline {section}{\numberline {8}Prototype Fabrication}{69}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Printed Circuit Board Design}{69}{subsection.8.1}%
+\contentsline {section}{\numberline {9}System Testing}{71}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Subsystem Testing}{71}{subsection.9.1}%
+\contentsline {subsubsection}{\numberline {9.1.1}Detection FOV Threshold}{71}{subsubsection.9.1.1}%
+\contentsline {subsubsection}{\numberline {9.1.2}Identification Importance}{72}{subsubsection.9.1.2}%
+\contentsline {subsubsection}{\numberline {9.1.3}Control Feedback}{72}{subsubsection.9.1.3}%
+\contentsline {subsection}{\numberline {9.2}System Integration, Testing, and Evaluation}{73}{subsection.9.2}%
+\contentsline {section}{\numberline {10}Administrative Content}{74}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Project Milestones}{74}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Project Budget}{76}{subsection.10.2}%
+\contentsline {section}{\numberline {11}Conclusion}{78}{section.11}%
+\contentsline {section}{\numberline {12}Appendix A - Permissions}{i}{section.12}%
+\contentsline {section}{\numberline {13}Appendix B - References}{iii}{section.13}%
+\contentsline {section}{\numberline {14}Appendix C - Chat GPT Outputs}{xiv}{section.14}%

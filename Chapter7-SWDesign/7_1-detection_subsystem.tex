@@ -1,23 +1,118 @@
 \subsection{Ranging Algorithms}
 \noindent Instructing FORWARD where to guide the user is a solution that the detection and identification systems generate. Various scenarios are described in the system testing chapter. It will be a matter of solving an adaptive geometrical situation and relaying the results to the processor.\\
 
-\subsubsection{Time-of-Flight Calculation}
-\noindent The equation to calculate range from time-of-flight is mentioned first in \ref{sssec:tof}. We note that, the speed of sound and of light greatly exceed the latency requirement in order to guide the rollator. We can observe in nearly real time changes in the range readings. As we see, we can use the Arduino's IDE serial plotter to visualize these telemetry readings.\\
+\subsubsection{State Space Representation}
+\noindent There are more outputs the inertial measurement unit can provide besides the angles. One of most interesting ones is the accelerations. This would be the rate that the velocity of the rollator body is changing with respect to time. From a control standpoint, we can think of a state-space representation. FORWARD is a multi-input, multi-output system (MIMO). Let's define the states:
+X and Y position (2D plane on the ground), yaw angled orientation, x and y velocity, and the angular velocity:
+$$X = [x, y, \theta, v_x, v_y, \omega]^T$$
+The inputs are the yaw angle steering command and the left and right motor spin speeds:
+$$U = [\phi, u_l, u_r]^T$$
+The outputs are the range sensor readings, the IMU acceleration, and Euler angles:
+$$Y = [s_1, s_2, s_3, s_4, l_1, a_x, a_y, a_z, \alpha, \beta, \gamma ]^T$$
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\textwidth]{./Images/serial-plotter.png}
-	\caption{\label{fig:serial-plot}Euler Angles and LiDAR Distance Plot Test}
-\end{figure}
+\noindent The state equation, where differential operators, and various constants determine the relationships. $\epsilon_n$ is a very small value, meaning the difference between the two variables should be minimized. $k_n$ is a motor coefficient, in which the steering is determined by the differential wheel spin between left and right motors:
+\[\dot{x} =
+\begin{bmatrix}
+	\dot{x}\\ \dot{y}\\ \dot{\theta}\\ \dot{v_x}\\ \dot{v_y}\\ \dot{\omega}\\
+\end{bmatrix} = 
+\begin{bmatrix}
+	1 & 0 & 0 & \frac{d}{dt} & 0 & 0 \\
+	0 & 1 & 0 & 0 & \frac{d}{dt} & 0 \\
+	0 & 0 & 1 & 0 & 0 & \frac{d}{dt} \\
+	0 & 0 & 0 & \frac{d}{dt} & 0 & 0 \\
+	0 & 0 & 0 & 0 & \frac{d}{dt} & 0 \\
+	0 & 0 & \frac{d}{dx}\frac{d}{dy} & 0 & 0 & \frac{d}{dt} \\
+\end{bmatrix}
+\begin{bmatrix}
+	x\\ y\\ \theta\\ v_x\\ v_y\\ \omega
+\end{bmatrix} + 
+\begin{bmatrix}
+	\frac{d}{dt} & \frac{d}{dt} & \frac{d}{dt} \\
+	\frac{d}{dt} & \frac{d}{dt} & \frac{d}{dt} \\
+	\epsilon_1 & k_l & k_r \\
+	0 & \epsilon_2 & \epsilon_3 \\
+	0 & \epsilon_4 & \epsilon_5 \\
+	\frac{d}{dt} & 0 & 0\\
+\end{bmatrix}
+\begin{bmatrix}
+	\phi\\ u_l\\ u_r
+\end{bmatrix}
+\]
 
+<<<<<<< HEAD
 \subsubsection{Range Reading Harmonization}
 \noindent In order to properly utilize all of the data our peripherals supply, we must design an effective and efficient sensor fusion system that can harmonize all of the incoming sensor data with the object detection data. In our research, we referenced an article \cite{CVRef2} that discussed using a 2D grid to determine where objects were in space. We are going to bring these ideas into our design, but allowing the object data, which comes with a position on a 2D-grid, to set this grid, which then our sensors can be associated to certain sections of this grid to provide ranging. For our purposes, x = 1920 and y = 1080 because our camera has a 1920x1080 frame size. We also know that the origin (0,0) is at the bottom left from the perspective of the camera. In figure \ref{fig:proposedsensorFOV}, we see that we will have four sonar sensors surrounding FORWARD. To illustrate my point, if we had an object return the position (1200, 1800, 0, 800), this being the form (Xmin, Xmax, Ymin, Ymax), then we would trigger the front right sonar sensor and receive the ranging measurement of said object. \\
 
 \noindent We will also utilize the LiDAR readings to provide more precise ranging... \\
 
 \noindent There are more outputs the inertial measurement unit can provide besides the angles. One of most interesting ones is the accelerations. This would be the rate that the velocity of the rollator body is changing with respect to time. 
+=======
+\noindent The relation of outputs to states and inputs is harder to determine, so the output matrix is left ambiguous (6x11):
+\[y =
+\begin{bmatrix}
+	s_1, s_2, s_3, s_4, l_1, a_x, a_y, a_z, \alpha, \beta, \gamma
+\end{bmatrix}^T = 
+\begin{bmatrix}
+	6\times 11
+\end{bmatrix}
+\begin{bmatrix}
+	x, y, \theta, v_x, v_y, \omega
+\end{bmatrix}^T
+%\begin{bmatrix}
+%	3\times 11
+%\end{bmatrix}
+%\begin{bmatrix}
+%	\phi\\ u_l\\ u_r
+%\end{bmatrix}
+\]
+>>>>>>> de67bcf570776e8e83ba569253c817a2855cd788
 
-\noindent This is also where an estimator is useful.\\
+
+%$$X = [x_1,x_2,x_3,x_4,x_5,x_6,x_7]^T$$
+%The rollator orientation (attitude, Euler angles):
+%$$x_1=\psi ,x_2=\theta, x_3=\phi$$
+%The rollator acceleration signals:
+%$$x_4=a_x, x_5=a_y, x_6=a_z$$
+%We do not consider braking or the haptic PWM signals. The main actuator signal is the yaw steering angle command:
+%$$x_7=\phi_c$$
+%
+%\noindent The inputs $U = [u_1, u_2, u_3, u_4, u_5, u_6, u_7]^T$ are as follows. Notice roll is not dealt with because $\psi$ is static.\\
+%$u_1:incline\ angle$\\
+%$u_2:user\ steering\ force$\\
+%$u_3:motor\ commands$\\
+%Ultrasonic sensors 1-4 and the TFLuna LiDAR:\\
+%$u_4:S1,u_5:S2,u_6:S3,u_7:S4,u_8:L1$
+%
+%\noindent The state equations:\\
+%$$\dot{X} = AX + BU$$
+%$$Y = CX + DU$$\\
+%where D=0 because there is no direct transmission. We then can define the 7x7 state transition matrix:\\
+%\[A = \begin{bmatrix}
+%\alpha_1 & 0 & 0 & \beta_1 & 0 & 0 & 0 \\
+%0 & \alpha_2 & 0 & 0 & \beta_2 & 0 & 0 \\
+%0 & 0 & \alpha_3 & 0 & 0 & \beta_3 & 0 \\
+%0 & 0 & 0 & \zeta_1 & 0 & 0 & 0 \\
+%0 & 0 & 0 & 0 & \zeta_2 & 0 & 0 \\
+%0 & 0 & 0 & 0 & 0 & \zeta_3 & 0 \\
+%0 & 0 & \gamma_1 & \gamma_2 & \gamma_3 & 0 & 0
+%\end{bmatrix}\]
+%
+%\noindent The control influence matrix is a 3x7 which describes the relationship of the inputs to the states:\\
+%\[B = \begin{bmatrix}
+%	\omega_1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+%	0 & \omega_2 & 0 & 0 & 0 & 0 & 0 \\
+%	0 & \omega_3 & 0 & 0 & 0 & 0 & 0 \\
+%	0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+%	0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+%	0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+%	0 & 0 & \lambda_1 & \lambda_2 & \lambda_3 & \lambda_4 & \lambda_5
+%\end{bmatrix}\]
+
+\noindent By this, we see that the state of the euler angles and accelerations are interdependent in some axes and that the yaw steering command is dependent on the yaw angle and x and y accelerations. To ensure stability, we must either minimize acceleration or maximize the range readings.\\
+
+\noindent One important note to consider is interference of the ultrasonic pulses. Being that FORWARD uses four of them, it is important to make sure the receivers do not receive each others emitted energy reflections. Ultrasonics are directional, so by pointing the multistatic sensors to the left and right sides of the rollator to monitor passing or approaching obstacles, we decouple them from the monostatic. However, the front-facing sensors are only separated by the length of the axel, meaning these will need to be triggered sequentially to avoid interference. This can be implemented simply in Arduino by separate digital write statements.\\
+
+\noindent This is also where a state estimator is useful. There is not a need nor a call for a mathematical definition of a Kalman filter for the scope of this project. However, we can make a general remark on the nature of the inputs and states. The sensor readings are all continuous, but can experience near instantaneous changes due to sudden appearances of obstacles or disturbances in the environment. For example, a fast moving obstacle can quickly enter the field of view, which may cause range sensor readings to drop quickly, while the amount of objects identified by the camera may change quickly as well. Therefore, an estimator is useful in the event of actively avoiding an obstacle present, in that it can help smooth response to commands and provide the best advice on where to veer toward, but it would be disrupted by the volatile environment.\\
 
 \subsubsection{I2C Bus for Sensors}
-\noindent The utilization of four ultrasonic sensors and one LiDAR to supply a feed of information to FORWARD's central processor can be integrated and realized through a wiring bus with the I2C digital communication protocol. This I2C scheme will use a synchronous clock signal provided to the sensors by the MCU. It will operate always in half-duplex, meaning data will be transmitted in only one direction at a time - from the MCU to the sensors and from the sensors back to the MCU in successive time steps. Additionally, the sensors will be accessed by their unique addresses and send packets of information as a sequence, taking turns.\\
+\noindent The utilization of four ultrasonic sensors and one LiDAR to supply a feed of information to FORWARD's central processor can be integrated and realized through a wiring bus with the I2C digital communication protocol. This I2C scheme will use a synchronous clock signal provided to the sensors by the MCU. It will operate always in half-duplex, meaning data will be transmitted in only one direction at a time - from the MCU to the sensors and from the sensors back to the MCU in successive time steps. Additionally, the sensors will be accessed by their unique addresses and send packets of information as a sequence, taking turns. FORWARD does not require the use of a multiplexer device, as accessing the sensor data is done by address over the two common wires.\\
