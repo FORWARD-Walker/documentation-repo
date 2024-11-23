@@ -1,80 +1,11 @@
 \subsection{Part Selection}
-
-% account 1 page for ultrasonic table
-\begin{figure}[H]
-	\centering
-	\setlength{\tabcolsep}{5pt} % Default value: 6pt
-	\renewcommand{\arraystretch}{1.5} % Default value: 1
-	\begin{NiceTabular}{ccccccc}[hvlines,colortbl-like]
-		\CodeBefore
-		%\columncolor{}{}
-		\rowcolor{gray!15}{1}
-		\cellcolor{}{4-1}
-		\Body
-		Model       & HC-SR04 & RCWL1XX5 & RCWL1670   & MB1000 & H2KA  & SEN0150 \\
-		Type        & Multi   & XCVR     & Multi      & XCVR   & XCVR  & XCVR    \\
-		Range (cm)  & 450     & 550      & 400        & 600    & 250   & 1000    \\
-		Angle (deg) & +/-15   & +/-30    & +/-15      & +/-20  & 8+/-2 & +/-15   \\
-		Accuracy    & 0.3 cm  & +/-2\%   & +/-2\%     & 1 inch & 2 cm  & 1 cm    \\
-		Protocol    & I2C     & I2C      & I2C        & ?      & ?     & UART    \\
-		Freq. (kHZ) & 40      & 40       & 40         & 42     & 150   & 49.5    \\
-		Note        &         & deadzone & waterproof &        &       &         \\
-		Price       & \$      & \$       & \$         & \$\$   & \$\$\$& \$\$\$
-	\end{NiceTabular}
-	\caption{\label{fig:compareUltrasonic}Ultrasonic Sensor Options}
-\end{figure}
-
-% The decision
-\noindent Taking into account all the specifications and overall fit with FORWARD requirements, the team selects two HC-SR04 for side-facing, and two RCWL1005's for forward-facing.\\
-
-% account 1 page for lidar table
-\begin{figure}[H]
-	\centering
-	\setlength{\tabcolsep}{5pt} % Default value: 6pt
-	\renewcommand{\arraystretch}{1.5} % Default value: 1
-	\begin{NiceTabular}{cccccc}[hvlines,colortbl-like]
-		\CodeBefore
-		%\columncolor{}{}
-		\rowcolor{gray!15}{1}
-		\cellcolor{}{4-1}
-		\Body
-		Model       & SEN-14032               & TFmini-S & TFmini Plus & TF-Luna & XT-S1   \\
-		Type        & Single 				  & Single   & Single      & Single  & Single  \\
-		Range       & 40m-70\% $\rho_\lambda$ & 0.1-12m  & 0.1-12m     & 0.2m~8m & 0.3-30m \\
-		Angle (deg) & +/-0.5                  & +/-2     & +/-2.3      & +/-2    & +/-1.5  \\
-		Accuracy    & <5m,+/-2cm              & <6m,1cm  & 1\%-2\%     & +/-6cm  & +/-0.1m \\
-		Note        & nonlinearity <1m        &  &  &  & \\
-		Price       & \$\$\$                  & \$\$     & \$\$        & \$\$    & \$\$
-	\end{NiceTabular}
-	\caption{\label{fig:compareLiDAR}LiDAR Sensor Options}
-\end{figure}
-
-\noindent The FORWARD team selects the TF-Luna model. Its easy I2C and great range to price point make it a viable option.\\
-
-% IMU comparison
-\begin{figure}[H]
-	\centering
-	\setlength{\tabcolsep}{5pt} % Default value: 6pt
-	\renewcommand{\arraystretch}{1.5} % Default value: 1
-	\begin{NiceTabular}{ccc}[hvlines,colortbl-like]
-		\CodeBefore
-		%\columncolor{}{}
-		\rowcolor{gray!15}{1}
-		\cellcolor{}{4-1}
-		\Body
-		Model         & BNO055 & MPU-6050 \\
-		Axis          & 9-DOF   & 6-DOF    \\
-		Sensitivity SF Tolerance & 1\% & 3\%  \\
-		Nonlinearity  & 0.2\%   & 0.5\%    \\
-		Sensor Fusion & Yes     & Yes      \\
-		Price         & \$      & \$       \\
-	\end{NiceTabular}
-	\caption{\label{fig:compareIMU}IMU Sensor Options}
-\end{figure}
-
-\noindent The FORWARD team select BNO055 IMU because of its slight advantages. This device is affordable and will enhance FORWARD stability.\\
-
-% account for haptic feedback selection
+\noindent For \textbf{obstacle detection}, the final selections are:
+\begin{enumerate}
+	\item 2x HC-SR04 Multistatic Ultrasonic Sensors for lateral-facing detection.
+	\item 2x RCWL-1005 Monostatic Ultrasonic Sensors for front-facing detection.
+	\item The TFLuna LiDAR sensor, for its precision and accuracy. Front-facing. It has easy I2C configuration and a great price point, making it a viable option.
+	\item The BNO-055 Inertial Measurement Unit because of its advantages like quaternion output and affordability, which greatly enhance FORWARD stability.
+\end{enumerate}
 
 % MCU comparison
 \begin{figure}[H]
@@ -88,12 +19,11 @@
 			\Body
 			Model            & ESP32D & Raspberry Pi 4 B & Jetson Nano \\
 			\hline
-			Processor        & Xtensa dual-core     & Broadcom BCM2711 & NVIDIA Maxwell GPU \\
+			Processor        & ESPWROOM     & Broadcom BCM2711 & NVIDIA Maxwell GPU \\
 			Memory           & 4MB-8MB Flash/PSRAM  & 1GB-8GB LPDDR4   & 4GB LPDDR4 \\
-			Connectivity     & WIFI, Bluetooth      & Wi-Fi, Bluetooth, Ethernet & Ethernet \\
-			I/O Ports        & GPIO, UART, I2C, SPI & GPIO, 2 USB 3.0, 2 HDMI & USB 3.0, USB 2.0, HDMI \\
-			Power            & 5V (varies)          & 5V DC via USB or GPIO & 5V 4A DC, 5V 2A Micro-USB \\
-			Price            & \$5 - \$15           & \$30 - \$50       & \$250 - \$500 \\
+			Connectivity     & WIFI, Bluetooth      & Wi-Fi, Bluetooth, Eth. & Ethernet \\
+			I/O Ports        & GPIO, UART, I2C, SPI & GPIO, 2 USB 3.0, 2 HDMI & USB: 3.0, 2.0, HDMI \\
+			Price            & \$5 - \$10           & \$30 - \$50       & \$250 - \$500 \\
 		\end{NiceTabular}
 	}
 	\caption{\label{fig:mcuComparison}Comparison of MCU Options}
@@ -112,13 +42,13 @@
 			\rowcolor{gray!15}{1} % Row background color for header
 			\Body
 			Specification             & ESP32 CAM                  & Oak-D Lite                       &  AMB82-Mini\\
-			\hline
+			\..line
 			Resolution                & 2MP/5MP   & 13 MP (RGB)                      & 1920 x 1080 (Full HD)            \\
 			Frame Rate                & 1600x1200/2592x1944       & 4K@30FPS/1080P@60FPS     & 1080P/720P@30FPS           \\
-			CPU/MCU                   & ESP32 @ 240 MHz                 & AI Engine, 6-axis sensor         & ARMv8M (500 MHz/0.4 TOPS)   \\
-			Memory                    & 520 KB SRAM, 4 MB PSRAM         & N/A                              & 128 MB DDR2                     \\
+			CPU/MCU                   & ESP32                & RVC2         & ARMv8M   \\
+			Memory                    & 520 KB SRAM, 4 MB PSRAM         & 512 MB LPDDR4 RAM                             & 128 MB DDR2                     \\
 			Interface                 & Wi-Fi/24-pin Cam Bus        & USB2/USB3                        & WiFi/BT/USB/GPIO    \\
-			Price                     & \$10-15                 		& \$199                			& \$25-\$30                     \\
+			Price                     & \$10-15                 		& \$149                			& \$25-\$30                     \\
 		\end{NiceTabular}
 	}
 	\caption{\label{fig:compareCameras}Comparison of Camera Modules for ESP32-based Applications}
@@ -132,7 +62,7 @@
 	\centering
 	\setlength{\tabcolsep}{5pt} % Adjust column spacing
 	\renewcommand{\arraystretch}{1.75} % Adjust row spacing
-	\scalebox{0.8}{ % Scale down the entire table by 85%
+	\scalebox{1.0}{ % Scale down the entire table by 85%
 		\begin{NiceTabular}{lccc}[hvlines,colortbl-like]
 			\CodeBefore
 			\rowcolor{gray!15}{1} % Row background color for header
@@ -141,9 +71,8 @@
 			\hline
 			Processing Time           & 6-100 ms                   	& 10-40 ms            			& 10-50 ms \\
 			Memory Usage              & Few hundred MB             	& 256 KB                   		& 100 KB-1 MB \\
-			Supported Devices         & ESP32, Raspberry Pi, GPU   	& ESP32, Raspberry Pi, GPU		& ESP32, Raspberry Pi, GPU \\
-			Training Complexity       & Moderate        			& Moderate                      & High \\
-			Cost                      & Free                     	& Free                  	& Free \\
+			Training Complexity       & Low        			& Moderate                      & High \\
+
 
 
 		\end{NiceTabular}
@@ -158,23 +87,23 @@
 	\centering
 	\setlength{\tabcolsep}{5pt} % Restore default column padding
 	\renewcommand{\arraystretch}{1.75} % Restore default row height
-	\scalebox{0.9}{ % Scale down the entire table by 85%
-		\begin{NiceTabular}{cccccc}[hvlines,colortbl-like]
+	\scalebox{1}{ % Scale down the entire table
+		\begin{NiceTabular}{ccccc}[hvlines]
 			\CodeBefore
-			\rowcolor{gray!15}{1}
+			\rowcolor{blizzardblue}{1} % Row background color for header
 			\Body
-			Model            & Suunto Wing & Shokz OpenRun Pro & YouthWhisper \\
+			Model             & AfterShokz  & YouthWhisper \\
 			\hline
-			Battery Life     & 6 hours (playtime)     & 10 hours          & 8 hours \\
-			Charging Time    & 1.5 hours & 1 hour 	 	& 2 hours \\
-			Water Resistance & IPX8                  & IP55              & IPX6 \\
-			Connectivity     & Bluetooth 5.0          & Bluetooth 5.1     & Bluetooth 5.0 \\
-			Weight           & 45 grams               & 29 grams          & 30 grams \\
-			Price            & \$169                 & \$159             & \$35 \\
+			Battery Life      & 10 hours    & 8 hours       \\
+			Charging Time     & 1 hour      & 2 hours       \\
+			Water Resistance  & IP67        & IPX54         \\
+			Weight            & 26 grams    & 25 grams      \\
+			Price             & FREE        & \$35          \\
 		\end{NiceTabular}
-	}
+	} % End scalebox
 	\caption{\label{fig:headphonesComparison}Comparison of Headphone Options}
 \end{figure}
+
 
 \noindent The FORWARD team selects to use the YouthWhisper Bone Conduction headphones due to their high affordability, solid battery life, and lighter weight. \\
 

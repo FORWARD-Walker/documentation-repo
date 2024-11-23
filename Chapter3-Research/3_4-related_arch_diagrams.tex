@@ -37,8 +37,27 @@
 \noindent The BNO055 inertial measurement unit has a distinct advantage that involves a particularly interesting mathematical formulation. It is able to output quaternion data. Quaternions are a complex mathematical formulation which can be used as a replacement of sorts to \textit{Euler Angles}, mainly addressing the gimbal lock issue of Euler Angles, which occurs when two torus of rotation align and thus reduce the degrees-of-freedom. Quaternions generally are able to all for a smoother representation of rotations, using four dimensions (three imaginary) to transcend the three. \cite{quat} FORWARD will likely not make use of these, but they are quintessential in the field of guidance, navigation, and control, and thus warrant a mention in this study. See the fundamental representation:\\
 $$i^2+j^2+k^2=ijk=-1$$
 
+\noindent The quaternions could be useful for providing more precise navigation solutions than the angles as they can house more detailed information about the rollator's orientation. Most notably, on the data curves, they negate the 360 degree crossing. However, for the scope of meeting basic goals, it will not likely be needed.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./Images/euler-quat.JPG}
+	\caption{\label{fig:euler-quat}Euler vs Quaternion Orientation \cite{euler-quat}}
+\end{figure}
+
 % matthew
-\subsubsection{Typical CV camera setup}
+\subsubsection{System Data Network}
+\noindent The proposed system network for data transmission can be seen pictured below. The ESP32 MCU is the main controller for our system, bringing together the sensor data and the object detection data for the guidance and navigation aspect of FORWARD. The peripheral sensors: IMU, LiDAR, and Sonar are connected to the ESP32 through GPIO and I2C, in which data is transmitted continually. The ESP32 also hosts a wireless network in which the Ameba 82 camera module connects and transmits the object detection data through UDP sockets over WiFi. \\
+
+\noindent The Ameba 82 also plays a crucial role in the networking of our system. It links the object detection data to the ESP32 and the user. As stated above, it transmits the calculated object data to the ESP32, but also transmits the audio of the objects name over Bluetooth to the AfterShokz, which will be to the end user. \\
+
+\begin{figure}[H]
+	\centering
+	\fbox{\includegraphics[width=1.0\textwidth]{./Images/System_Network_Arch.png}}
+	\caption{\label{fig:System_Network_Arch}System Data Network Architecture}
+\end{figure}
+
 
 % morgan
 \subsubsection{Typical steering motor control wiring}
+

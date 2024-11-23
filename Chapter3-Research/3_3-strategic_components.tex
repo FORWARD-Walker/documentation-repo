@@ -1,3 +1,4 @@
+
 \subsection{Strategic Components}
 % this is pretty much all research about the components themselves, which is summed up with the spec comparison table in 3_5-partselect
 
@@ -18,6 +19,30 @@ I2C: $Distance = ((BYTE_H\&It; \&It; 16) + (BYTE_M\&It: \&It; 8)+BYTE_L) /1000$\
 
 \noindent \underline{\textit{H2KA150KA1CD00}} operates at the high frequency of 150kHz. Unfortunately, the datasheet does not reveal much more about solving the range than the need to use a rectangular wavwdrive signal and a burst of 10 pulses. This returns an analog voltage output of the range. At a directivity angle of 8+/-2 degrees and a short range viability, this is not an ideal option for FORWARD.\\
 
+% account 1 page for ultrasonic table
+\begin{table}[H]
+	\centering
+	\setlength{\tabcolsep}{5pt} % Default value: 6pt
+	\renewcommand{\arraystretch}{1.5} % Default value: 1
+	\begin{NiceTabular}{ccccccc}[hvlines,colortbl-like]
+		\CodeBefore
+		%\columncolor{}{}
+		\rowcolor{maroon!50}{1}
+		\cellcolor{}{4-1}
+		\Body
+		Model       & HC-SR04 & RCWL1XX5 & RCWL1670   & MB1000 & H2KA  & SEN0150 \\
+		Type        & Multi   & XCVR     & Multi      & XCVR   & XCVR  & XCVR    \\
+		Range (cm)  & 450     & 550      & 400        & 600    & 250   & 1000    \\
+		Angle (deg) & +/-15   & +/-30    & +/-15      & +/-20  & 8+/-2 & +/-15   \\
+		Accuracy    & 0.3 cm  & +/-2\%   & +/-2\%     & 1 inch & 2 cm  & 1 cm    \\
+		Protocol    & I2C     & I2C      & I2C        & ?      & ?     & UART    \\
+		Freq. (kHZ) & 40      & 40       & 40         & 42     & 150   & 49.5    \\
+		Note        &         & deadzone & waterproof &        &       &         \\
+		Price       & \$      & \$       & \$         & \$\$   & \$\$\$& \$\$\$
+	\end{NiceTabular}
+	\caption{\label{fig:compareUltrasonic}Ultrasonic Sensor Options}
+\end{table}
+
 \subsubsection{LiDAR Sensors}
 \noindent \underline{\textit{LiDAR Lite V3}} is an optical distance sensor manufactured by Garmin (known for the GPS solutions). The listing specifies this sensor is great for applications in robotics and drones. They call it "single-stripe" with its aperture of only 12.5mm. The procedure for obtaining the reading is as follows:
 \begin{enumerate}
@@ -30,12 +55,55 @@ I2C: $Distance = ((BYTE_H\&It; \&It; 16) + (BYTE_M\&It: \&It; 8)+BYTE_L) /1000$\
 
 \noindent \underline{\textit{TF Family}} LiDAR sensors allow continuous ranging and also read by command. Note these have a 20cm dead zone. The designers note the possibility of light shedding on two parts of a surface, at which the range reading could be any value inbetween. They advise avoiding this for reliability. In the greater FORWARD context, we can consider the lesser of the readings for safety, so this is not necessarily an issue.\\
 
+% account 1 page for lidar table
+\begin{table}[H]
+	\centering
+	\setlength{\tabcolsep}{5pt} % Default value: 6pt
+	\renewcommand{\arraystretch}{1.5} % Default value: 1
+	\begin{NiceTabular}{cccccc}[hvlines,colortbl-like]
+		\CodeBefore
+		%\columncolor{}{}
+		\rowcolor{maroon!50}{1}
+		\cellcolor{}{4-1}
+		\Body
+		Model       & SEN-14032               & TFmini-S & TFmini Plus & TF-Luna & XT-S1   \\
+		Type        & Single 				  & Single   & Single      & Single  & Single  \\
+		Range       & 40m-70\% $\rho_\lambda$ & 0.1-12m  & 0.1-12m     & 0.2m~8m & 0.3-30m \\
+		Angle (deg) & +/-0.5                  & +/-2     & +/-2.3      & +/-2    & +/-1.5  \\
+		Accuracy    & <5m,+/-2cm              & <6m,1cm  & 1\%-2\%     & +/-6cm  & +/-0.1m \\
+		Note        & nonlinearity <1m        &  &  &  & \\
+		Price       & \$\$\$                  & \$\$     & \$\$        & \$\$    & \$\$
+	\end{NiceTabular}
+	\caption{\label{fig:compareLiDAR}LiDAR Sensor Options}
+\end{table}
+
 \subsubsection{Inertial Measurement Units}
 \noindent Because of the simplistic nature of the application of this technology in FORWARD, extensive research is not as necessary as with the range sensors. We consider two main options.\\
 
 \noindent \underline{\textit{BNO055}} is a 9-DOF (axis) IMU, meaning it contains a 3-axis accelerator, 3-axis gyroscope, and a 3-axis geomagnetic sensor. This device is said to run sensor fusion on-board to provide accurate attitude information. It runs on $2.4-3.6V$ and draws $0.4mA$ of current when on its low power mode. It can be used in 3-axis only modes, meaning you can isolate the accelerator, gyroscope or magnetometer.\\
 
 \noindent \underline{\textit{MPU-6050}} is one of the most popular IMU devices. It is 6-DOF (no magnetometer), and runs a DMP (digital motion processor) for motion fusion algorithms. Essentially, it calibrates itself, and is said to reduce gyro drift by eliminating cross-axis alignment errors between the gyroscope and accelerator. It operates at $3.6mA$ with a supply of $2.4-3.5V$.\\
+
+% IMU comparison
+\begin{table}[H]
+	\centering
+	\setlength{\tabcolsep}{5pt} % Default value: 6pt
+	\renewcommand{\arraystretch}{1.5} % Default value: 1
+	\begin{NiceTabular}{ccc}[hvlines,colortbl-like]
+		\CodeBefore
+		%\columncolor{}{}
+		\rowcolor{maroon!50}{1}
+		\cellcolor{}{4-1}
+		\Body
+		Model         & BNO055 & MPU-6050 \\
+		Axis          & 9-DOF   & 6-DOF    \\
+		Sensitivity SF Tolerance & 1\% & 3\%  \\
+		Nonlinearity  & 0.2\%   & 0.5\%    \\
+		Sensor Fusion & Yes     & Yes      \\
+		Price         & \$      & \$       \\
+	\end{NiceTabular}
+	\caption{\label{fig:compareIMU}IMU Sensor Options}
+\end{table}
 
 \subsubsection{Computer Vision/AI Image Processing Models}
 \underline{\textit{Ultralytics YOLO}} (You only look once) is an open source AI driven image processing model. The Ultralytics YOLO platform provides an AI Image processing Architecture that is malleable to the users demands, and for our case, would process the input image to detect if one of the five hazards is present, as well as provide a confidence rating for these predictions. To implement the object detection functionality to our specifications, minimal training, as well as coding must be performed. The benefits of this solution for our image classification system include zero cost and easy configurability which are both important aspects for our desired solution. The negatives include the needed man hours to train and implement this model for our purposes and time to run (anywhere from 0.1 seconds to 3 seconds). It also has a relatively high memory footprint (a few hundred MB). The time to predict along with the memory footprint could potentially exclude this from our options as we need to have classification under 1 second latency, ideally in the realm of a few hundred milliseconds and enough storage space for the model. \\
@@ -72,6 +140,14 @@ I2C: $Distance = ((BYTE_H\&It; \&It; 16) + (BYTE_M\&It: \&It; 8)+BYTE_L) /1000$\
 
 \noindent \underline{\textit{The Jetson Nano}} is a complex, high powered MCU designed for AI/ML applications. It is an NVIDIA product with a 128-core NVIDIA Maxwell™ GPU and a quad-core Arm® A57 CPU. It comes with 4 GB of 64-bit LPDDR4 memory and supports MicroSD storage. For power, it supports both 5 V, 4 A DC power and 5 V, 2 A via Micro-USB. In terms of connectivity, it offers a USB 3.0 Type-A port, a USB 2.0 Micro-B port, an HDMI/DisplayPort output, and Gigabit Ethernet. The board also includes various general-purpose input/output (GPIO) options, along with interfaces for I2C, I2S, SPI, UART, and a MIPI-CSI camera connector. These features make the Jetson Nano a robust solution for real-time processing tasks needed for guiding and navigating. This board is designed for running AI/ML applications. The MCU can cost anywhere from \$250 to \$500 depending on the model and specifications.\\
 
+\subsubsection{Bone Conduction Headphones}
+\noindent As discussed above, we have decided to use bone conduction headphones as our audio feedback device due to the light weight, low cost, high performance aspects of this solution. Listed below are the specific products we considered as well as their specifications. The main specifications of the products that we will be considering is cost and battery life, with a secondary emphasis on comfort. \\
+
+\noindent \underline{\textit{YouthWhisper}} headphones are the first ones considered for our system. They are rated for waterproof IP54 which means that they are "water and splash resistant" which is desired for if our system was to be used in the rain. It is also rated for 8 hour battery life  and a two hour charge time that charges with microUSB. They also have a 20-hour standby time, so plenty of time for the user to have for a full day. The cost \$35 and can be found at most retail stores. Due to their cheaper price point, comfortability can be an issue for longer periods of usage. They weigh in at 25 grams. \\
+
+\noindent \underline{\textit{AfterShokz}} is the second product considered for our system. The main draw of these is that, although they have a price point of around \$130, we can implement them for free due to one of our project members already owning a new pair of them. They are rated at IP67 which is a high grade of water resistance, also suitable for rainy environments. AfterShokz also have an 8 hour battery life but have a one hour charge time that charges with the include power cord. They also have a 20-hour standby, which is suitable for full day use. They weigh in at 26 grams. \\
+
+
 \subsubsection{Motor Controllers}
 \noindent When evaluating motor controllers, there are several factors to consider and are largely connected to our decision of motors. The voltage range of the selected motor controller must be able to provide voltage as low as 5V and as high as 21.6V as well as provide a current of at least 11A. This ensures that both types of motors we selected are able to function properly.\\
 
@@ -94,11 +170,10 @@ I2C: $Distance = ((BYTE_H\&It; \&It; 16) + (BYTE_M\&It: \&It; 8)+BYTE_L) /1000$\
 
 \noindent \underline{\textit{L298N}} is a very large voltage-range motor driver (from 5-35V) that will be able to allow for the haptic motors to be operated. 2A of current are supplied from this motor driver, which is sufficient for the haptic motors, and this driver also allows for two motors to be driven from the same driver. The L298N is also the most cost-effective option and the most widely used driver out of the haptic motor drivers, providing for plenty of documentations and resources.\\
 
- \noindent \underline{\textit{DRV8871}} is a motor driver that has a large voltage range of 6.5-45V, however, this is outside of the allowed range for our selected haptic motors. Although it supplies plenty of current for the haptic motors (3.6A), it is not enough for the wheel-driving motors and thus we cannot use this option for either type of motor. This driver is also least cost-effective haptic driver.\\
+\noindent \underline{\textit{DRV8871}} is a motor driver that has a large voltage range of 6.5-45V, however, this is outside of the allowed range for our selected haptic motors. Although it supplies plenty of current for the haptic motors (3.6A), it is not enough for the wheel-driving motors and thus we cannot use this option for either type of motor. This driver is also least cost-effective haptic driver.\\
  
- \noindent \underline{\textit{RRPDMSCSGSPC}} is a motor driver with a large voltage range of 12-40V, enveloping the necessary value of 21.6V for the selected DC motors. This option also supplies a maximum current of 10A, which may or may not be enough current supplied to the motors. If the motors draw their maximum current of 11A, it is possible for this driver to be damaged. This driver also only controls one motor, so it is not the most cost-efficient.\\
+\noindent \underline{\textit{RRPDMSCSGSPC}} is a motor driver with a large voltage range of 12-40V, enveloping the necessary value of 21.6V for the selected DC motors. This option also supplies a maximum current of 10A, which may or may not be enough current supplied to the motors. If the motors draw their maximum current of 11A, it is possible for this driver to be damaged. This driver also only controls one motor, so it is not the most cost-efficient.\\
  
- \noindent \underline{\textit{BTS7960}} is a motor driver that is rated or 27V, above our necessary 21.6V motor. Although this driver does not provide a range, typically the voltage range is centered around the rated voltage. When it comes to current, this driver provides the maximum amount of current out of any of the drivers. Although it comes at a slightly higher cost, the BTS7960 comes in a package of two, which is needed to provide for both motors and thus is net most cost-effective. Thus we decided to select this driver.\\
+\noindent \underline{\textit{BTS7960}} is a motor driver that is rated or 27V, above our necessary 21.6V motor. Although this driver does not provide a range, typically the voltage range is centered around the rated voltage. When it comes to current, this driver provides the maximum amount of current out of any of the drivers. Although it comes at a slightly higher cost, the BTS7960 comes in a package of two, which is needed to provide for both motors and thus is net most cost-effective. Thus we decided to select this driver.\\
  
- \noindent \underline{\textit{RR-6-90V-15A-PSC}} is a motor driver with the widest voltage range of 6-90V. This driver leaves no question if the 21.6V motors are able to be driven. The rated current for this driver also covers 15A of current, which is 4A above needed. However, this driver only comes in a package of one, and thus purchasing two drivers will come at double the price of \$9.99.\\
- 
+\noindent \underline{\textit{RR-6-90V-15A-PSC}} is a motor driver with the widest voltage range of 6-90V. This driver leaves no question if the 21.6V motors are able to be driven. The rated current for this driver also covers 15A of current, which is 4A above needed. However, this driver only comes in a package of one, and thus purchasing two drivers will come at double the price of \$9.99.\\
