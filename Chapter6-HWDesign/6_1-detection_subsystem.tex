@@ -22,6 +22,9 @@
 	\caption{\label{fig:slope-stability}Stability on Slopes}
 \end{figure}
 
+\subsubsection{Sonar Pulse Interference}
+\noindent One important note to consider is interference of the ultrasonic pulses. Being that FORWARD uses four of them, it is important to make sure the receivers do not receive each others emitted energy reflections. Ultrasonics are directional, so by pointing the multistatic sensors to the left and right sides of the rollator to monitor passing or approaching obstacles, we decouple them from the monostatic. However, the front-facing sensors are only separated by the length of the axle, meaning these will need to be triggered sequentially to avoid interference. This can be implemented simply in Arduino by separate digital write statements with a delay proportional to the one way pulse return duration. Actually, we observed this occurring during the first testing for the demo video, and troubleshooting is currently under way.\\
+
 \subsubsection{Sensor Fusion}
 \noindent How do we make sense of the range detection made at all five points of the front-face of the walker? How do we combine that with pixel data of the corners of an object detection made by the camera? We can generally perceive depth by averaging the 4 coordinates, where closer is a higher average. We also know whether an obstacle is on the left or right side ahead based on which ranges are lower the maximum. We have to take into account the dead zones. With all of this information available on the network, we can build algorithms to guide the way forward, as discussed in the following chapter.\\
 
