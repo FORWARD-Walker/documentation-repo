@@ -19,12 +19,11 @@
 			\Body
 			Model            & ESP32D & Raspberry Pi 4 B & Jetson Nano \\
 			\hline
-			Processor        & Xtensa dual-core     & Broadcom BCM2711 & NVIDIA Maxwell GPU \\
+			Processor        & ESPWROOM     & Broadcom BCM2711 & NVIDIA Maxwell GPU \\
 			Memory           & 4MB-8MB Flash/PSRAM  & 1GB-8GB LPDDR4   & 4GB LPDDR4 \\
-			Connectivity     & WIFI, Bluetooth      & Wi-Fi, Bluetooth, Ethernet & Ethernet \\
-			I/O Ports        & GPIO, UART, I2C, SPI & GPIO, 2 USB 3.0, 2 HDMI & USB 3.0, USB 2.0, HDMI \\
-			Power            & 5V (varies)          & 5V DC via USB or GPIO & 5V 4A DC, 5V 2A Micro-USB \\
-			Price            & \$5 - \$15           & \$30 - \$50       & \$250 - \$500 \\
+			Connectivity     & WIFI, Bluetooth      & Wi-Fi, Bluetooth, Eth. & Ethernet \\
+			I/O Ports        & GPIO, UART, I2C, SPI & GPIO, 2 USB 3.0, 2 HDMI & USB: 3.0, 2.0, HDMI \\
+			Price            & \$5 - \$10           & \$30 - \$50       & \$250 - \$500 \\
 		\end{NiceTabular}
 	}
 	\caption{\label{fig:mcuComparison}Comparison of MCU Options}
@@ -43,13 +42,13 @@
 			\rowcolor{gray!15}{1} % Row background color for header
 			\Body
 			Specification             & ESP32 CAM                  & Oak-D Lite                       &  AMB82-Mini\\
-			\hline
+			\..line
 			Resolution                & 2MP/5MP   & 13 MP (RGB)                      & 1920 x 1080 (Full HD)            \\
 			Frame Rate                & 1600x1200/2592x1944       & 4K@30FPS/1080P@60FPS     & 1080P/720P@30FPS           \\
-			CPU/MCU                   & ESP32 @ 240 MHz                 & AI Engine, 6-axis sensor         & ARMv8M (500 MHz/0.4 TOPS)   \\
-			Memory                    & 520 KB SRAM, 4 MB PSRAM         & N/A                              & 128 MB DDR2                     \\
+			CPU/MCU                   & ESP32                & RVC2         & ARMv8M   \\
+			Memory                    & 520 KB SRAM, 4 MB PSRAM         & 512 MB LPDDR4 RAM                             & 128 MB DDR2                     \\
 			Interface                 & Wi-Fi/24-pin Cam Bus        & USB2/USB3                        & WiFi/BT/USB/GPIO    \\
-			Price                     & \$10-15                 		& \$199                			& \$25-\$30                     \\
+			Price                     & \$10-15                 		& \$149                			& \$25-\$30                     \\
 		\end{NiceTabular}
 	}
 	\caption{\label{fig:compareCameras}Comparison of Camera Modules for ESP32-based Applications}
@@ -63,7 +62,7 @@
 	\centering
 	\setlength{\tabcolsep}{5pt} % Adjust column spacing
 	\renewcommand{\arraystretch}{1.75} % Adjust row spacing
-	\scalebox{0.8}{ % Scale down the entire table by 85%
+	\scalebox{1.0}{ % Scale down the entire table by 85%
 		\begin{NiceTabular}{lccc}[hvlines,colortbl-like]
 			\CodeBefore
 			\rowcolor{gray!15}{1} % Row background color for header
@@ -72,9 +71,8 @@
 			\hline
 			Processing Time           & 6-100 ms                   	& 10-40 ms            			& 10-50 ms \\
 			Memory Usage              & Few hundred MB             	& 256 KB                   		& 100 KB-1 MB \\
-			Supported Devices         & ESP32, Raspberry Pi, GPU   	& ESP32, Raspberry Pi, GPU		& ESP32, Raspberry Pi, GPU \\
-			Training Complexity       & Moderate        			& Moderate                      & High \\
-			Cost                      & Free                     	& Free                  	& Free \\
+			Training Complexity       & Low        			& Moderate                      & High \\
+
 
 
 		\end{NiceTabular}
@@ -89,23 +87,23 @@
 	\centering
 	\setlength{\tabcolsep}{5pt} % Restore default column padding
 	\renewcommand{\arraystretch}{1.75} % Restore default row height
-	\scalebox{0.9}{ % Scale down the entire table by 85%
-		\begin{NiceTabular}{cccccc}[hvlines,colortbl-like]
+	\scalebox{1}{ % Scale down the entire table
+		\begin{NiceTabular}{ccccc}[hvlines]
 			\CodeBefore
 			\rowcolor{blizzardblue}{1} % Row background color for header
 			\Body
-			Model            & Suunto Wing & Shokz OpenRun Pro & YouthWhisper \\
+			Model             & AfterShokz  & YouthWhisper \\
 			\hline
-			Battery Life     & 6 hours (playtime)     & 10 hours          & 8 hours \\
-			Charging Time    & 1.5 hours & 1 hour 	 	& 2 hours \\
-			Water Resistance & IPX8                  & IP55              & IPX6 \\
-			Connectivity     & Bluetooth 5.0          & Bluetooth 5.1     & Bluetooth 5.0 \\
-			Weight           & 45 grams               & 29 grams          & 30 grams \\
-			Price            & \$169                 & \$159             & \$35 \\
+			Battery Life      & 10 hours    & 8 hours       \\
+			Charging Time     & 1 hour      & 2 hours       \\
+			Water Resistance  & IP67        & IPX54         \\
+			Weight            & 26 grams    & 25 grams      \\
+			Price             & FREE        & \$35          \\
 		\end{NiceTabular}
-	}
+	} % End scalebox
 	\caption{\label{fig:headphonesComparison}Comparison of Headphone Options}
 \end{figure}
+
 
 \noindent The FORWARD team selects to use the YouthWhisper Bone Conduction headphones due to their high affordability, solid battery life, and lighter weight. \\
 
