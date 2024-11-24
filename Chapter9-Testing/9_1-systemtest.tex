@@ -46,19 +46,23 @@ The tiers of testing goals are:
 
 % object avoidance test - activate feedback and update motor speeds
 \subsubsection{Control Feedback}
-A successful control feedback test is defined by:
+\noindent We must likewise test the haptic motors to determine if they are operational. The most important goal for this evaluation is to ensure that the components purchased are not defective, the wiring is correct, and that the programming also is correct. There are a number of issues that could arise within these processes, so simply spinning the motors would be a victory for this test. However, we will be more prepared for Senior Design II if we are able to incorporate the programming controlling the haptic motors with the rest of the code. This would involve the motors altering their vibration as a result of the sensor data and/or identifying the location of the obstacle as either on the left or right. We will zip tie the motors to the handlebars and then test the haptic feedback in a similar way as we will test the sensors. The rollator will be walked down a hallway and turned to face the wall, thus providing a difference in sensor readings. Ideally, the motors will vibrate in response to a change in distance from the ultrasonic sensors. A successful control feedback test is defined by:
+
 \begin{enumerate}
 	\item \textbf{Basic:} Successfully vibrate the rollator handlebars via the haptic motors attached.
 	\item \textbf{Stretch:} Increase the frequency of vibration as range reading decreases.
 	\item \textbf{Advanced:} Spatially aware haptic feedback - left and right handlebars indicate the location of the obstacle.
 \end{enumerate}
 
+ 
+ \noindent In addition to vibration, we will include serial print statements within the software so that we can easily troubleshoot incorrect behavior from the haptics. If the statement printed in serial is not corresponding to the actions of the motors, we know that there is a hardware issue, either with the MCU, motors, or wiring. Contrarily, if the expected statement is not printed in the serial monitor, we can reasonably assume that there is a software issue.\\
+
 % in SD2, will need to refine turning ratios, hazard range thresholds, and work on stretch requirements.
 \subsection{System Integration, Testing, and Evaluation}
 \noindent System integration was already incorporated to some extent into the subsystem testing described in the previous subsection. However, there will be further concerns and scrutiny the FORWARD system must be subjected to as a whole. Among basic properties such as secure mounting and housing in the electronics chassis (discussed in section \ref{chassis}), it is good to consider waterproofing, temperature, viability with low battery/power supply, and configurations with sensors on, camera off, or vice versa. This should be done in order to ensure a reliable product is brought to the user.\\
 
 \noindent \underline{\textit{PCB Assembly and Testing}}
-\noindent As mentioned, the printed circuit board should be tested with varying levels of battery life remaining. \\
+\noindent As mentioned, the printed circuit board should be tested with varying levels of battery life remaining. It is likely that we will need to order a new PCB after testing our initial PCB as it is common for there to be issues such as changes in components, missed voltage regulation requirements, broken connections, incorrect sizing, lack of electrical isolation, or miswiring. Of course we will attempt to prepare for these mishaps, yet there is still a necessity  for testing and evaluation.\\
 
 \noindent \underline{\textit{Determining and tuning motor coefficients}} During integration, it will be necessary to assign values governing the yaw steering command to the speed of the motors and haptic feedback signals. There should exist some constants that taking into account the rollator dynamics, can be calculated to scale the motors in order to achieve the desired turning angle. Additionally, once integration has been achieved, these scalars can be fine-tuned to optimize the rollator performance response.\\
 
