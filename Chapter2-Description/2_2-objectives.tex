@@ -1,27 +1,39 @@
 \subsection{Project Objectives and Goals}
 \noindent Our goals can be divided into three categories: basic goals, advanced goals, and stretch goals. The basic goals for our project include object detection, obstacle identification, and obstacle avoidance, which will also define our major subsystems and work division. Below the objectives are listed, along with our advanced and stretch goals. \\
 
-\noindent \textbf{Basic Goals - Objectives} \newline
-\noindent \underline{\textit{Object Detection}} - FORWARD shall be able to recognize obstacles present and by using sensor fusion to resolve the measurements by the LiDAR and Sonar sensors, determine an accurate reading of the range to the obstacle. This ranging system must be able to work regardless of the material properties or nature of the obstacle, whether incline, decline, or freestanding object. The ranging subsystem should also transmit the LiDAR and Sonar sensor data to the MCU. This subsystem works hand-in-hand with identification and avoidance.\\
+\paragraph{Basic Goals - Objectives} 
+
+\noindent \newline \underline{\textit{Object Detection}} - FORWARD shall be able to recognize obstacles present and by using sensor fusion to resolve the measurements by the LiDAR and Sonar sensors, determine an accurate reading of the range to the obstacle. This ranging system must be able to work regardless of the material properties or nature of the obstacle, whether incline, decline, or freestanding object. The ranging subsystem should also transmit the LiDAR and Sonar sensor data to the MCU and a turn-on signal to the system camera to capture a photograph of the current surroundings to send to the computer vision/AI image processing model. 
+\\
 
 \noindent \underline{\textit{Obstacle Identification}} - FORWARD obstacle identification (CV) shall be able to implement AI Image processing and Computer Vision to correctly identify the current obstacle as well as the threat level presented to the user. The model shall take as an input a photo captured by the system camera and process this photo to correctly identify the item in the path of the user. The system shall classify the item into one of three categories: 1) Emergency Stop – meaning a continuance could put the user’s life in danger, 2) A Reroute - meaning without guidance the user will run into the identified obstacle, and 3) Non-threatening - meaning the item can be ignored. The system will then send the needed information to the necessary outputs, such as guidance control and audio feedback. \\
 
 \noindent \underline{\textit{Obstacle Avoidance}} - FORWARD must be able to avoid obstacles detected within the sensor range accurately and safely, finding another path for the walker to take when there is an obstacle in the way of the current path. Initially, the FORWARD system will be moving forward at a steady walking pace with the use of DC motors all operating at a constant pace. Once an obstacle is both detected and identified, the speed will decrease on either the left or right DC motors, and the walker will steer toward the side in which the motors are running slower. Thus, once finding a safe path to avoid the obstacle, the FORWARD will go around the obstacle and then return to the normal walking pace. If the FORWARD is unable to safely go around the obstacle, instead the motors will slow down to a stop, indicating to the user that they need to stop as well. The way that the motors will be driven is by an MCU coupled with a motor shield, which will use data from the sensor system to decide the speed of each motor. When programming the MCU, it will be necessary to implement pulse width modulation (PWM) to adjust the motor speeds.\\
 
-\noindent \textbf{Advanced Goals - Objectives} \newline
-\noindent \underline{\textit{Headlights}} - As an advanced feature, FORWARD will also activate headlights in lowlight environments, fulfilling similar requirements to what is required by law for bicycles at night. We will use a photoresistor to detect the surrounding lighting conditions, so when darkness is detected for a certain duration, the LED headlights will illuminate the ground in front of the walker. This involves a simple reading and processing of the light input by the MCU and setting the output LED to on. \\
 
-\noindent \underline{\textit{Affordability}} - FORWARD should be affordable. Currently, other smart walkers cost thousands of dollars. Oftentimes their physical footprint is obstructive, and they are laborious and heavy. Our system will provide a solution that is minimally noticeable and does not add an excessive amount of weight. It also will drastically reduce the cost by making more efficient use of the component technologies available. \\
+\paragraph{Advanced Goals - Objectives} 
 
-\noindent \underline{\textit{Audio Feedback}} - FORWARD shall implement audio feedback to inform the user of the current surroundings and hazards. When a hazard is identified, the CV model will detect the hazard and transmit the object audibly over Bluetooth to the ambient hearing piece. The hearing piece will be in one ear only to maximize user hearing in our efforts to prioritize safety. \\
-
-\noindent \textbf{Stretch Goals - Objectives} \newline
-\noindent \underline{\textit{Depth Perception}} - By using a higher quality camera, an additional range reading can be supplied. Taking into account this different angle and the camera’s unique perspective, it can be combined with the other range data from the sonar and LiDAR sensors in order to resolve an enhanced measurement. Artificial intelligence modeling and filters may be key in this instrumentation. \\
-
-\noindent \underline{\textit{Tip-over Prevention}} - As a stretch requirement, we would like to implement tip-over prevention, which is a stabilization protocol. If the IMU detects the tilt limit is exceeded, thus indicating instability of the user, a motor command is sent that will turn the wheels to restabilize the walker, or an emergency brake activates to stop the wheels so that friction can allow the walker to support the falling user. So, whenever the user falls forward, there will be an attempt made by the walker to prevent them from scraping their knees. \\
+\noindent \newline \underline{\textit{Headlights}} - As an advanced feature, FORWARD will also activate headlights in lowlight environments, fulfilling similar requirements to what is required by law for bicycles at night. We will use a photoresistor to detect the surrounding lighting conditions, so when darkness is detected for a certain duration, the LED headlights will illuminate the ground in front of the walker. This involves a simple reading and processing of the light input by the MCU and setting the output LED to on. 
+\\
 
 \noindent \underline{\textit{Polite Obstacle Avoidance}}
 Another stretch requirement describes the manner of response FORWARD takes to moving obstacles in its path. If, by the sensor and camera data, it intelligently knows that there is say, a person walking across the field of view, and it knows that person's direction of travel, the control software can veer to the opposite direction in order to greatly reduce the risk of collision.\\
 
+\noindent \underline{\textit{Audio Feedback}} - FORWARD shall implement audio feedback to inform the user of the current surroundings and hazards. When a hazard is identified, the CV model will detect the hazard and transmit the object audibly over Bluetooth to the ambient hearing piece. The hearing piece will be in one ear only to maximize user hearing in our efforts to prioritize safety. \\
+
 \noindent \underline{\textit{Incline and Decline Stabilization}}
 Another use of the inertial measurement data would be to change the speed of the motors or activate braking if necessary while on an uphill or downhill slope. Take the case of the user letting go of the walker, and it rolling away down the hill and getting out of their reach. If a sharp increase in acceleration was detected, knowing the fact that the pitch was already not level, an emergency brake could be activated.\\
+
+\noindent \underline{\textit{Affordability}} - FORWARD should be affordable. Currently, other smart walkers cost thousands of dollars. Oftentimes their physical footprint is obstructive, and they are laborious and heavy. Our system will provide a solution that is minimally noticeable and does not add an excessive amount of weight. It also will drastically reduce the cost by making more efficient use of the component technologies available. 
+\\
+
+\noindent \underline{\textit{LiDAR}} - FORWARD will also implement LiDAR sensors to assist in object identification. The LiDAR sensors will work together with the Sonar sensors in order to determine a farther range in which objects are identified.  
+\\
+
+\paragraph {Stretch Goals - Objectives} 
+
+\noindent \newline \underline{\textit{Depth Perception}} - By using a higher quality camera, an additional range reading can be supplied. Taking into account this different angle and the camera’s unique perspective, it can be combined with the other range data from the sonar and LiDAR sensors in order to resolve an enhanced measurement. Artificial intelligence modeling and filters may be key in this instrumentation. \\
+
+\noindent \underline{\textit{Tip-over Prevention}} - As a stretch requirement, we would like to implement tip-over prevention, which is a stabilization protocol. If the IMU detects the tilt limit is exceeded, thus indicating instability of the user, a motor command is sent that will turn the wheels to restabilize the walker, or an emergency brake activates to stop the wheels so that friction can allow the walker to support the falling user. So, whenever the user falls forward, there will be an attempt made by the walker to prevent them from scraping their knees. \\
+
+
