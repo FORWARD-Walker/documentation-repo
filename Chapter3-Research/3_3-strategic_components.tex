@@ -117,6 +117,29 @@ I2C: $Distance = ((BYTE_H\&It; \&It; 16) + (BYTE_M\&It: \&It; 8)+BYTE_L) /1000$\
 %https://edgeimpulse.com/
 %https://www.youtube.com/watch?v=bZIKVaD3dRk\
 
+\begin{figure}[H]
+	\centering
+	\setlength{\tabcolsep}{5pt} % Adjust column spacing
+	\renewcommand{\arraystretch}{1.75} % Adjust row spacing
+	\scalebox{1.0}{ % Scale down the entire table by 85%
+		\begin{NiceTabular}{lccc}[hvlines,colortbl-like]
+			\CodeBefore
+			\rowcolor{gray!15}{1} % Row background color for header
+			\Body
+			Specification             & Ultralytics YOLO           	& FOMO                    		& Edge Impulse \\
+			\hline
+			Processing Time           & 6-100 ms                   	& 10-40 ms            			& 10-50 ms \\
+			Memory Usage              & Few hundred MB             	& 256 KB                   		& 100 KB-1 MB \\
+			Training Complexity       & Low        			& Moderate                      & High \\
+			
+			
+			
+		\end{NiceTabular}
+	}
+	\caption{\label{fig:aiComparison}Comparison of AI Image Processing Solutions}
+\end{figure}
+
+
 \subsubsection{Camera Technologies}
 \label{sec:cam_tech}
 \noindent \underline{\textit{ESP 32 CAM Board}} is a ESP32 processor based camera module that can transmit video data at high resolutions, which can be processed by our CV/Image processing solution. The module also has WIFI connectivity that can connect to an MCU to wirelessly transmit the video stream. The module has a 32-bit CPU with a max clock frequency of 240 MHz and 520 KB of built-in SRAM with an external 4MB PSRAM. The board module also runs on FreeRTOS. The included camera, OV2640 camera, has a 2 MP resolution, up to 1600 x 1200 and interfaces the controller board over a 24 pin interface bus. A more advanced sister product to the OV2640 is the OV5640 camera. This camera has 5 MP resolution, up to 2592 x 1944. In order to achieve our stretch requirement of depth perception analysis for guidance and navigation, this camera could be advantageous.\\
@@ -124,6 +147,29 @@ I2C: $Distance = ((BYTE_H\&It; \&It; 16) + (BYTE_M\&It: \&It; 8)+BYTE_L) /1000$\
 \noindent \underline{\textit{Oak-D Lite}} is an AI robotics specific camera, capable of running AI models such as open CV. The camera is able to run on-board AI architectures to achieve object classification, edge detection, and feature tracking. This technology allow for high accuracy with object detection, and introduce the ability to implement edge detection as a means to depth perception, which can be used for routing in our GNC subsystem. The Oak-D Lite has a 13 MP RGB camera with auto-focus, as well a 60axis sensor using an accelerometer and gyroscope. It also uses USB2 and USB3 for power and communication, which is simple to interface to a RaspberryPI. The camera can run 4K at 30 FPS or 1080P at 60 FPS.\\
 
 \noindent \underline{\textit{Realtek AMB82-Mini IoT AI Camera}} is a lower cost option (\$25) to incorporate an AI object detection system within the camera and board. The specifications of the device are as follows: The MCU is an ARMv8M running up to 500 MHz, accompanied by an NPU with an Intelligent Engine capable of 0.4 TOPS. It features 128 MB of internal DDR2 memory. Connectivity options include dual-band Wi-Fi and Bluetooth 5.1.The audio code supports ADC/DAC/I2S, and the ISP/Video functionality includes both 1080p and 720p at 30FPS. The camera module is a JXF37 full HD CMOS image sensor with a resolution of 1920 x 1080 and a wide-view-angle FOV of 130°. The interface includes 1 microphone, 2 Micro USB B ports, 1 MicroSD card slot, and support for 3 UARTs, 2 SPIs, 1 I2C, 8 PWMs, 2 GDMAs, and a maximum of 23 GPIOs. This solution would free up processing power on our MCU which could be of great value given the high workload placed on our MCU including sensor fusion, motor controlling, image processing, and other needed functionalities. Also, due to the high memory capacity (128 MB DDR2), we could implement a higher quality detection model.\\
+
+% Camera comparison
+\begin{figure}[H]
+	\centering
+	\setlength{\tabcolsep}{5pt} % Adjust column spacing
+	\renewcommand{\arraystretch}{1.75} % Adjust row spacing
+	\scalebox{0.8}{ % Scale down the entire table by 85%
+		\begin{NiceTabular}{lccc}[hvlines,colortbl-like]
+			\CodeBefore
+			\rowcolor{gray!15}{1} % Row background color for header
+			\Body
+			Specification             & ESP32 CAM                  & Oak-D Lite                       &  AMB82-Mini\\
+			\hline
+			Resolution                & 2MP/5MP   & 13 MP (RGB)                      & 1920 x 1080 (Full HD)            \\
+			Frame Rate                & 1600x1200/2592x1944       & 4K@30FPS/1080P@60FPS     & 1080P/720P@30FPS           \\
+			CPU/MCU                   & ESP32                & RVC2         & ARMv8M   \\
+			Memory                    & 520 KB SRAM, 4 MB PSRAM         & 512 MB LPDDR4 RAM                             & 128 MB DDR2                     \\
+			Interface                 & Wi-Fi/24-pin Cam Bus        & USB2/USB3                        & WiFi/BT/USB/GPIO    \\
+			Price                     & \$10-15                 		& \$149                			& \$25-\$30                     \\
+		\end{NiceTabular}
+	}
+	\caption{\label{fig:compareCameras}Comparison of Camera Modules for ESP32-based Applications}
+\end{figure}
 
 
 \subsubsection{MCU Technologies}
@@ -140,12 +186,57 @@ I2C: $Distance = ((BYTE_H\&It; \&It; 16) + (BYTE_M\&It: \&It; 8)+BYTE_L) /1000$\
 
 \noindent \underline{\textit{The Jetson Nano}} is a complex, high powered MCU designed for AI/ML applications. It is an NVIDIA product with a 128-core NVIDIA Maxwell™ GPU and a quad-core Arm® A57 CPU. It comes with 4 GB of 64-bit LPDDR4 memory and supports MicroSD storage. For power, it supports both 5 V, 4 A DC power and 5 V, 2 A via Micro-USB. In terms of connectivity, it offers a USB 3.0 Type-A port, a USB 2.0 Micro-B port, an HDMI/DisplayPort output, and Gigabit Ethernet. The board also includes various general-purpose input/output (GPIO) options, along with interfaces for I2C, I2S, SPI, UART, and a MIPI-CSI camera connector. These features make the Jetson Nano a robust solution for real-time processing tasks needed for guiding and navigating. This board is designed for running AI/ML applications. The MCU can cost anywhere from \$250 to \$500 depending on the model and specifications.\\
 
+% MCU comparison
+\begin{figure}[H]
+	\centering
+	\setlength{\tabcolsep}{5pt} % Restore default column padding
+	\renewcommand{\arraystretch}{1.75} % Restore default row height
+	\scalebox{0.85}{ % Scale down the entire table by 85%
+		\begin{NiceTabular}{cccccc}[hvlines,colortbl-like]
+			\CodeBefore
+			\rowcolor{gray!15}{1}
+			\Body
+			Model            & ESP32D & Raspberry Pi 4 B & Jetson Nano \\
+			\hline
+			Processor        & ESPWROOM     & Broadcom BCM2711 & NVIDIA Maxwell GPU \\
+			Memory           & 4MB-8MB Flash/PSRAM  & 1GB-8GB LPDDR4   & 4GB LPDDR4 \\
+			Connectivity     & WIFI, Bluetooth      & Wi-Fi, Bluetooth, Eth. & Ethernet \\
+			I/O Ports        & GPIO, UART, I2C, SPI & GPIO, 2 USB 3.0, 2 HDMI & USB: 3.0, 2.0, HDMI \\
+			Price            & \$5 - \$10           & \$30 - \$50       & \$250 - \$500 \\
+		\end{NiceTabular}
+	}
+	\caption{\label{fig:mcuComparison}Comparison of MCU Options}
+\end{figure}
+
+
 \subsubsection{Bone Conduction Headphones}
 \noindent As discussed above, we have decided to use bone conduction headphones as our audio feedback device due to the light weight, low cost, high performance aspects of this solution. Listed below are the specific products we considered as well as their specifications. The main specifications of the products that we will be considering is cost and battery life, with a secondary emphasis on comfort. \\
 
 \noindent \underline{\textit{YouthWhisper}} headphones are the first ones considered for our system. They are rated for waterproof IP54 which means that they are "water and splash resistant" which is desired for if our system was to be used in the rain. It is also rated for 8 hour battery life  and a two hour charge time that charges with microUSB. They also have a 20-hour standby time, so plenty of time for the user to have for a full day. The cost \$35 and can be found at most retail stores. Due to their cheaper price point, comfortability can be an issue for longer periods of usage. They weigh in at 25 grams. \\
 
 \noindent \underline{\textit{AfterShokz}} is the second product considered for our system. The main draw of these is that, although they have a price point of around \$130, we can implement them for free due to one of our project members already owning a new pair of them. They are rated at IP67 which is a high grade of water resistance, also suitable for rainy environments. AfterShokz also have an 8 hour battery life but have a one hour charge time that charges with the include power cord. They also have a 20-hour standby, which is suitable for full day use. They weigh in at 26 grams. \\
+
+% Headphones comparison
+\begin{figure}[H]
+	\centering
+	\setlength{\tabcolsep}{5pt} % Restore default column padding
+	\renewcommand{\arraystretch}{1.75} % Restore default row height
+	\scalebox{1}{ % Scale down the entire table
+		\begin{NiceTabular}{ccccc}[hvlines]
+			\CodeBefore
+			\rowcolor{blizzardblue}{1} % Row background color for header
+			\Body
+			Model             & AfterShokz  & YouthWhisper \\
+			\hline
+			Battery Life      & 10 hours    & 8 hours       \\
+			Charging Time     & 1 hour      & 2 hours       \\
+			Water Resistance  & IP67        & IPX54         \\
+			Weight            & 26 grams    & 25 grams      \\
+			Price             & FREE        & \$35          \\
+		\end{NiceTabular}
+	} % End scalebox
+	\caption{\label{fig:headphonesComparison}Comparison of Headphone Options}
+\end{figure}
 
 
 \subsubsection{Motor Controllers}
