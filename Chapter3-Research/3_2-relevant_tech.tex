@@ -33,6 +33,7 @@
 
 % Matthew - MCU, computer vision, audio
 \subsubsection{Computer Vision Object Detection}
+\label{CV_Obj_Det}
 \noindent The Object Detection section of our system will be used to identify and alert the user of their surrounding environment. Because of this, we will need our system to be real-time and highly accurate. The main model used for this is known as YOLO. Many of the current object detection applications implement a YOLO model to process the image data. These algorithms works based on the following four steps: Residual blocks, Bounding box regression, Intersection Over Unions or IOU for short, and Non-Maximum Suppression. Residual blocks divide the image into an N by N grid, in which each section becomes a sub-problem. The algorithm then seeks to calculate a resulting vector through bounding box regression. The vector contains the confidence of an objects presence (pc), the image center (bx, by), and the area of the object (bh, bw), resulting in Y = [pc, bx, by, bh, bw, c1, c2]. c1 and c2 are the possible classifications. It's also worth nothing the bh and bw can be greater then the size of the grid. The algorithm then uses intersection over unions and non-maximum suppression to determine what information has the greatest meaning, and thus, we have a prediction. It should also be said that the above describes how to model runs in real time applications, and operates on the assumption that the model has been trained, which in many cases, it has been trained on the MSCOCO data set. \\
 
 \subsubsection{Current Audio Feedback Technologies}

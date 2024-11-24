@@ -37,6 +37,8 @@ $$X_x = S_x(cos(\theta), sin(\theta)) = (x,y)$$ \label{Polar}
 % object identification test - classify obstacles and send walker into a moded resposne
 % relay audio feedback to user informing them what is ahead
 \subsubsection{Identification Importance}
+\noindent It is crucial to assert an effective and accurate object identification system. To do this, we will implement a testing procedure to effectively test the goals outlined in this paper for FORWARD. The test for the basic goals will be to provide the camera with each of the objects listed to be identified, using 10 different versions of each at varied locations in the camera FOV. We will run this test 10 times each to obtain a percentage pass/fail for the necessary objects. For the stretch goals, we will provide the camera with a few different environments of similar danger, i.e. different crowded environments, different parking lots, etc. and record the percentage of passing tests, looking to achieve a confidence level of at least 80\% before including this technology in FORWARD. For our Advanced goals, we will test this by moving FORWARD towards a grassy field or wall and recording the point in which the system determines a static obstacle. We will then adjust the scale for classifying such obstacles until we identify these obstacle types with at least 3 feet of clearance. \\
+
 The tiers of testing goals are:
 \begin{enumerate}
 	\item \textbf{Basic:} Alert the network there is a certain type of obstacle present (i.e. person, dog, car).

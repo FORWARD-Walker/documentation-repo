@@ -1,8 +1,34 @@
-\subsection{Project Motivations}
-\indent This project has the ability to help those who are physically impaired as a result of surgery recovery or have a more permanent hindrance such as blindness or deafness. This is also especially useful for people who both have a visual impairment and have also suffered a physical injury. In addition, FORWARD is a much cheaper option than a wheelchair so that the users have an affordable way to get around. \\
+\subsection{Project Background}
+\indent Walkers are a mobility aid commonly deployed in the environment of medical institutions such as hospitals and assisted living homes. They are also used daily by patients not just in the medical setting, but in neighborhoods, parks, shopping malls, and just about anywhere you can stroll. \\
+
+\noindent There is a sizeable market for these support tools. If you include other devices such as canes, the market valuation exceeds \$1 billion. There is a great need for these as the US elderly population continues to grow. Currently there are over 50 million people who are considered elderly, and some studies suggest that a quarter of these utilize walkers or canes. \\
+
+\noindent The goal of this project is to use the latest of electrical and computer engineering technologies to develop a solution that vastly improves the functionality of walkers and to improve their user experience. We want to implement functionality that will be useful for both users with physical injury and users with sensory impairments. For instance, a blind person will greatly benefit from audio feedback that warns them of hazards or obstacles ahead. Additionally, a deaf person will be blessed by haptic feedback for the same purpose. In short, FORWARD helps to keep people safe independently of the user’s own spatial awareness. \\
 
 \noindent At the core, conventional walkers do little to assist the user outside of bearing their weight and providing a barrier between them and any obstacles. The user is still susceptible to tripping and falling because of an obstruction the walker collides with. This is especially harmful for those with sensory impairments because, if they are injured, they will not be able to have the same mobility as before. For example, people who are blind use a white cane to feel the ground in front of them while walking, which is not feasible to do when both hands are being used to support their weight. \\
 
-\noindent It will be a great learning experience to implement a variety of different technologies that we are not yet accustomed to, including computer vision, sensor fusion, and guidance systems. We will also be able to gain more practical experience to apply what we have learned in our classes about embedded systems, programming, and control systems. There are even aspects of linear circuits that we will be able to apply, such as power limitations between components and wiring a PCB. \\
+\noindent With the technology available today, the opportunity exists to improve the quality of life and safety for walker users and enable them to have a faster and more secure lifestyle while traveling. Spend less time worrying about injury and more time enjoying the company of family and friends. \\
+
+\noindent It will be a great learning experience for learning how to implement a variety of different technologies that we are not yet accustomed to, including computer vision, sensor fusion, and guidance systems. We will also be able to gain more practical experience to apply what we have learned in our classes about embedded systems, programming, and control systems. There are even aspects of linear circuits that we will be able to apply, such as power limitations between components and wiring a PCB. 
+\\
 
 \noindent With the technology available today, the opportunity exists to improve the quality of life and safety for walker users and enable them to have a faster and more secure lifestyle while traveling. Spend less time worrying about injury and more time enjoying the company of family and friends. \\
+
+\subsection{Project Motivations}
+\indent This project has the ability to help those who are physically impaired as a result of surgery recovery or have a more permanent hindrance such as blindness or deafness. This is also especially useful for people who both have a visual impairment and have also suffered a physical injury. In addition, FORWARD is a much cheaper option than a wheelchair so that the users have an affordable way to get around. \\
+
+
+\subsection{Project Function}
+\indent The function of FORWARD is threefold. 1) obstacle detection, 2) object identification, and 3) obstacle avoidance. The walker, without the use of GPS or pre-determined pathing, will be able to autonomously identify and notify the user of obstacles in advance, characterize the obstacle and notify the user, and reactively steer and guide the user to avoid collision. At a certain range, the computer vision camera will activate and begin the avoidance process. The motors are always responsive to reverse polarity or adapt their speed upon an interrupt triggered by the microcontroller. An on-board inertial measurement unit (IMU) will ensure the walker’s stability with respect to its orientation.
+\\
+
+\noindent This will allow the users to anticipate obstacles such as stationary obstructions, mobile obstructions, inclines, declines, and danger zones. This is enabled by audio and haptic feedback. Audio will be delivered via an earpiece while the haptic feedback will be administered through vibration in the handlebars. This is a fitting feature, as the visually impaired are known to have more reliable hearing or touch sensitivity or awareness than most. For this reason also, the haptics will serve to alert the system that the user is ready, and the audio may also be of the spatial format to provide the user with an enhanced sense of direction.
+
+
+\subsection{Related Work}
+\indent This technology is part of an emerging market, as devices we rely on frequently become converted to their smart counterparts. In particular, the availability of smart walkers is just beginning. However, none of the ones commercially available feature object avoidance. The features they do have are automatic braking while downhill, automatic boosting while uphill, and lowlight-responsive headlights. There have been many research projects performed, one even at UCF (Zhou et al.), but our group hopes to surpass the success of all of these.
+\\
+
+\noindent LiDAR and Sonar technologies are deployed in numerous fields already. There are many self-navigating robots and other guidance settings where ranging and object detection are utilized. Additionally, microcontrollers are so widespread now that practically every system with digital data or connection of computer to the analog world requires them. Motors are also a reliable technology, and they are able to be implemented into the system control method.
+
+
