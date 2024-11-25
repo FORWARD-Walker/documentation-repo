@@ -20,16 +20,16 @@
 
 
 \noindent For \textbf{obstacle avoidance}, the final selections are:
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{./Images/drive_motors.png}
 	\caption{\label{fig:drive_motors}Drive Motor Specifications}
-\end{figure}
+\end{table}
 
 
 \noindent When deciding on what DC motors that we wanted to use, our main concerns were power, current rating, motor type, and price. It was calculated that in order to meet the speed requirements, we needed a total of 300W or 150W per motor. All of the motors investigated thus are at least 150W. It was also preferable to use brushless DC motors, as they are higher in quality (longevity, efficiency, low noise) than brushed DC motors and are more widely compatible with motor drivers. To decide between the brushless DC motors, we mostly looked at price and found the most cost-effective motors, while also keeping in mind the current rating so that we can purchase motor drivers with a large enough current rating to supply the motors. Thus, we decided to use the S55B-150 DC motors. \cite{yzl1} \cite{Citphto} \cite{AliExpress1} \cite{AliExpress2} \cite{AliExpress3} \cite{PrecisionMicrodrives} \cite {AliExpress8}\\
 
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
 	\setlength{\tabcolsep}{5pt} % Restore default column padding
 	\renewcommand{\arraystretch}{1.75} % Restore default row height
@@ -52,47 +52,47 @@
 		\end{NiceTabular}
 	}
 	\caption{\label{fig:vibrationMotorSpecifications}Vibration Motor Specifications}
-\end{figure}
+\end{table}
 
 \noindent Haptic motors are small DC motors that are used for vibration feedback in the handlebars of the walker. Because they are only used for the purpose of vibration, these motors are very small and do not draw much current. Our main concern with deciding which haptic motors to use is the voltage rating and price. In order to be compatible with most motor drivers, the motors should be able to be operated at both 5V and 3V. Although not the most cost-effective, we chose the "Vibration Motor" as it has the largest compatibility with motor drivers.\\
 
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{./Images/motor_controller_table2.png}
 	\caption{\label{fig:motor_controller}Motor Controller Specifications}
-\end{figure}
+\end{table}
 
 \noindent After comparing multiple factors, we ultimately chose the 768861A\_Y1181 motor controller. This is because our main concern was supplying current to the motors and operating all 4 motors from the same controller. The motors that we chose to drive the wheels draw up to 11A of current, which the 768861A\_Y1181 would be able to handle, although it is rated for 10A, upon examining the data sheet. This motor controller also provides a wide voltage range of 5-30V, which is able to provide the correct voltage for both the wheel-driving motors and the haptic motors. The 768861A\_Y1181 also happens to be the most cost-effective of the motor controllers. \cite{UMLIFE} \cite{AliExpress5} \cite{Makerbase} \cite{AliExpress7} \cite{CircuitBasics} \cite{Espressif1} \cite{AliExpress4} \cite{Burgess} \cite{RandomNerd} \cite{Espressif2} \cite{SimpleFOC} \cite{SimpleFOC2} \cite{Peza}\\
 
 
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{./Images/haptic_driver_table_2.png}
 	\caption{\label{fig:haptic_driver}Haptic Motor Driver Specifications}
-\end{figure}
+\end{table}
 
 \noindent This table compares the different motor drivers available for use with haptic motors.  decided to use the L298N motor driver as this solution is simply the most cost-effective. All of the haptic motor driver options available have similar ratings in voltage and current. We were also able to find more documentation for the L298N \cite{BOJACK} \cite{BEEYDC} \cite{HiLetgo}.\\
 
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{./Images/wheel_driver_table.png}
 	\caption{\label{fig:wheel_driver}Wheel Motor Driver Specifications}
-\end{figure}
+\end{table}
 
 \noindent Comparing options, we decided upon using the BTS7960 motor driver. The BTS7960 is able to supply more than enough current to the DC motors driving the wheels. This option is also the most cost-effective as the price includes two motor drivers to be able to drive both motors \cite{RioRand} \cite{Gikfun} \cite{Hobbywing}.\\
 
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{./Images/headlight_table.png}
 	\caption{\label{fig:headlights}Comparison of Headlight Options}
-\end{figure}
+\end{table}
 
 \noindent Comparing these different headlights that were originally intended for bicycles and motorcycles, we decided to use the Vogely ‎500400240. This is because these are the only headlights of these options that are able to be controlled digitally. Headlights are only necessary in dark environments, so we must connect the headlights to a light sensor. \cite{vogely2024} \cite{frdhee2024} \cite{stellarlights2024}\\
 
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{./Images/battery_table.png}
 	\caption{\label{fig:batteries}Comparison of Battery Options}
-\end{figure}
+\end{table}
 
 \noindent Comparing these different options for batteries, we decided upon using the SigmasTek battery. We evaluated 12V batteries since we ultimately decided on implementing 12V motors and these are our highest-voltage components. Comparing prices and capacity, we found that the SigmasTek battery was preferred because it provides the lowest cost for the needed battery capacity. \cite{liftmaster2024} \cite{lifepo42024}\\

@@ -8,7 +8,7 @@
 
 \begin{enumerate}
 	\item The camera component obtains a constant stream of image data, that is provided to the MCU via a 24-pin bus.
-	\item The MCU takes this data and passes it too the model.
+	\item The MCU takes this data and passes it to the model.
 	\item The YOLO model then provides the output (the specific process is explained in section \ref{CV_Obj_Det})
 	\item This output is then sent to the ESP32 MCU over UDP sockets over WiFi
 \end{enumerate}
@@ -16,21 +16,6 @@
 
 % bench, stationary car, ledge, moving person (polite obstacle avoidance), 
 \subsubsection{Predetermined Obstacles}
-\noindent The obstacles we have decided to avoid within the expected project scope are:
-\begin{enumerate}
-	\item People
-	\item Benches
-	\item Cars
-	\item Walls
-	\item Grass
-\end{enumerate}
-
-\noindent With stretch obstacles being:
-\begin{enumerate}
-	\item Ledges
-	\item Curbs
-	\item Animals
-	\item Bicycles
-\end{enumerate}
+\noindent The obstacles we have decided to avoid within the expected project scope are: People, Benches, Cars, Walls, and Grass. The stretch obstacles are: Ledges, Curbs, Animals, and Bicycles.\\
 
 \noindent This means that FORWARD will be expected to avoid each of the above obstacles, handling a smooth re-navigation of the user, while keeping the user in the loop via audio feedback. The objects will be identified through our camera module and color sensor and the navigation will be accomplished by our GNC software. \\
