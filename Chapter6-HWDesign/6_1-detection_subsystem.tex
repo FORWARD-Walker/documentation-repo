@@ -24,6 +24,15 @@
 	\caption{\label{fig:slope-stability}Stability on Slopes}
 \end{figure}
 
+\subsubsection{Tilting Stability}
+\noindent The IMU reads data from three different angles: pitch, yaw, and roll. We discussed previously under Incline and Decline Stability how we will use the pitch angle to prevent the rollator from rolling back on the user. We will also apply the roll angle to determine if the user is leaning too heavily on one side of the walker. If, for example, the user transfers the majority of their body weight to the right handlebar, the left side of the walker will tilt upward. This will increase the roll angle on the IMU (which should be zero for a stable system). The user will then be alerted through audio feedback that the walker is tipping. This feedback will be necessary to prevent the user from entirely capsizing the walker.\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.3\textwidth]{./Images/roll.png}
+	\caption{\label{fig:roll}Stability in Tilting}
+\end{figure}
+
 \subsubsection{Sonar Pulse Interference}
 \noindent One important note to consider is interference of the ultrasonic pulses. Being that FORWARD uses four of them, it is important to make sure the receivers do not receive each others emitted energy reflections. Ultrasonics are directional, so by pointing the multistatic sensors to the left and right sides of the rollator to monitor passing or approaching obstacles, we decouple them from the monostatic. However, the front-facing sensors are only separated by the length of the axle, meaning these will need to be triggered sequentially to avoid interference. This can be implemented simply in Arduino by separate digital write statements with a delay proportional to the one way pulse return duration. Actually, we observed this occurring during the first testing for the demo video, and troubleshooting is currently under way.\\
 

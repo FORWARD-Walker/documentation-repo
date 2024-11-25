@@ -20,23 +20,42 @@
 
 % do we fix the wheels in place? most of them swivel like castors - that's fine, rear-wheel drive.
 \subsubsection{Wheel Rotational Motion}
-\noindent The rollator wheels will dictate the way by which turning can be achieved. There are four wheels. We call the distance in between the front wheels $axel_f$ and the distance in between the rear wheels $axel_r$. Upon initial inspection of the rollator once acquired, we see that $axel_f > axel_r$. The measurements of the wheels are included in figure \ref{rollator-amaz}.
+\noindent The rollator wheels will dictate the way by which turning can be achieved. There are four wheels. We call the distance in between the front wheels $axel_f$ and the distance in between the rear wheels $axel_r$. Upon initial inspection of the rollator once acquired, we see that $axel_f > axel_r$.
+%The measurements of the wheels are included in figure \ref{rollator-amaz}.
 
 \noindent From a top view, the rear two wheels can be viewed as simple points. They do not swivel, and thus can rotate in place but cannot do horizontal translation, stipulated by friction and attachment to the rollator frame. Of course, they can also roll and move forward.\\
 
 \noindent In addition, the front wheels are on a $360^{\circ}$ swivel. They can also be modeled as points in a sense; however, their orientation changes.\\
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.25\textwidth]{./Images/wheel_assignment.png}
+	\caption{\label{fig:Wheel_assignment}Wheel Assignment}
+\end{figure}
+
 \noindent \underline{\textit{Case 1}} (extreme): Both wheels rotate. The front wheels translate.\\
 
-[INSERT CASE 1 DIAGRAM FROM POWERPOINT ONEDRIVE HERE]
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.25\textwidth]{./Images/case1.png}
+	\caption{\label{fig:case-one}Case 1: Rotation (not ideal due to friction)}
+\end{figure}
 
 \noindent \underline{\textit{Case 2}} (extreme): one wheel rotates, the other stationary. The front wheels revolve.\\
 
-[INSERT CASE 2 DIAGRAM FROM POWERPOINT ONEDRIVE HERE]
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.5\textwidth]{./Images/case2.png}
+	\caption{\label{fig:case-two}Case 2: Stationary motor, rotating motor}
+\end{figure}
 
 \noindent \underline{\textit{Case 3}} Veering. motor speeds may not have to change. User can veer based on feedback, and gentle guidance provided by FORWARD.\\
 
-[INSERT CASE 3 DIAGRAM FROM POWERPOINT ONEDRIVE HERE]
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.5\textwidth]{./Images/case3.png}
+	\caption{\label{fig:case-three}Case 3: Veering}
+\end{figure}
 
 % talking more about one wheel motor faster than the other. fusing user steering with FORWARD guidance.\
 \subsubsection{Turning Mechanics}
@@ -57,4 +76,19 @@
 
 %issue about user trying to steer when they shouldn't
 \subsubsection{Reconciling User Control and Automatic Guidance}
-\noindent There is also an issue of user error that must be considered. Our design is intended for the walker to lead the user, not for the user to lead the walker. This is not much of an issue with braking as there should not be any safety issues in the user applying manual brakes when not needed. Although this may wear down the motors over time as the rotor is prevented from rotating, we do not foresee any major consequences. However, the user may try to steer the walker in the wrong direction when not directed by the walker. This could cause a serious issue in the safety of the user if they steer the walker into an obstacle. Currently, if the user tried to steer the walker, the walker would automatically correct itself upon encountering an obstacle and warn the user of the obstacle. A more advanced solution could be pressure sensors that detect the body weight of the user and can sense if the user is leaning a particular way. However, this is outside the scope of our project, although in production this issue would certainly need to be addressed.
+\noindent There is also an issue of user error that must be considered. Our design is intended for the walker to lead the user, not for the user to lead the walker. This is not much of an issue with braking as there should not be any safety issues in the user applying manual brakes when not needed. Although this may wear down the motors over time as the rotor is prevented from rotating, we do not foresee any major consequences. However, the user may try to steer the walker in the wrong direction when not directed by the walker. This could cause a serious issue in the safety of the user if they steer the walker into an obstacle. Currently, if the user tried to steer the walker, the walker would automatically correct itself upon encountering an obstacle and warn the user of the obstacle. A more advanced solution could be pressure sensors that detect the body weight of the user and can sense if the user is leaning a particular way. However, this is outside the scope of our project, although in production this issue would certainly need to be addressed.\\
+
+\subsubsection{Physical Object Avoidance Margins}
+\noindent One of the main criteria for FORWARD is that it must avoid obstacles, and here we address the distance of the obstacles from the user before the rollator turns or brakes. If the obstacle is right in front of the user, one of our requirements is that the walker must be able to come to a complete stop within one second. If FORWARD is propelling at the maximum speed of 6mph, it can cover up to 8.8 feet in one second. However, this does not account for the acceleration as the walker slows down. It is also unlikely that this maximum speed will be used in practice at it is the average running speed of a human. We can set different distance ranges per potentiometer reading that sets the speed. So, if an obstacle is detected within x(v) feet in front of FORWARD, where the distance x is a function of the velocity v, then the walker will halt for the obstacle. The most likely speed to be selected is 2mph, as this is the average walking speed for a human, which will correspond to braking for obstacles in a 3 foot distance.\\
+
+\noindent Calculations must also be made for the angle and distance at which the walker must turn to avoid obstacles. Objects in the way of the walker will still be detected within the same range as stated above, however, the response of FORWARD will differ if the object can be avoided by steering to the right or to the left. If the right ultrasonic sensors detect an object within x(v) feet of the walker and comparisons with the camera data (detecting the location of the obstacle within the frame) indicate that the walker must veer left, then the wheels will be adjusted in response. The angle at which the rollator will turn away from the obstacle is dependent on the motion and location of the obstacle. If, for example, a tree stood in the path of the user, the MCU will calculate using the camera frame the location that FORWARD will be next to the tree plus a clearance of 6". If the tree is directly ahead, for example, then the distance calculated will be half of the width of the tree + the width of the walker + 6" clearance. Then calculating the angle at which FORWARD must veer is a matter of simple trigonometry.
+\[ \theta = tan^{-1}(o/a)\]
+\noindent where o = the distance between obstacle and future position of the walker and a = the distance from the walker to the obstacle.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.5\textwidth]{./Images/margin.png}
+	\caption{\label{fig:margin}Case 3: Veering Angle}
+\end{figure}
+
+%\noindent implementation of earpiece being available to user. obstacle classifications.\\
