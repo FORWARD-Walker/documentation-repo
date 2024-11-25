@@ -37,6 +37,8 @@ $$X_x = S_x(cos(\theta), sin(\theta)) = (x,y)$$ \label{Polar}
 % object identification test - classify obstacles and send walker into a moded resposne
 % relay audio feedback to user informing them what is ahead
 \subsubsection{Identification Importance}
+\noindent It is crucial to assert an effective and accurate object identification system. To do this, we will implement a testing procedure to effectively test the goals outlined in this paper for FORWARD. The test for the basic goals will be to provide the camera with each of the objects listed to be identified, using 10 different versions of each at varied locations in the camera FOV. We will run this test 10 times each to obtain a percentage pass/fail for the necessary objects. For the stretch goals, we will provide the camera with a few different environments of similar danger, i.e. different crowded environments, different parking lots, etc. and record the percentage of passing tests, looking to achieve a confidence level of at least 80\% before including this technology in FORWARD. For our Advanced goals, we will test this by moving FORWARD towards a grassy field or wall and recording the point in which the system determines a static obstacle. We will then adjust the scale for classifying such obstacles until we identify these obstacle types with at least 3 feet of clearance. \\
+
 The tiers of testing goals are:
 \begin{enumerate}
 	\item \textbf{Basic:} Alert the network there is a certain type of obstacle present (i.e. person, dog, car).
@@ -56,8 +58,6 @@ The tiers of testing goals are:
 
  
  \noindent In addition to vibration, we will include serial print statements within the software so that we can easily troubleshoot incorrect behavior from the haptics. If the statement printed in serial is not corresponding to the actions of the motors, we know that there is a hardware issue, either with the MCU, motors, or wiring. Contrarily, if the expected statement is not printed in the serial monitor, we can reasonably assume that there is a software issue.\\
- 
- \noindent As we evaluate the functionality of the haptic motors, we are in turn testing the motor drivers that operate the motors. We will use one motor driver with two outputs (haptic motors left and right) for testing. This driver is connected to the MCU for input and 3 AA batteries for a power supply. We will test the motor driver by applying voltage through the MCU and probing the voltage at the outputs with a digital multimeter. If the voltage of the batteries is present at the outputs while motors are programmed to be high, then this will be successful. Alternatively, we know that if the haptic motors are vibrating, the driver is supplying voltage to the outputs.\\
 
 % in SD2, will need to refine turning ratios, hazard range thresholds, and work on stretch requirements.
 \subsection{System Integration, Testing, and Evaluation}

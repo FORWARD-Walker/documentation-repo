@@ -15,7 +15,7 @@
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{./Images/motorsw.drawio.png}
+	\includegraphics[width=0.75\textwidth]{./Images/motorsw.drawio.png}
 	\caption{\label{fig:motorsw}Motor Control Software Diagram}
 \end{figure}
 
@@ -24,7 +24,7 @@
 \noindent Polite obstacle avoidance is a veering-moded response to moving obstacles, namely people, pets, and vehicles. The inspiration was drawn from real world experiences, where an obstacle will non-intelligently obstruct fluid travel straight ahead. If there is for example, a person walking from left to right (rollator frame of reference) across the camera field of vision, we can track the coordinates of its detection square, and form some abstract calculation of its velocity. We also have some idea of how fast this might be traveling based on other environmental data obtained by the camera; however, methods beyond the scope of this project would likely be required to harness this and improve avoidance strategies. Nevertheless, knowing the direction of travel of the obstacle means FORWARD can veer the user in the opposite direction. Being opposite is paramount because traveling behind the forward path of the obstacle will vastly decrease the chance of collision, and it will not infringe on either party's convenience or safety. The effects of collision for a stationary object are less severe compared to the likes of a running person or God forbid, a car. FORWARD will be able to confidently halt the user from these dangerous situations, and strategically navigate around them in a seamless manner.\\
 \begin{figure}[H]
 	\centering
-	\rotatebox[origin=c]{90}{\includegraphics[width=0.6\textwidth]{./Images/Polite-Mobile-Obstacle-Avoidance.png}}
+	\rotatebox[origin=c]{90}{\includegraphics[width=0.5\textwidth]{./Images/Polite-Mobile-Obstacle-Avoidance.png}}
 	\caption{\label{fig:polite}Polite Obstacle Avoidance}
 \end{figure}
 \noindent In figure \ref{fig:polite}, the red dotted line is the assumed constant velocity of an obstacle, represented by the dotted rectangle, crossing from left (S2) to right (S3). An initial deadset detections is made at the lower green X, when the obstacle passes into sensor S2's own field of view. The second green X above indicates the last moment (MCU refresh frame) when the obstacle is considered to be "in the way." After passing by, S3 will return to max range reading, indicating the dormant navigation mode can be re-entered, assuming no other obstacles have come into view. The pulsed blue line is the ultrasonic energy path of transmission and reception. The black dotted line is the direction of the rollator velocity, which is also shown to change to move forward (in the direction of negative a yaw angle), politely behind the moving obstacle. Also pictured is both audio and haptic feedback being activated and actuated.\\
@@ -33,6 +33,7 @@
 \noindent In section 6.4.2 on Incline and Decline Stability, we showed that the rollator must not be able to roll backward against the user whilst attempting to climb a slope. In order to accomplish this prevention, the motors must compensate for the incline. When the IMU detects a negative angle, indicating an incline, the MCU will increase the PWM duty cycle driving the motors as a function of the angle. The way we determine how much to increase the speed is dependent on change in force Typically, the force applied as the rollator moves forward is $F_{level}$. On an incline, the rollator must overcome the frictional and weight forces of  $F_{incline} = \mu m g \cos(\theta) + m g \sin(\theta)$, whereas $F_{level}$ would typically only have to overcome $\mu m g$. Thus, $F_{incline} - \mu m g \cos(\theta) + m g \sin(\theta)  = F_{level} - \mu m g$. Ideally, we would be able to use a pressure sensor to measure the exact weight of the user as well as somehow measure the exact coefficient of friction between the wheels and the ground. However, this is outside of our scope, so we will assume a typical sidewalk coefficient of friction of 0.5\cite{osha2003} and a maximum weight of 360lbs (300 from the user and 60 from the walker). The ratio of the speed increase will be calculated to be $F_{incline}/F_{level}$.\\
 
 \subsection{Feedback Protocols}
+\noindent There will be certain buzz patterns indicating the urgency of user response to obstacles, and the audio feedback provided by earpiece over bluetooth should be specific and non-distracting to the user. It will likely take the user time to get used to reacting timely to the feedbacks.
 
 \subsubsection{Haptic Feedback}
 \noindent When an obstacle is initially detected, the motor on the side in which the obstacle is detected will vibrate in pulses until it is time for FORWARD to either steer or brake to avoid the obstacle if needed. If the walker needs to veer to the right or to the left in response to the obstacle, the handlebar in the direction the walker is steering toward will vibrate for the duration of the turn. The ERM motors will vibrate in pulses while the walker is turning, with the period of the pulses dependent on the steering angle. If FORWARD needs to take a sharp turn, the haptics will vibrate more often with shorter pulses, whereas a slight turn will vibrate with longer pulses. If FORWARD is coming to a stop, both haptic motors will vibrate simultaneously until the walker has come to a complete stop. After a short delay, perhaps around five seconds, if the obstacle passes, both of the haptic motors will vibrate twice for around one second per pulse to indicate the walker will move forward again. The motion will begin after this warning is given to the user. If the obstacle does not pass but instead FORWARD needs to turn away from the obstacle after coming to a complete stop, one haptic motor will vibrate twice for around one second per pulse on the side in which the walker is turning toward.\\ 
@@ -41,7 +42,7 @@
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{./Images/hapticsw.png}
+	\includegraphics[width=\textwidth]{./Images/hapticsw.png}
 	\caption{\label{fig:hapticsw}Haptic Control Software Diagram}
 \end{figure}
 
@@ -51,9 +52,9 @@
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.25\textwidth]{./Images/audio2.drawio.png}
+	\includegraphics[width=0.3\textwidth]{./Images/audio2.drawio.png}
 	\caption{\label{fig:audiosw}Audio Feedback Software Diagram}
 \end{figure}
 
 \subsection{Headlight Protocol}
-\noindent  Predominantly, the headlight is a safety feature so that the rollator is visible to vehicles and pedestrians at night. The system operating the headlight is quite simple. A photoresistor will be mounted above the headlight detecting the input of light above. When the amount of lumens reduces beyond a certain threshold for a certain duration (i.e. five seconds to ensure the reduction is not a passing shadow), then the headlight will have voltage applied to it. Although not one of our requirements, we may choose to apply a PWM cycle to the headlights to increase the brightness of the headlights as the environment becomes darker, which will save power.\\
+\noindent  Predominantly, the headlight is a safety feature so that the rollator is visible to vehicles and pedestrians at night. A photoresistor will be mounted above the headlight detecting the input of light above. When the amount of lumens reduces beyond a certain threshold for a certain duration (i.e. five seconds to ensure the reduction is not a passing shadow), then the headlight will have voltage applied to it. Although not one of our requirements, we may choose to apply a PWM cycle to the headlights to increase the brightness of the headlights as the environment becomes darker, which will save power.

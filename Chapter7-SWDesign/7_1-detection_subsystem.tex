@@ -39,12 +39,8 @@ $$Y = [s_1, s_2, s_3, s_4, l_1, a_x, a_y, a_z, \alpha, \beta, \gamma ]^T$$
 \end{bmatrix}
 \]
 
-\subsubsection{Range Reading Harmonization}
+\subsubsection{Range Reading Harmonization} \label{harmony}
 \noindent In order to properly utilize all of the data our peripherals supply, we must design an effective and efficient sensor fusion system that can harmonize all of the incoming sensor data with the object detection data. In our research, we referenced an article \cite{CVRef2} that discussed using a 2D grid to determine where objects were in space. We are going to bring these ideas into our design, but allowing the object data, which comes with a position on a 2D-grid, to set this grid, which then our sensors can be associated to certain sections of this grid to provide ranging. For our purposes, x = 1920 and y = 1080 because our camera has a 1920x1080 frame size. We also know that the origin (0,0) is at the bottom left from the perspective of the camera. In figure \ref{fig:proposedsensorFOV}, we see that we will have four sonar sensors surrounding FORWARD. To illustrate my point, if we had an object return the position (1200, 1800, 0, 800), this being the form (Xmin, Xmax, Ymin, Ymax), then we would trigger the front right sonar sensor and receive the ranging measurement of said object. \\
-
-\noindent We will also utilize the LiDAR readings to provide more precise ranging... \\
-
-\noindent There are more outputs the inertial measurement unit can provide besides the angles. One of most interesting ones is the accelerations. This would be the rate that the velocity of the rollator body is changing with respect to time. 
 
 \noindent The relation of outputs to states and inputs is harder to determine, so the output matrix is left ambiguous (6x11):
 \[y =
@@ -57,6 +53,7 @@ $$Y = [s_1, s_2, s_3, s_4, l_1, a_x, a_y, a_z, \alpha, \beta, \gamma ]^T$$
 \begin{bmatrix}
 	x, y, \theta, v_x, v_y, \omega
 \end{bmatrix}^T
+% no direct transmission!
 %\begin{bmatrix}
 %	3\times 11
 %\end{bmatrix}
@@ -112,7 +109,7 @@ $$Y = [s_1, s_2, s_3, s_4, l_1, a_x, a_y, a_z, \alpha, \beta, \gamma ]^T$$
 \noindent This is also where a state estimator is useful. There is not a need nor a call for a mathematical definition of a Kalman filter for the scope of this project. However, we can make a general remark on the nature of the inputs and states. The sensor readings are all continuous, but can experience near instantaneous changes due to sudden appearances of obstacles or disturbances in the environment. For example, a fast moving obstacle can quickly enter the field of view, which may cause range sensor readings to drop quickly, while the amount of objects identified by the camera may change quickly as well. Therefore, an estimator is useful in the event of actively avoiding an obstacle present, in that it can help smooth response to commands and provide the best advice on where to veer toward, but it would be disrupted by the volatile environment.\\
 
 \subsubsection{IMU Calibration and Coordination}
-\noindent There is always uncertainty present with inertial measurements. Sensing instruments will measure some error that then needs to be characterized and minimized by the engineer. One way to achieve this is to calibrate the BNO-055 IMU when powering on the FORWARD system. Now the question arises when considering the yaw angle measurement: if the initial angle upon calibration is considered zero, then if the rollator makes a one-time turn, after some period, the yaw angle should be reset when driving straight. In other words, the calibration is a \textit{transfer alignment} while the GNC software (section \ref{gnc}) should adapt the readings on-the-go to force them to remain useful.\\
+\noindent There is always uncertainty present with inertial measurements. Sensing instruments will measure some error that then needs to be characterized and minimized by the engineer. One way to achieve this is to calibrate the BNO-055 IMU when powering on the FORWARD system. Now the question arises when considering the yaw angle measurement: if the initial angle upon calibration is considered zero, then if the rollator makes a one-time turn, after some period, the yaw angle should be reset when driving straight. In other words, the calibration is a \textit{transfer alignment} while the GNC software (section \ref{GNC_Software}) should adapt the readings on-the-go to force them to remain useful.\\
 
 \subsubsection{I2C Bus for Sensors}
-\noindent The utilization of four ultrasonic sensors and one LiDAR to supply a feed of information to FORWARD's central processor can be integrated and realized through a wiring bus with the I2C digital communication protocol. This I2C scheme will use a synchronous clock signal provided to the sensors by the MCU. It will operate always in half-duplex, meaning data will be transmitted in only one direction at a time - from the MCU to the sensors and from the sensors back to the MCU in successive time steps. Additionally, the sensors will be accessed by their unique addresses and send packets of information as a sequence, taking turns. FORWARD does not require the use of a multiplexer device, as accessing the sensor data is done by address over the two common wires.\\
+\noindent The utilization of four ultrasonic sensors and one LiDAR to supply a feed of information to FORWARD's central processor can be integrated and realized through a wiring bus with the I2C digital communication protocol. This I2C scheme will use a synchronous clock signal provided to the sensors by the MCU. It will operate always in half-duplex, meaning data will be transmitted in only one direction at a time - from the MCU to the sensors and from the sensors back to the MCU in successive time steps. Additionally, the sensors will be accessed by their unique addresses and send packets of information as a sequence, taking turns. FORWARD does not require the use of a multiplexer device, as accessing the sensor data is done by address over the two common wires.
