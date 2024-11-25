@@ -56,6 +56,8 @@ The tiers of testing goals are:
 
  
  \noindent In addition to vibration, we will include serial print statements within the software so that we can easily troubleshoot incorrect behavior from the haptics. If the statement printed in serial is not corresponding to the actions of the motors, we know that there is a hardware issue, either with the MCU, motors, or wiring. Contrarily, if the expected statement is not printed in the serial monitor, we can reasonably assume that there is a software issue.\\
+ 
+ \noindent As we evaluate the functionality of the haptic motors, we are in turn testing the motor drivers that operate the motors. We will use one motor driver with two outputs (haptic motors left and right) for testing. This driver is connected to the MCU for input and 3 AA batteries for a power supply. We will test the motor driver by applying voltage through the MCU and probing the voltage at the outputs with a digital multimeter. If the voltage of the batteries is present at the outputs while motors are programmed to be high, then this will be successful. Alternatively, we know that if the haptic motors are vibrating, the driver is supplying voltage to the outputs.\\
 
 % in SD2, will need to refine turning ratios, hazard range thresholds, and work on stretch requirements.
 \subsection{System Integration, Testing, and Evaluation}
