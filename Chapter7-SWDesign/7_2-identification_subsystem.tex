@@ -3,7 +3,6 @@
 
 % without copy pasting code, how does the image recognition work on the ESP cam module?
 \subsubsection{Object Recognition Models}
-
 \noindent The AMB82-MINI camera module is the board used by FORWARD to run all of the necessary object detection algorithms. In order to effectively utilize this board we first had to write the needed code. As stated above, we utilized the example object detection code provided by the board file in the Arduino IDE to guide us in this process. We opted to use a model from the YOLO family, which as the time of writing this paper is the YOLOv4 Tiny model, optimized for memory efficiency while still maintaining high performance. The YOLO model is trained on the MSCOCO data set. Once we flashed the code unto this board, the logic flow is this: 
 
 \begin{enumerate}
@@ -12,10 +11,9 @@
 	\item The YOLO model then provides the output (the specific process is explained in section \ref{CV_Obj_Det})
 	\item This output is then sent to the ESP32 MCU over UDP sockets over WiFi
 \end{enumerate}
- 
 
 % bench, stationary car, ledge, moving person (polite obstacle avoidance), 
 \subsubsection{Predetermined Obstacles}
 \noindent The obstacles we have decided to avoid within the expected project scope are: People, Benches, Cars, Walls, and Grass. The stretch obstacles are: Ledges, Curbs, Animals, and Bicycles.\\
 
-\noindent This means that FORWARD will be expected to avoid each of the above obstacles, handling a smooth re-navigation of the user, while keeping the user in the loop via audio feedback. The objects will be identified through our camera module and color sensor and the navigation will be accomplished by our GNC software. \\
+\noindent This means that FORWARD will be expected to avoid each of the above obstacles, handling a smooth re-navigation of the user, while keeping the user in the loop via audio feedback. The objects will be identified through our camera module and color sensor and the navigation will be accomplished by our GNC software.
