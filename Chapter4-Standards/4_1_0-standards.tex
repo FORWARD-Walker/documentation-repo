@@ -10,6 +10,11 @@
 
 \noindent The ADA (American Disabilities Act) also has stipulations for environments to make accommodations for these assistive vehicles including walkers and electric wheelchairs. However, none of these should affect our design process, given that our product is safe to operate around other people and in busy environments.\\
 
+\subsubsection{Detection Standards}
+\noindent \underline{\textit{IEEE 2700}} - This standard in large part has taken effect in that the components we purchased are high accuracy, resolution, and operate well in various environments. Additionally, it comments on accelerometer, magnetometer, and gyroscope linearity, bias, sensitivity, and other factors that govern precision. In this project, we may do a limited amount of analysis regarding these parameters, but it would be in senior design II. \cite{sensor-standards-ieee}\\
+
+\noindent \underline{\textit{IEEE 1451.5.5}} - This standard specifies guidelines for wireless transmission of sensor data from "smart" transducers. We are able to glean that FORWARD will require "common object model description for transducers and a network capable application processor." This standard is met with the ESP32 and Wi-Fi technology. There is also TEDS (Transducer Electronic Datasheet) data, which must specify how to obtain sensor data from its nodes, which we do through referencing output addresses via I2C. \cite{wireless-sensor-data-tx-ieee}\\
+
 \subsubsection{PCB Standards}
 \noindent Some standards that may be relevant, however, include the IPC standards for PCB design \cite{ipc2221}. IPC is a trade association that seeks to ensure high-quality products by providing standards for electronics design and manufacturing. The standard IPC-2221 provides specifications for PCB traces and component spacing on the board. We would like to implement at least some of these of these standards so that our PCB can high-quality and reduce the probability of errors in our design. \\ 
 
@@ -30,8 +35,6 @@
 \subsubsection{Voltage Interruption Standards}
 \noindent Two IEC standards were located with relevance to our device that relate to interruptions and fluctuations in voltage. The IEC 61000-4-11\cite{iec_standard_2} is a standard that requires components to endure electrical disturbances including short and long term changes or drops in voltage. We should use components that comply with these standards as there is not always a stable voltage provided from any power supply. An extreme example of the vitality of these standards is if the power went out during a hurricane while a laptop was connected to the outlet. Without some form of voltage regulation and durable parts, the laptop could be damaged. Likewise, even if there is simply noise coming in from the power supply, we do not want any components to be damaged from these fluctuations. More specifically, the IEC 61000-4-29 deals with electrical disruptions due to a DC power supply \cite{iec_standard_3}. These standards are more relevant to our product because our device is mobile. The walker must be able to move freely and travel long distances, so we will be using a rechargeable DC power supply. It would be beneficial to research components that meet the IEC 61000-4-29 standards so that damage is prevented from any predictable or unpredictable changes in voltage provided by the power supply.\\
 
-
-% IEEE standards here
 \subsubsection{Connection Standards}
 \noindent USB Type C is notably used to connect the ESP32 Camera module to the central processor. In addition, we utilized USB Type B to program the Arduino Uno for initial sensor interfacing. There are unique connectors for the DC brushless motors as well. The LiDAR sensor utilizes a 6-pin Japan Solderless Terminal (JST).
 
